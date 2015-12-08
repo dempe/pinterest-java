@@ -2,7 +2,7 @@ package pinterest;
 
 import com.google.gson.Gson;
 import exceptions.PinterestException;
-import fields.PinFields;
+import fields.pin.PinFields;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.utils.URIBuilder;
 import responses.Pin;

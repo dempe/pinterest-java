@@ -1,7 +1,7 @@
 package pinterest;
 
 import com.google.gson.Gson;
-import fields.PinFields;
+import fields.pin.PinFields;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import responses.Pin;
@@ -19,7 +19,7 @@ public class STestPinterest {
 
     @Test
     public void testPinWithAllFields() throws IOException {
-        final Pin actualPin = pinterest.retrievePinWithFields(PIN_ID, new PinFields().setAllFields());
+        final Pin actualPin = pinterest.retrievePinWithFields(PIN_ID, new PinFields().setAll());
         final Pin expectedPin = new Gson().fromJson(loadFile("responses/CompletePinResponse.json"), Pin.class);
 
         assertEquals(expectedPin, actualPin);
@@ -43,7 +43,7 @@ public class STestPinterest {
 
     @Test
     public void testBoardWithAllFields() throws IOException {
-        final Pins actualPins = pinterest.retrievePinsFromBoardWithFields("francisabila/all-about-me", new PinFields().setAllFields());
+        final Pins actualPins = pinterest.retrievePinsFromBoardWithFields("francisabila/all-about-me", new PinFields().setAll());
         final Pins expectedPins = new Gson().fromJson(loadFile("responses/CompleteBoardResponse.json"), Pins.class);
 
         assertEquals(expectedPins, actualPins);

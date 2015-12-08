@@ -1,29 +1,38 @@
-package fields;
+package fields.pin;
 
+import fields.CreatorFields;
+import fields.Fields;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import static fields.FieldSerializer.serialize;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-public class PinFields extends Fields {
+public class PinFields implements Fields {
     private final CreatorFields creatorFields = new CreatorFields();
     private final BoardFields boardFields = new BoardFields();
+    private final Set<String> fields = new HashSet<>();
 
-    protected boolean link;
-    protected boolean counts;
-    protected boolean note;
-    protected boolean url;
-    protected boolean metadata;
+    public static void main(String[] args) {
+        final PinFields pinFields = new PinFields().setAll();
+        System.out.println(pinFields.build());
+    }
 
     @Override
     public String build() {
         final String creatorFieldsSerialized = creatorFields.build();
         final String boardFieldsSerialized = boardFields.build();
 
-        return super.build() +
+        return serialize(fields) +
                 (isBlank(creatorFieldsSerialized) ? "" : ",creator(" + creatorFieldsSerialized + ")") +
                 (isBlank(boardFieldsSerialized) ? "" : ",board(" + boardFieldsSerialized + ")");
     }
 
-    public PinFields setAllFields() {
-        this.setAll();
+    // TODO:  is there a better way to do this? i.e., formulaically
+    @Override
+    public PinFields setAll() {
+        this.setCounts().setLink().setMetadata().setNote().setUrl();
         creatorFields.setAll();
         boardFields.setAll();
         return this;
@@ -38,27 +47,27 @@ public class PinFields extends Fields {
     }
 
     public PinFields setLink() {
-        this.link = true;
+        this.fields.add("link");
 		return this;
     }
 
     public PinFields setCounts() {
-        this.counts = true;
+        this.fields.add("counts");
 		return this;
     }
 
     public PinFields setNote() {
-        this.note = true;
+        this.fields.add("note");
 		return this;
     }
 
     public PinFields setUrl() {
-        this.url = true;
+        this.fields.add("url");
         return this;
     }
 
     public PinFields setMetadata() {
-        this.metadata = true;
+        this.fields.add("metadata");
         return this;
     }
 
@@ -69,23 +78,19 @@ public class PinFields extends Fields {
 
         PinFields pinFields = (PinFields) o;
 
-        if (link != pinFields.link) return false;
-        if (counts != pinFields.counts) return false;
-        if (note != pinFields.note) return false;
-        if (url != pinFields.url) return false;
         if (creatorFields != null ? !creatorFields.equals(pinFields.creatorFields) : pinFields.creatorFields != null)
             return false;
-        return !(boardFields != null ? !boardFields.equals(pinFields.boardFields) : pinFields.boardFields != null);
+        if (boardFields != null ? !boardFields.equals(pinFields.boardFields) : pinFields.boardFields != null)
+            return false;
+        return !(fields != null ? !fields.equals(pinFields.fields) : pinFields.fields != null);
+
     }
 
     @Override
     public int hashCode() {
         int result = creatorFields != null ? creatorFields.hashCode() : 0;
         result = 31 * result + (boardFields != null ? boardFields.hashCode() : 0);
-        result = 31 * result + (link ? 1 : 0);
-        result = 31 * result + (counts ? 1 : 0);
-        result = 31 * result + (note ? 1 : 0);
-        result = 31 * result + (url ? 1 : 0);
+        result = 31 * result + (fields != null ? fields.hashCode() : 0);
         return result;
     }
 
@@ -94,10 +99,7 @@ public class PinFields extends Fields {
         return "PinFields{" +
                 "creatorFields=" + creatorFields +
                 ", boardFields=" + boardFields +
-                ", link=" + link +
-                ", counts=" + counts +
-                ", note=" + note +
-                ", url=" + url +
+                ", fields=" + fields +
                 '}';
     }
 }

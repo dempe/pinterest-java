@@ -1,9 +1,12 @@
-package fields;
+package fields.pin;
+
+import fields.FieldSerializer;
+import fields.Fields;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class CreatorFields implements Fields {
+public class BoardFields implements Fields {
     private final Set<String> fields = new HashSet<>();
 
     @Override
@@ -13,25 +16,20 @@ public class CreatorFields implements Fields {
 
     @Override
     public Fields setAll() {
-        return this.setFirstName().setId().setLastName().setUrl();
+        return this.setId().setName().setUrl();
     }
 
-    public CreatorFields setId() {
+    public BoardFields setId() {
         fields.add("id");
 		return this;
     }
 
-    public CreatorFields setFirstName() {
-        fields.add("first_name");
+    public BoardFields setName() {
+        fields.add("name");
 		return this;
     }
 
-    public CreatorFields setLastName() {
-        fields.add("last_name");
-		return this;
-    }
-
-    public CreatorFields setUrl() {
+    public BoardFields setUrl() {
         fields.add("url");
 		return this;
     }
@@ -41,7 +39,7 @@ public class CreatorFields implements Fields {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CreatorFields that = (CreatorFields) o;
+        BoardFields that = (BoardFields) o;
 
         return !(fields != null ? !fields.equals(that.fields) : that.fields != null);
 
@@ -54,7 +52,7 @@ public class CreatorFields implements Fields {
 
     @Override
     public String toString() {
-        return "CreatorFields{" +
+        return "BoardFields{" +
                 "fields=" + fields +
                 '}';
     }
