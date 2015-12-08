@@ -28,10 +28,6 @@ public class PinFields extends Fields {
         return this;
     }
 
-    public static String defaultFields() {
-        return "";
-    }
-
     public CreatorFields getCreatorFields() {
         return creatorFields;
     }
