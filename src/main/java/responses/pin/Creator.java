@@ -1,4 +1,4 @@
-package responses;
+package responses.pin;
 
 public class Creator {
     private final String url;

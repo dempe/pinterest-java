@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import fields.pin.PinFields;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
-import responses.Pin;
-import responses.Pins;
+import responses.pin.Pin;
+import responses.pin.Pins;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package responses;
+package responses.pin;
 
 public class Counts {
     private final Integer likes;

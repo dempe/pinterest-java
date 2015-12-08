@@ -5,8 +5,8 @@ import exceptions.PinterestException;
 import fields.pin.PinFields;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.utils.URIBuilder;
-import responses.Pin;
-import responses.Pins;
+import responses.pin.Pin;
+import responses.pin.Pins;
 
 import java.io.IOException;
 import java.net.URI;

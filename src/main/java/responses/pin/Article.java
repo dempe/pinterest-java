@@ -1,4 +1,4 @@
-package responses;
+package responses.pin;
 
 import com.google.gson.annotations.SerializedName;
 

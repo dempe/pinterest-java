@@ -1,4 +1,4 @@
-package responses;
+package responses.pin;
 
 import java.util.Arrays;
 import java.util.HashSet;

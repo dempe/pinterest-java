@@ -1,6 +1,7 @@
 package responses;
 
 import com.google.gson.annotations.SerializedName;
+import responses.pin.Data;
 
 public class ErrorResponse {
     private final String status;

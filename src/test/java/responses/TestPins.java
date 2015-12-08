@@ -3,6 +3,8 @@ package responses;
 import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
+import responses.pin.Pin;
+import responses.pin.Pins;
 
 import java.io.IOException;
 

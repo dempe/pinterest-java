@@ -1,4 +1,4 @@
-package responses;
+package responses.pin;
 
 public class Image {
     private final Original original;
