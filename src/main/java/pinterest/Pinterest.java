@@ -59,7 +59,7 @@ public class Pinterest {
         }
     }
 
-    public Pins retrievePinsFromBoard(final String boardName) {
+    public Pins retrievePinsFromBoardWithDefaultFields(final String boardName) {
         try {
             return new Gson().fromJson(IOUtils.toString(buildBoardUri(boardName, null)), Pins.class);
         } catch (URISyntaxException | IOException e) {
@@ -67,7 +67,7 @@ public class Pinterest {
         }
     }
 
-    public Pins retrievePinsFromBoard(final String boardName, final PinFields pinFields) {
+    public Pins retrievePinsFromBoardWithFields(final String boardName, final PinFields pinFields) {
         try {
             return new Gson().fromJson(IOUtils.toString(buildBoardUri(boardName, pinFields.build())), Pins.class);
         } catch (URISyntaxException | IOException e) {
