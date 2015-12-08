@@ -6,6 +6,7 @@ import fields.PinFields;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.utils.URIBuilder;
 import responses.Pin;
+import responses.Pins;
 
 import java.io.IOException;
 import java.net.URI;
@@ -15,6 +16,7 @@ public class Pinterest {
     private static final String PROTOCOL = "https";
     private static final String HOST = "api.pinterest.com";
     private static final String PIN_PATH = "/v1/pins/{PIN_ID}/";
+    private static final String BOARD_PATH = "/v1/boards/{BOARD_NAME}/pins/";
 
     private final String accessToken;
 
@@ -22,7 +24,7 @@ public class Pinterest {
         this.accessToken = accessToken;
     }
 
-    public Pin getPin(final String id) {
+    public Pin retrievePin(final String id) {
         try {
             return new Gson().fromJson(IOUtils.toString(buildPinUri(id, PinFields.defaultFields())), Pin.class);
         } catch (URISyntaxException | IOException e) {
@@ -30,9 +32,25 @@ public class Pinterest {
         }
     }
 
-    public Pin getPin(final String id, final PinFields pinFields) {
+    public Pin retrievePin(final String id, final PinFields pinFields) {
         try {
             return new Gson().fromJson(IOUtils.toString(buildPinUri(id, pinFields.build())), Pin.class);
+        } catch (URISyntaxException | IOException e) {
+            throw new PinterestException(e.getMessage(), e);
+        }
+    }
+
+    public Pins retrievePinsFromBoard(final String boardName) {
+        try {
+            return new Gson().fromJson(IOUtils.toString(buildBoardUri(boardName, PinFields.defaultFields())), Pins.class);
+        } catch (URISyntaxException | IOException e) {
+            throw new PinterestException(e.getMessage(), e);
+        }
+    }
+
+    public Pins retrievePinsFromBoard(final String boardName, final PinFields pinFields) {
+        try {
+            return new Gson().fromJson(IOUtils.toString(buildBoardUri(boardName, pinFields.build())), Pins.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
@@ -43,6 +61,16 @@ public class Pinterest {
                 .setScheme(PROTOCOL)
                 .setHost(HOST)
                 .setPath(PIN_PATH.replace("{PIN_ID}", id))
+                .setParameter("access_token", accessToken)
+                .setParameter("fields", fields)
+                .build();
+    }
+
+    private URI buildBoardUri(final String name, final String fields) throws URISyntaxException {
+        return new URIBuilder()
+                .setScheme(PROTOCOL)
+                .setHost(HOST)
+                .setPath(BOARD_PATH.replace("{BOARD_NAME}", name))
                 .setParameter("access_token", accessToken)
                 .setParameter("fields", fields)
                 .build();
