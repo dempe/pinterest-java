@@ -1,0 +1,16 @@
+*.class
+*.DS_store
+.classpath
+.project
+.metadata
+.settings
+.settings/*
+.idea
+/*/target/*
+/target/
+*.log
+*.log.gz
+.idea/*
+*.iml
+*.patch
+*developer-settings.properties*
