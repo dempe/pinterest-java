@@ -1,6 +1,8 @@
 package responses;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Pins {
     private final Data[] data;
@@ -22,12 +24,11 @@ public class Pins {
 
         if (pins.getData().length != data.length) return false;
 
-        for (int i = 0; i < data.length; i++) {
-            if (data[i] != pins.getData()[i]) return false;
-        }
+        // disregard order
+        final Set<Data> thiz = new HashSet<>(Arrays.asList(this.getData()));
+        final Set<Data> that = new HashSet<>(Arrays.asList(pins.getData()));
 
-        return true;
-
+        return thiz.equals(that);
     }
 
     @Override
