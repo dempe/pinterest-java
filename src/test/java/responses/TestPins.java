@@ -12,7 +12,7 @@ public class TestPins {
     //API call: https://api.pinterest.com/v1/boards/francisabila/all-about-me/pins/?access_token=ARp8HNzfw2scBtJqtYA57a8xFeAqFBzML4SnnEZCe9w6DeAJGAAAAAA&fields=id,link,counts,note,id,link,creator%28id,first_name,last_name,url%29,board%28id,name,url%29
     @Test
     public void testBoardResponse() throws IOException {
-        final String response = loadFile("responses/BoardResponse.json");
+        final String response = loadFile("responses/CompleteBoardResponse.json");
         final Pins pins = new Gson().fromJson(response, Pins.class);
 
         System.out.println(pins);
