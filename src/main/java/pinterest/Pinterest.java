@@ -44,7 +44,7 @@ public class Pinterest {
 
     public Pins retrievePinsFromBoard(final String boardName) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardUri(boardName, PinFields.defaultFields())), Pins.class);
+            return new Gson().fromJson(IOUtils.toString(buildBoardUri(boardName, null)), Pins.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
@@ -73,12 +73,16 @@ public class Pinterest {
     }
 
     private URI buildBoardUri(final String name, final String fields) throws URISyntaxException {
-        return new URIBuilder()
+        final URIBuilder uriBuilder = new URIBuilder()
                 .setScheme(PROTOCOL)
                 .setHost(HOST)
                 .setPath(BOARD_PATH.replace("{BOARD_NAME}", name))
-                .setParameter("access_token", accessToken)
-                .setParameter("fields", fields)
-                .build();
+                .setParameter("access_token", accessToken);
+
+        if (isNotBlank(fields)) {
+            uriBuilder.setParameter("fields", fields);
+        }
+
+        return uriBuilder.build();
     }
 }
