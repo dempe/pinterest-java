@@ -12,12 +12,13 @@ import java.io.IOException;
 import static org.junit.Assert.assertEquals;
 
 public class STestPinterest {
-    private static final String PIN_ID = "525091637782793357";
+    private static final String PIN_ID = "422705115002975322";
+    private static final String BOARD_NAME = "francisabila/all-about-me";
 
     private final Pinterest pinterest = new Pinterest("ARp8HNzfw2scBtJqtYA57a8xFeAqFBzML4SnnEZCe9w6DeAJGAAAAAA");
 
     @Test
-    public void testPinWithFields() throws IOException {
+    public void testPinWithAllFields() throws IOException {
         final Pin actualPin = pinterest.retrievePinWithFields(PIN_ID, new PinFields().setAllFields());
         final Pin expectedPin = new Gson().fromJson(loadFile("responses/CompletePinResponse.json"), Pin.class);
 
@@ -34,7 +35,7 @@ public class STestPinterest {
 
     @Test
     public void testBoardWithDefaultFields() throws IOException {
-        final Pins actualPins = pinterest.retrievePinsFromBoard("francisabila/all-about-me");
+        final Pins actualPins = pinterest.retrievePinsFromBoard(BOARD_NAME);
         final Pins expectedPins = new Gson().fromJson(loadFile("responses/DefaultBoardResponse.json"), Pins.class);
 
         assertEquals(expectedPins, actualPins);

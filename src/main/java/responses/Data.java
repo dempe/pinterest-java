@@ -1,5 +1,7 @@
 package responses;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Data {
     private final String id;
     private final Counts counts;
@@ -11,8 +13,10 @@ public class Data {
     private final String createdAt;
     private final String color;
     private final String attribution;
+    @SerializedName("metadata")
+    private final MetaData metaData;
 
-    public Data(String id, Counts counts, String url, String note, String link, Board board, Creator creator, String createdAt, String color, String attribution) {
+    public Data(String id, Counts counts, String url, String note, String link, Board board, Creator creator, String createdAt, String color, String attribution, MetaData metaData) {
         this.id = id;
         this.counts = counts;
         this.url = url;
@@ -23,6 +27,7 @@ public class Data {
         this.createdAt = createdAt;
         this.color = color;
         this.attribution = attribution;
+        this.metaData = metaData;
     }
 
     public String getId() {
@@ -65,6 +70,10 @@ public class Data {
         return attribution;
     }
 
+    public MetaData getMetaData() {
+        return metaData;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,8 +90,8 @@ public class Data {
         if (creator != null ? !creator.equals(data.creator) : data.creator != null) return false;
         if (createdAt != null ? !createdAt.equals(data.createdAt) : data.createdAt != null) return false;
         if (color != null ? !color.equals(data.color) : data.color != null) return false;
-        return !(attribution != null ? !attribution.equals(data.attribution) : data.attribution != null);
-
+        if (attribution != null ? !attribution.equals(data.attribution) : data.attribution != null) return false;
+        return !(metaData != null ? !metaData.equals(data.metaData) : data.metaData != null);
     }
 
     @Override
@@ -97,6 +106,7 @@ public class Data {
         result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
         result = 31 * result + (color != null ? color.hashCode() : 0);
         result = 31 * result + (attribution != null ? attribution.hashCode() : 0);
+        result = 31 * result + (metaData != null ? metaData.hashCode() : 0);
         return result;
     }
 
@@ -113,6 +123,7 @@ public class Data {
                 ", createdAt='" + createdAt + '\'' +
                 ", color='" + color + '\'' +
                 ", attribution='" + attribution + '\'' +
+                ", metaData=" + metaData +
                 '}';
     }
 }

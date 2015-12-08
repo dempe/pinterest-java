@@ -33,7 +33,15 @@ public class Pins {
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(data);
+        if (data == null) return 0;
+
+        int result = 1;
+
+        for (final Data datum : data) {
+            result = result * 31 + (datum == null ? 0 : datum.hashCode());
+        }
+
+        return result;
     }
 
     @Override

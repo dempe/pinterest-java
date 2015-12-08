@@ -10,6 +10,7 @@ public class PinFields extends Fields {
     protected boolean counts;
     protected boolean note;
     protected boolean url;
+    protected boolean metadata;
 
     @Override
     public String build() {
@@ -53,6 +54,11 @@ public class PinFields extends Fields {
 
     public PinFields setUrl() {
         this.url = true;
+        return this;
+    }
+
+    public PinFields setMetadata() {
+        this.metadata = true;
         return this;
     }
 
