@@ -59,4 +59,44 @@ public class PinFields extends Fields {
         this.url = true;
         return this;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PinFields pinFields = (PinFields) o;
+
+        if (link != pinFields.link) return false;
+        if (counts != pinFields.counts) return false;
+        if (note != pinFields.note) return false;
+        if (url != pinFields.url) return false;
+        if (creatorFields != null ? !creatorFields.equals(pinFields.creatorFields) : pinFields.creatorFields != null)
+            return false;
+        return !(boardFields != null ? !boardFields.equals(pinFields.boardFields) : pinFields.boardFields != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = creatorFields != null ? creatorFields.hashCode() : 0;
+        result = 31 * result + (boardFields != null ? boardFields.hashCode() : 0);
+        result = 31 * result + (link ? 1 : 0);
+        result = 31 * result + (counts ? 1 : 0);
+        result = 31 * result + (note ? 1 : 0);
+        result = 31 * result + (url ? 1 : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "PinFields{" +
+                "creatorFields=" + creatorFields +
+                ", boardFields=" + boardFields +
+                ", link=" + link +
+                ", counts=" + counts +
+                ", note=" + note +
+                ", url=" + url +
+                '}';
+    }
 }
