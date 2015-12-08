@@ -26,7 +26,7 @@ public class Pinterest {
         this.accessToken = accessToken;
     }
 
-    public Pin retrievePin(final String id) {
+    public Pin retrievePinWithDefaultFields(final String id) {
         try {
             return new Gson().fromJson(IOUtils.toString(buildPinUri(id, null)), Pin.class);
         } catch (URISyntaxException | IOException e) {
@@ -34,7 +34,7 @@ public class Pinterest {
         }
     }
 
-    public Pin retrievePin(final String id, final PinFields pinFields) {
+    public Pin retrievePinWithFields(final String id, final PinFields pinFields) {
         try {
             return new Gson().fromJson(IOUtils.toString(buildPinUri(id, pinFields.build())), Pin.class);
         } catch (URISyntaxException | IOException e) {
