@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 public class Pinterest {
     private static final String PROTOCOL = "https";
     private static final String HOST = "api.pinterest.com";
@@ -26,7 +28,7 @@ public class Pinterest {
 
     public Pin retrievePin(final String id) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildPinUri(id, PinFields.defaultFields())), Pin.class);
+            return new Gson().fromJson(IOUtils.toString(buildPinUri(id, null)), Pin.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
@@ -57,13 +59,17 @@ public class Pinterest {
     }
 
     private URI buildPinUri(final String id, final String fields) throws URISyntaxException {
-        return new URIBuilder()
+        final URIBuilder uriBuilder =  new URIBuilder()
                 .setScheme(PROTOCOL)
                 .setHost(HOST)
                 .setPath(PIN_PATH.replace("{PIN_ID}", id))
-                .setParameter("access_token", accessToken)
-                .setParameter("fields", fields)
-                .build();
+                .setParameter("access_token", accessToken);
+
+        if (isNotBlank(fields)) {
+            uriBuilder.setParameter("fields", fields);
+        }
+
+        return uriBuilder.build();
     }
 
     private URI buildBoardUri(final String name, final String fields) throws URISyntaxException {
