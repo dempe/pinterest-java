@@ -17,8 +17,8 @@ public class PinFields extends Fields {
         final String boardFieldsSerialized = boardFields.build();
 
         return super.build() +
-                (isBlank(creatorFieldsSerialized) ? "" : ",creator(" + creatorFields.build() + ")") +
-                (isBlank(boardFieldsSerialized) ? "" : ",board(" + boardFields.build() + ")");
+                (isBlank(creatorFieldsSerialized) ? "" : ",creator(" + creatorFieldsSerialized + ")") +
+                (isBlank(boardFieldsSerialized) ? "" : ",board(" + boardFieldsSerialized + ")");
     }
 
     public PinFields setAllFields() {
@@ -70,7 +70,6 @@ public class PinFields extends Fields {
         if (creatorFields != null ? !creatorFields.equals(pinFields.creatorFields) : pinFields.creatorFields != null)
             return false;
         return !(boardFields != null ? !boardFields.equals(pinFields.boardFields) : pinFields.boardFields != null);
-
     }
 
     @Override
