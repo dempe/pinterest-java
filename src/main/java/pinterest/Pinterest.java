@@ -18,6 +18,7 @@ public class Pinterest {
     private static final String PROTOCOL = "https";
     private static final String HOST = "api.pinterest.com";
     private static final String PIN_PATH = "/v1/pins/{PIN_ID}/";
+    private static final String MY_PIN_PATH = "/v1/me/pins/";
     private static final String BOARD_PATH = "/v1/boards/{BOARD_NAME}/pins/";
 
     private final String accessToken;
@@ -37,6 +38,22 @@ public class Pinterest {
     public Pin retrievePinWithFields(final String id, final PinFields pinFields) {
         try {
             return new Gson().fromJson(IOUtils.toString(buildPinUri(id, pinFields.build())), Pin.class);
+        } catch (URISyntaxException | IOException e) {
+            throw new PinterestException(e.getMessage(), e);
+        }
+    }
+
+    public Pins retrieveMyPinsWithDefaultFields(final String id) {
+        try {
+            return new Gson().fromJson(IOUtils.toString(buildMyPinUri(null)), Pins.class);
+        } catch (URISyntaxException | IOException e) {
+            throw new PinterestException(e.getMessage(), e);
+        }
+    }
+
+    public Pins retrieveMyPinsWithFields(final String id, final PinFields pinFields) {
+        try {
+            return new Gson().fromJson(IOUtils.toString(buildMyPinUri(pinFields.build())), Pins.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
@@ -63,6 +80,20 @@ public class Pinterest {
                 .setScheme(PROTOCOL)
                 .setHost(HOST)
                 .setPath(PIN_PATH.replace("{PIN_ID}", id))
+                .setParameter("access_token", accessToken);
+
+        if (isNotBlank(fields)) {
+            uriBuilder.setParameter("fields", fields);
+        }
+
+        return uriBuilder.build();
+    }
+
+    private URI buildMyPinUri(final String fields) throws URISyntaxException {
+        final URIBuilder uriBuilder =  new URIBuilder()
+                .setScheme(PROTOCOL)
+                .setHost(HOST)
+                .setPath(MY_PIN_PATH)
                 .setParameter("access_token", accessToken);
 
         if (isNotBlank(fields)) {
