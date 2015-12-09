@@ -3,8 +3,12 @@ package fields.pin;
 import fields.BaseFields;
 import fields.CreatorFields;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static fields.FieldSerializer.serialize;
-import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang3.StringUtils.join;
 
 public class PinFields extends BaseFields {
     private final CreatorFields creatorFields = new CreatorFields();
@@ -12,12 +16,22 @@ public class PinFields extends BaseFields {
 
     @Override
     public String build() {
-        final String creatorFieldsSerialized = creatorFields.build();
-        final String boardFieldsSerialized = boardFields.build();
+        final String serializedCreatorFields = creatorFields.build();
+        final String serializedBoardFields = boardFields.build();
+        final String serializedPinFields = serialize(fields);
+        final List<String> serializedFieldsList = new ArrayList<>();
 
-        return serialize(fields) +
-                (isBlank(creatorFieldsSerialized) ? "" : ",creator(" + creatorFieldsSerialized + ")") +
-                (isBlank(boardFieldsSerialized) ? "" : ",board(" + boardFieldsSerialized + ")");
+        if (isNotBlank(serializedCreatorFields)) {
+            serializedFieldsList.add("creator(" + serializedCreatorFields + ")");
+        }
+        if (isNotBlank(serializedBoardFields)) {
+            serializedFieldsList.add("board(" + serializedBoardFields + ")");
+        }
+        if (isNotBlank(serializedPinFields)) {
+            serializedFieldsList.add(serializedPinFields);
+        }
+
+        return join(serializedFieldsList, ",");
     }
 
     // TODO:  is there a better way to do this? i.e., formulaically

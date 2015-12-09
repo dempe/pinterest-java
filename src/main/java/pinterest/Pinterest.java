@@ -5,6 +5,7 @@ import exceptions.PinterestException;
 import fields.pin.PinFields;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.utils.URIBuilder;
+import responses.board.Board;
 import responses.pin.Pin;
 import responses.pin.Pins;
 
@@ -70,6 +71,14 @@ public class Pinterest {
     public Pins retrievePinsFromBoardWithFields(final String boardName, final PinFields pinFields) {
         try {
             return new Gson().fromJson(IOUtils.toString(buildBoardUri(boardName, pinFields.build())), Pins.class);
+        } catch (URISyntaxException | IOException e) {
+            throw new PinterestException(e.getMessage(), e);
+        }
+    }
+
+    public Board retrieveBoardWithDefaultFields(final String boardName, final String userName) {
+        try {
+            return new Gson().fromJson(IOUtils.toString(buildBoardUri(boardName, null)), Board.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
