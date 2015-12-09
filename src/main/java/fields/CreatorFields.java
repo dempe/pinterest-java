@@ -1,15 +1,6 @@
 package fields;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class CreatorFields implements Fields {
-    private final Set<String> fields = new HashSet<>();
-
-    @Override
-    public String build() {
-        return FieldSerializer.serialize(fields);
-    }
+public class CreatorFields extends BaseFields {
 
     @Override
     public Fields setAll() {
@@ -44,7 +35,6 @@ public class CreatorFields implements Fields {
         CreatorFields that = (CreatorFields) o;
 
         return !(fields != null ? !fields.equals(that.fields) : that.fields != null);
-
     }
 
     @Override

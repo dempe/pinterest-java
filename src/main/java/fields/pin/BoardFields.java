@@ -1,18 +1,9 @@
 package fields.pin;
 
-import fields.FieldSerializer;
+import fields.BaseFields;
 import fields.Fields;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class BoardFields implements Fields {
-    private final Set<String> fields = new HashSet<>();
-
-    @Override
-    public String build() {
-        return FieldSerializer.serialize(fields);
-    }
+public class BoardFields extends BaseFields {
 
     @Override
     public Fields setAll() {

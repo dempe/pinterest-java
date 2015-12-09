@@ -1,23 +1,14 @@
 package fields.pin;
 
+import fields.BaseFields;
 import fields.CreatorFields;
-import fields.Fields;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import static fields.FieldSerializer.serialize;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-public class PinFields implements Fields {
+public class PinFields extends BaseFields {
     private final CreatorFields creatorFields = new CreatorFields();
     private final BoardFields boardFields = new BoardFields();
-    private final Set<String> fields = new HashSet<>();
-
-    public static void main(String[] args) {
-        final PinFields pinFields = new PinFields().setAll();
-        System.out.println(pinFields.build());
-    }
 
     @Override
     public String build() {
