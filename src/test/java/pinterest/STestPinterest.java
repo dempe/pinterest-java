@@ -1,9 +1,12 @@
 package pinterest;
 
 import com.google.gson.Gson;
+import fields.board.BoardFields;
 import fields.pin.PinFields;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
+import responses.board.Board;
+import responses.board.Boards;
 import responses.pin.Pin;
 import responses.pin.Pins;
 
@@ -21,7 +24,6 @@ public class STestPinterest {
     public void testPinWithAllFields() throws IOException {
         final Pin actualPin = pinterest.retrievePinWithFields(PIN_ID, new PinFields().setAll());
         final Pin expectedPin = new Gson().fromJson(loadFile("responses/CompletePinResponse.json"), Pin.class);
-
         assertEquals(expectedPin, actualPin);
     }
 
@@ -29,7 +31,6 @@ public class STestPinterest {
     public void testPinWithDefaultFields() throws IOException {
         final Pin actualPin = pinterest.retrievePinWithDefaultFields(PIN_ID);
         final Pin expectedPin = new Gson().fromJson(loadFile("responses/DefaultPinResponse.json"), Pin.class);
-
         assertEquals(expectedPin, actualPin);
     }
 
@@ -39,7 +40,7 @@ public class STestPinterest {
      * @throws IOException
      */
     @Test
-    public void testBoardWithDefaultFields() throws IOException {
+    public void testBoardPinsWithDefaultFields() throws IOException {
         final Pins pins = pinterest.retrievePinsFromBoardWithDefaultFields(BOARD_NAME);
         System.out.println(pins);
     }
@@ -50,10 +51,55 @@ public class STestPinterest {
      * @throws IOException
      */
     @Test
-    public void testBoardWithAllFields() throws IOException {
+    public void testBoardPinsWithAllFields() throws IOException {
         final Pins pins = pinterest.retrievePinsFromBoardWithFields("francisabila/all-about-me", new PinFields().setAll());
         System.out.println(pins);
     }
+
+    /**
+     * Only testing parsing here - changes too frequently.
+     * TODO:  test presence of expected keys
+     * @throws IOException
+     */
+    @Test
+    public void testBoardWithDefaultFields() throws IOException {
+        final Board board = pinterest.retrieveBoardWithDefaultFields("francisabila", "all-about-me");
+        System.out.println(board);
+    }
+
+    /**
+     * Only testing parsing here - changes too frequently.
+     * TODO:  test presence of expected keys
+     * @throws IOException
+     */
+    @Test
+    public void testBoardWithAllFields() throws IOException {
+        final Board board = pinterest.retrieveBoardWithFields("francisabila", "all-about-me", new BoardFields().setAll());
+        System.out.println(board);
+    }
+
+    /**
+     * Only testing parsing here - changes too frequently.
+     * TODO:  test presence of expected keys
+     * @throws IOException
+     */
+    @Test
+    public void testMyBoardWithDefaultFields() throws IOException {
+        final Boards board = pinterest.retrieveMyBoardWithDefaultFields();
+        System.out.println(board);
+    }
+
+    /**
+     * Only testing parsing here - changes too frequently.
+     * TODO:  test presence of expected keys
+     * @throws IOException
+     */
+    @Test
+    public void testMyBoardWithAllFields() throws IOException {
+        final Boards board = pinterest.retrieveMyBoardWithFields(new BoardFields().setAll());
+        System.out.println(board);
+    }
+
 
     private static String loadFile(final String resource) throws IOException {
         return IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream(resource));

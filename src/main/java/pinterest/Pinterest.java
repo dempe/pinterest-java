@@ -2,25 +2,24 @@ package pinterest;
 
 import com.google.gson.Gson;
 import exceptions.PinterestException;
+import fields.board.BoardFields;
 import fields.pin.PinFields;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.client.utils.URIBuilder;
 import responses.board.Board;
+import responses.board.Boards;
 import responses.pin.Pin;
 import responses.pin.Pins;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static pinterest.EndPointURIBuilder.buildBoardPinUri;
+import static pinterest.EndPointURIBuilder.buildBoardUri;
+import static pinterest.EndPointURIBuilder.buildMyBoardUri;
+import static pinterest.EndPointURIBuilder.buildMyPinUri;
+import static pinterest.EndPointURIBuilder.buildPinUri;
 
 public class Pinterest {
-    private static final String PROTOCOL = "https";
-    private static final String HOST = "api.pinterest.com";
-    private static final String PIN_PATH = "/v1/pins/{PIN_ID}/";
-    private static final String MY_PIN_PATH = "/v1/me/pins/";
-    private static final String BOARD_PATH = "/v1/boards/{BOARD_NAME}/pins/";
 
     private final String accessToken;
 
@@ -30,7 +29,7 @@ public class Pinterest {
 
     public Pin retrievePinWithDefaultFields(final String id) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildPinUri(id, null)), Pin.class);
+            return new Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, null)), Pin.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
@@ -38,23 +37,23 @@ public class Pinterest {
 
     public Pin retrievePinWithFields(final String id, final PinFields pinFields) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildPinUri(id, pinFields.build())), Pin.class);
+            return new Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, pinFields.build())), Pin.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
     }
 
-    public Pins retrieveMyPinsWithDefaultFields(final String id) {
+    public Pins retrieveMyPinsWithDefaultFields() {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildMyPinUri(null)), Pins.class);
+            return new Gson().fromJson(IOUtils.toString(buildMyPinUri(accessToken, null)), Pins.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
     }
 
-    public Pins retrieveMyPinsWithFields(final String id, final PinFields pinFields) {
+    public Pins retrieveMyPinsWithFields(final PinFields pinFields) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildMyPinUri(pinFields.build())), Pins.class);
+            return new Gson().fromJson(IOUtils.toString(buildMyPinUri(accessToken, pinFields.build())), Pins.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
@@ -62,7 +61,7 @@ public class Pinterest {
 
     public Pins retrievePinsFromBoardWithDefaultFields(final String boardName) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardUri(boardName, null)), Pins.class);
+            return new Gson().fromJson(IOUtils.toString(buildBoardPinUri(accessToken, boardName, null)), Pins.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
@@ -70,59 +69,41 @@ public class Pinterest {
 
     public Pins retrievePinsFromBoardWithFields(final String boardName, final PinFields pinFields) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardUri(boardName, pinFields.build())), Pins.class);
+            return new Gson().fromJson(IOUtils.toString(buildBoardPinUri(accessToken, boardName, pinFields.build())), Pins.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
     }
 
-    public Board retrieveBoardWithDefaultFields(final String boardName, final String userName) {
+    public Board retrieveBoardWithDefaultFields(final String userName, final String boardName) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardUri(boardName, null)), Board.class);
+            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, userName, boardName, null)), Board.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
     }
 
-    private URI buildPinUri(final String id, final String fields) throws URISyntaxException {
-        final URIBuilder uriBuilder =  new URIBuilder()
-                .setScheme(PROTOCOL)
-                .setHost(HOST)
-                .setPath(PIN_PATH.replace("{PIN_ID}", id))
-                .setParameter("access_token", accessToken);
-
-        if (isNotBlank(fields)) {
-            uriBuilder.setParameter("fields", fields);
+    public Board retrieveBoardWithFields(final String boardName, final String userName, final BoardFields boardFields) {
+        try {
+            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, boardName, userName, boardFields.build())), Board.class);
+        } catch (URISyntaxException | IOException e) {
+            throw new PinterestException(e.getMessage(), e);
         }
-
-        return uriBuilder.build();
     }
 
-    private URI buildMyPinUri(final String fields) throws URISyntaxException {
-        final URIBuilder uriBuilder =  new URIBuilder()
-                .setScheme(PROTOCOL)
-                .setHost(HOST)
-                .setPath(MY_PIN_PATH)
-                .setParameter("access_token", accessToken);
-
-        if (isNotBlank(fields)) {
-            uriBuilder.setParameter("fields", fields);
+    public Boards retrieveMyBoardWithDefaultFields() {
+        try {
+            return new Gson().fromJson(IOUtils.toString(buildMyBoardUri(accessToken, null)), Boards.class);
+        } catch (URISyntaxException | IOException e) {
+            throw new PinterestException(e.getMessage(), e);
         }
-
-        return uriBuilder.build();
     }
 
-    private URI buildBoardUri(final String name, final String fields) throws URISyntaxException {
-        final URIBuilder uriBuilder = new URIBuilder()
-                .setScheme(PROTOCOL)
-                .setHost(HOST)
-                .setPath(BOARD_PATH.replace("{BOARD_NAME}", name))
-                .setParameter("access_token", accessToken);
-
-        if (isNotBlank(fields)) {
-            uriBuilder.setParameter("fields", fields);
+    public Boards retrieveMyBoardWithFields(final BoardFields boardFields) {
+        try {
+            return new Gson().fromJson(IOUtils.toString(buildMyBoardUri(accessToken, boardFields.build())), Boards.class);
+        } catch (URISyntaxException | IOException e) {
+            throw new PinterestException(e.getMessage(), e);
         }
-
-        return uriBuilder.build();
     }
 }
