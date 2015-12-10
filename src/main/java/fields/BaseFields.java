@@ -29,8 +29,6 @@ public abstract class BaseFields implements Fields {
 
     @Override
     public String toString() {
-        return "BaseFields{" +
-                "fields=" + fields +
-                '}';
+        return build();
     }
 }

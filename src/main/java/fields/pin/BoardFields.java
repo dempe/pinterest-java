@@ -41,10 +41,4 @@ public class BoardFields extends BaseFields {
         return fields != null ? fields.hashCode() : 0;
     }
 
-    @Override
-    public String toString() {
-        return "BoardFields{" +
-                "fields=" + fields +
-                '}';
-    }
 }

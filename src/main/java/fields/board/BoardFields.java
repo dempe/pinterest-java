@@ -44,9 +44,4 @@ public class BoardFields extends BaseFields {
         this.fields.add("image");
         return this;
     }
-
-    @Override
-    public String toString() {
-        return "BoardFields{} " + super.toString();
-    }
 }

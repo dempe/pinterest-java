@@ -98,13 +98,4 @@ public class PinFields extends BaseFields {
         result = 31 * result + (fields != null ? fields.hashCode() : 0);
         return result;
     }
-
-    @Override
-    public String toString() {
-        return "PinFields{" +
-                "creatorFields=" + creatorFields +
-                ", boardFields=" + boardFields +
-                ", fields=" + fields +
-                '}';
-    }
 }

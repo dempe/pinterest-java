@@ -42,10 +42,4 @@ public class CreatorFields extends BaseFields {
         return fields != null ? fields.hashCode() : 0;
     }
 
-    @Override
-    public String toString() {
-        return "CreatorFields{" +
-                "fields=" + fields +
-                '}';
-    }
 }
