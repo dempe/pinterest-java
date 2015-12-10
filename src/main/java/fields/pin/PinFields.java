@@ -12,12 +12,12 @@ import static org.apache.commons.lang3.StringUtils.join;
 
 public class PinFields extends BaseFields {
     private final CreatorFields creatorFields = new CreatorFields();
-    private final BoardFields boardFields = new BoardFields();
+    private final BoardPinFields boardPinFields = new BoardPinFields();
 
     @Override
     public String build() {
         final String serializedCreatorFields = creatorFields.build();
-        final String serializedBoardFields = boardFields.build();
+        final String serializedBoardFields = boardPinFields.build();
         final String serializedPinFields = serialize(fields);
         final List<String> serializedFieldsList = new ArrayList<>();
 
@@ -39,7 +39,7 @@ public class PinFields extends BaseFields {
     public PinFields setAll() {
         this.setCounts().setLink().setMetadata().setNote().setUrl();
         creatorFields.setAll();
-        boardFields.setAll();
+        boardPinFields.setAll();
         return this;
     }
 
@@ -47,8 +47,8 @@ public class PinFields extends BaseFields {
         return creatorFields;
     }
 
-    public BoardFields getBoardFields() {
-        return boardFields;
+    public BoardPinFields getBoardPinFields() {
+        return boardPinFields;
     }
 
     public PinFields setLink() {
@@ -85,7 +85,7 @@ public class PinFields extends BaseFields {
 
         if (creatorFields != null ? !creatorFields.equals(pinFields.creatorFields) : pinFields.creatorFields != null)
             return false;
-        if (boardFields != null ? !boardFields.equals(pinFields.boardFields) : pinFields.boardFields != null)
+        if (boardPinFields != null ? !boardPinFields.equals(pinFields.boardPinFields) : pinFields.boardPinFields != null)
             return false;
         return !(fields != null ? !fields.equals(pinFields.fields) : pinFields.fields != null);
 
@@ -94,7 +94,7 @@ public class PinFields extends BaseFields {
     @Override
     public int hashCode() {
         int result = creatorFields != null ? creatorFields.hashCode() : 0;
-        result = 31 * result + (boardFields != null ? boardFields.hashCode() : 0);
+        result = 31 * result + (boardPinFields != null ? boardPinFields.hashCode() : 0);
         result = 31 * result + (fields != null ? fields.hashCode() : 0);
         return result;
     }

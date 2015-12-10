@@ -3,24 +3,24 @@ package fields.pin;
 import fields.BaseFields;
 import fields.Fields;
 
-public class BoardFields extends BaseFields {
+public class BoardPinFields extends BaseFields {
 
     @Override
     public Fields setAll() {
         return this.setId().setName().setUrl();
     }
 
-    public BoardFields setId() {
+    public BoardPinFields setId() {
         fields.add("id");
 		return this;
     }
 
-    public BoardFields setName() {
+    public BoardPinFields setName() {
         fields.add("name");
 		return this;
     }
 
-    public BoardFields setUrl() {
+    public BoardPinFields setUrl() {
         fields.add("url");
 		return this;
     }
@@ -30,7 +30,7 @@ public class BoardFields extends BaseFields {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        BoardFields that = (BoardFields) o;
+        BoardPinFields that = (BoardPinFields) o;
 
         return !(fields != null ? !fields.equals(that.fields) : that.fields != null);
 

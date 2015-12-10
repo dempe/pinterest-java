@@ -1,12 +1,11 @@
 package fields.board;
 
 import fields.BaseFields;
-import fields.Fields;
 
 public class BoardFields extends BaseFields {
 
     @Override
-    public Fields setAll() {
+    public BoardFields setAll() {
         return this.setCounts().setCreatedAt().setDescription().setId().setImage().setName().setUrl();
     }
 
