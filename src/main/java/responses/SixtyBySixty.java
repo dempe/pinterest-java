@@ -1,4 +1,4 @@
-package responses.board;
+package responses;
 
 public class SixtyBySixty {
     private final String url;

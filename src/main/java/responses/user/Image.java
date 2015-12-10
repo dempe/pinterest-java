@@ -1,4 +1,4 @@
-package responses.board;
+package responses.user;
 
 import com.google.gson.annotations.SerializedName;
 import responses.SixtyBySixty;
