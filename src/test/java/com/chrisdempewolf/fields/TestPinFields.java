@@ -9,12 +9,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class TestPinFields {
     private static final Pattern CREATOR_PATTERN = Pattern.compile("creator\\([a-z,_]*\\)");
     private static final Pattern BOARD_PATTERN = Pattern.compile("board\\([a-z,]*\\)");
-    private static final String ALL_FIELDS_SERIALIZED = "id,url,link,note,metadata,counts,creator(id,first_name,last_name,url),board(id,name,url)";
+    private static final String ALL_FIELDS_SERIALIZED = "id,link,counts,note,url,creator(id,first_name,last_name,url),board(id,name,url),metadata,color,attribution,created_at";
     private static final String SERIALIZED_CREATOR_FIELDS = "id,first_name,last_name,url";
     private static final String SERIALIZED_BOARD_FIELDS = "id,name,url";
 
@@ -30,6 +31,9 @@ public class TestPinFields {
         for (final String subString : pinFields) {
             assertTrue(subString + " not found.", ALL_FIELDS_SERIALIZED.contains(subString));
         }
+
+        final String trueNegative = "shouldNotContain";
+        assertFalse(trueNegative + " was found.", fields.contains(trueNegative));
     }
 
     @Test

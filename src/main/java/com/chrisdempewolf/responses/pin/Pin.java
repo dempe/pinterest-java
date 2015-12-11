@@ -10,6 +10,7 @@ public class Pin {
     private final String link;
     private final Board board;
     private final Creator creator;
+    @SerializedName("created_at")
     private final String createdAt;
     private final String color;
     private final String attribution;

@@ -37,7 +37,7 @@ public class PinFields extends BaseFields {
     // TODO:  is there a better way to do this? i.e., formulaically
     @Override
     public PinFields setAll() {
-        this.setCounts().setLink().setMetadata().setNote().setUrl();
+        this.setCounts().setLink().setMetadata().setNote().setUrl().setColor().setAttribution().setCreatedAt();
         creatorFields.setAll();
         boardPinFields.setAll();
         return this;
@@ -73,6 +73,21 @@ public class PinFields extends BaseFields {
 
     public PinFields setMetadata() {
         this.fields.add("metadata");
+        return this;
+    }
+
+    public PinFields setColor() {
+        this.fields.add("color");
+        return this;
+    }
+
+    public PinFields setAttribution() {
+        this.fields.add("attribution");
+        return this;
+    }
+
+    public PinFields setCreatedAt() {
+        this.fields.add("created_at");
         return this;
     }
 
