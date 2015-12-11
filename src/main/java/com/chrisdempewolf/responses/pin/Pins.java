@@ -1,23 +1,26 @@
 package com.chrisdempewolf.responses.pin;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 public class Pins implements Iterable<Pin> {
-    private final List<Pin> pin;
+    @SerializedName("data")
+    private final List<Pin> pins;
 
-    public Pins(Pin[] pin) {
-        this.pin = Arrays.asList(pin);
+    public Pins(Pin[] pins) {
+        this.pins = Arrays.asList(pins);
     }
 
     @Override
     public Iterator<Pin> iterator() {
-        return pin.iterator();
+        return pins.iterator();
     }
 
-    public List<Pin> getPin() {
-        return pin;
+    public List<Pin> getPins() {
+        return pins;
     }
 
     @Override
@@ -27,19 +30,19 @@ public class Pins implements Iterable<Pin> {
 
         Pins pins = (Pins) o;
 
-        return !(pin != null ? !pin.equals(pins.pin) : pins.pin != null);
+        return !(this.pins != null ? !this.pins.equals(pins.pins) : pins.pins != null);
 
     }
 
     @Override
     public int hashCode() {
-        return pin != null ? pin.hashCode() : 0;
+        return pins != null ? pins.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "Pins{" +
-                "pin=" + pin +
+                "pins=" + pins +
                 '}';
     }
 }
