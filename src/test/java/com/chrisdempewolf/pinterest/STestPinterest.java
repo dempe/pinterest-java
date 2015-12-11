@@ -1,18 +1,21 @@
 package com.chrisdempewolf.pinterest;
 
-import com.chrisdempewolf.responses.pin.PinResponse;
-import com.google.gson.Gson;
 import com.chrisdempewolf.fields.board.BoardFields;
 import com.chrisdempewolf.fields.pin.PinFields;
-import org.apache.commons.io.IOUtils;
-import org.junit.Test;
 import com.chrisdempewolf.responses.board.Board;
 import com.chrisdempewolf.responses.board.Boards;
+import com.chrisdempewolf.responses.pin.Pin;
+import com.chrisdempewolf.responses.pin.PinResponse;
 import com.chrisdempewolf.responses.pin.Pins;
+import com.google.gson.Gson;
+import org.apache.commons.io.IOUtils;
+import org.junit.Test;
 
 import java.io.IOException;
 
+import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class STestPinterest {
     private static final String PIN_ID = "422705115002975322";
@@ -34,26 +37,42 @@ public class STestPinterest {
         assertEquals(expectedPinResponse, actualPinResponse);
     }
 
-    /**
-     * Only testing parsing here - changes too frequently.
-     * TODO:  test presence of expected keys
-     * @throws IOException
-     */
     @Test
     public void testBoardPinsWithDefaultFields() throws IOException {
         final Pins pins = pinterest.retrievePinsFromBoardWithDefaultFields(BOARD_NAME);
-        System.out.println(pins);
+
+        for (final Pin pin : pins) {
+            assertNotNull(pin.toString(), pin.getId());
+            assertNotNull(pin.toString(), pin.getNote());
+            assertNotNull(pin.toString(), pin.getUrl());
+            assertNotNull(pin.toString(), pin.getLink());
+            assertNull(pin.toString(), pin.getCounts());
+            assertNull(pin.toString(), pin.getBoard());
+            assertNull(pin.toString(), pin.getColor());
+            assertNull(pin.toString(), pin.getCreatedAt());
+            assertNull(pin.toString(), pin.getCreator());
+            assertNull(pin.toString(), pin.getAttribution());
+            assertNull(pin.toString(), pin.getMetaData());
+        }
     }
 
-    /**
-     * Only testing parsing here - changes too frequently.
-     * TODO:  test presence of expected keys
-     * @throws IOException
-     */
     @Test
     public void testBoardPinsWithAllFields() throws IOException {
         final Pins pins = pinterest.retrievePinsFromBoardWithFields("francisabila/all-about-me", new PinFields().setAll());
-        System.out.println(pins);
+
+        for (final Pin pin : pins) {
+            assertNotNull(pin.toString(), pin.getId());
+            assertNotNull(pin.toString(), pin.getNote());
+            assertNotNull(pin.toString(), pin.getUrl());
+            assertNotNull(pin.toString(), pin.getLink());
+            assertNotNull(pin.toString(), pin.getCounts());
+            assertNotNull(pin.toString(), pin.getBoard());
+            assertNotNull(pin.toString(), pin.getColor());
+            assertNotNull(pin.toString(), pin.getCreatedAt());
+            assertNotNull(pin.toString(), pin.getCreator());
+            //assertNotNull(pin.toString(), pin.getAttribution()); attribution is seemingly always null
+            assertNotNull(pin.toString(), pin.getMetaData());
+        }
     }
 
     /**
