@@ -9,7 +9,7 @@ import com.chrisdempewolf.responses.pin.Pins;
 import java.io.IOException;
 
 //TODO: test values
-public class TestPins {
+public class TestPinResponse {
 
     //API call: https://api.pinterest.com/v1/boards/francisabila/all-about-me/pins/?access_token=ARp8HNzfw2scBtJqtYA57a8xFeAqFBzML4SnnEZCe9w6DeAJGAAAAAA&fields=id,link,counts,note,url,creator%28id,first_name,last_name,url%29,board%28id,name,url%29
     @Test
