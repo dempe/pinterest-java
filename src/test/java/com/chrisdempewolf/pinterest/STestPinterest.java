@@ -8,6 +8,8 @@ import com.chrisdempewolf.responses.pin.Pin;
 import com.chrisdempewolf.responses.pin.PinResponse;
 import com.chrisdempewolf.responses.pin.Pins;
 import com.google.gson.Gson;
+import org.apache.commons.io.Charsets;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
@@ -21,7 +23,7 @@ public class STestPinterest {
     private static final String PIN_ID = "422705115002975322";
     private static final String BOARD_NAME = "francisabila/all-about-me";
 
-    private final Pinterest pinterest = new Pinterest("ARp8HNzfw2scBtJqtYA57a8xFeAqFBzML4SnnEZCe9w6DeAJGAAAAAA");
+    private final Pinterest pinterest = new Pinterest(loadAccessToken());
 
     @Test
     public void testPinWithAllFields() throws IOException {
@@ -122,5 +124,13 @@ public class STestPinterest {
 
     private static String loadFile(final String resource) throws IOException {
         return IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream(resource));
+    }
+
+    private static String loadAccessToken() {
+        try {
+            return FileUtils.readFileToString(FileUtils.getFile(".access_token"), Charsets.UTF_8).replace("\n", "");
+        } catch (IOException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
     }
 }
