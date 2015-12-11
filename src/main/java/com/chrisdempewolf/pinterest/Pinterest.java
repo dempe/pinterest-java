@@ -1,5 +1,6 @@
 package com.chrisdempewolf.pinterest;
 
+import com.chrisdempewolf.responses.pin.PinResponse;
 import com.google.gson.Gson;
 import com.chrisdempewolf.exceptions.PinterestException;
 import com.chrisdempewolf.fields.board.BoardFields;
@@ -7,7 +8,6 @@ import com.chrisdempewolf.fields.pin.PinFields;
 import org.apache.commons.io.IOUtils;
 import com.chrisdempewolf.responses.board.Board;
 import com.chrisdempewolf.responses.board.Boards;
-import com.chrisdempewolf.responses.pin.Pin;
 import com.chrisdempewolf.responses.pin.Pins;
 
 import java.io.IOException;
@@ -27,17 +27,17 @@ public class Pinterest {
         this.accessToken = accessToken;
     }
 
-    public Pin retrievePinWithDefaultFields(final String id) {
+    public PinResponse retrievePinWithDefaultFields(final String id) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, null)), Pin.class);
+            return new Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, null)), PinResponse.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
     }
 
-    public Pin retrievePinWithFields(final String id, final PinFields pinFields) {
+    public PinResponse retrievePinWithFields(final String id, final PinFields pinFields) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, pinFields.build())), Pin.class);
+            return new Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, pinFields.build())), PinResponse.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }

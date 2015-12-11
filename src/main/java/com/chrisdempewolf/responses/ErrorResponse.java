@@ -1,7 +1,7 @@
 package com.chrisdempewolf.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.chrisdempewolf.responses.pin.Data;
+import com.chrisdempewolf.responses.pin.Pin;
 
 public class ErrorResponse {
     private final String status;
@@ -11,15 +11,15 @@ public class ErrorResponse {
     @SerializedName("generated_at")
     private final String generatedAt;
     private final String message;
-    private final Data data;
+    private final Pin data;
 
-    public ErrorResponse(String status, int code, String host, String generatedAt, String message, Data data) {
+    public ErrorResponse(String status, int code, String host, String generatedAt, String message, Pin pin) {
         this.status = status;
         this.code = code;
         this.host = host;
         this.generatedAt = generatedAt;
         this.message = message;
-        this.data = data;
+        this.data = pin;
     }
 
     public String getStatus() {
@@ -42,7 +42,7 @@ public class ErrorResponse {
         return message;
     }
 
-    public Data getData() {
+    public Pin getData() {
         return data;
     }
 

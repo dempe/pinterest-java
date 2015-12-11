@@ -99,7 +99,7 @@ public class Data {
 
     @Override
     public String toString() {
-        return "Data{" +
+        return "Pin{" +
                 "username='" + username + '\'' +
                 ", bio='" + bio + '\'' +
                 ", firstName='" + firstName + '\'' +

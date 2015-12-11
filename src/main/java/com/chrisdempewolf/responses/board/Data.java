@@ -81,7 +81,7 @@ public class Data {
 
     @Override
     public String toString() {
-        return "Data{" +
+        return "Pin{" +
                 "description='" + description + '\'' +
                 ", url='" + url + '\'' +
                 ", createdAt='" + createdAt + '\'' +

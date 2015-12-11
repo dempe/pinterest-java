@@ -1,18 +1,23 @@
 package com.chrisdempewolf.responses.pin;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Iterator;
+import java.util.List;
 
-public class Pins {
-    private final Data[] data;
+public class Pins implements Iterable<Pin> {
+    private final List<Pin> pin;
 
-    public Pins(Data[] data) {
-        this.data = data;
+    public Pins(Pin[] pin) {
+        this.pin = Arrays.asList(pin);
     }
 
-    public Data[] getData() {
-        return data;
+    @Override
+    public Iterator<Pin> iterator() {
+        return pin.iterator();
+    }
+
+    public List<Pin> getPin() {
+        return pin;
     }
 
     @Override
@@ -22,32 +27,19 @@ public class Pins {
 
         Pins pins = (Pins) o;
 
-        if (pins.getData().length != data.length) return false;
+        return !(pin != null ? !pin.equals(pins.pin) : pins.pin != null);
 
-        // disregard order
-        final Set<Data> thiz = new HashSet<>(Arrays.asList(this.getData()));
-        final Set<Data> that = new HashSet<>(Arrays.asList(pins.getData()));
-
-        return thiz.equals(that);
     }
 
     @Override
     public int hashCode() {
-        if (data == null) return 0;
-
-        int result = 1;
-
-        for (final Data datum : data) {
-            result = result * 31 + (datum == null ? 0 : datum.hashCode());
-        }
-
-        return result;
+        return pin != null ? pin.hashCode() : 0;
     }
 
     @Override
     public String toString() {
-        return "Data{" +
-                "data=" + Arrays.toString(data) +
+        return "Pins{" +
+                "pin=" + pin +
                 '}';
     }
 }

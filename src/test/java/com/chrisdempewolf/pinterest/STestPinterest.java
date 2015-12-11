@@ -1,5 +1,6 @@
 package com.chrisdempewolf.pinterest;
 
+import com.chrisdempewolf.responses.pin.PinResponse;
 import com.google.gson.Gson;
 import com.chrisdempewolf.fields.board.BoardFields;
 import com.chrisdempewolf.fields.pin.PinFields;
@@ -7,7 +8,6 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import com.chrisdempewolf.responses.board.Board;
 import com.chrisdempewolf.responses.board.Boards;
-import com.chrisdempewolf.responses.pin.Pin;
 import com.chrisdempewolf.responses.pin.Pins;
 
 import java.io.IOException;
@@ -22,16 +22,16 @@ public class STestPinterest {
 
     @Test
     public void testPinWithAllFields() throws IOException {
-        final Pin actualPin = pinterest.retrievePinWithFields(PIN_ID, new PinFields().setAll());
-        final Pin expectedPin = new Gson().fromJson(loadFile("com/chrisdempewolf/responses/CompletePinResponse.json"), Pin.class);
-        assertEquals(expectedPin, actualPin);
+        final PinResponse actualPinResponse = pinterest.retrievePinWithFields(PIN_ID, new PinFields().setAll());
+        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/responses/CompletePinResponse.json"), PinResponse.class);
+        assertEquals(expectedPinResponse, actualPinResponse);
     }
 
     @Test
     public void testPinWithDefaultFields() throws IOException {
-        final Pin actualPin = pinterest.retrievePinWithDefaultFields(PIN_ID);
-        final Pin expectedPin = new Gson().fromJson(loadFile("com/chrisdempewolf/responses/DefaultPinResponse.json"), Pin.class);
-        assertEquals(expectedPin, actualPin);
+        final PinResponse actualPinResponse = pinterest.retrievePinWithDefaultFields(PIN_ID);
+        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/responses/DefaultPinResponse.json"), PinResponse.class);
+        assertEquals(expectedPinResponse, actualPinResponse);
     }
 
     /**
