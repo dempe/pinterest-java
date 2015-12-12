@@ -43,6 +43,9 @@ public class STestPinterest {
     public void testBoardPinsWithDefaultFields() throws IOException {
         final Pins pins = pinterest.retrievePinsFromBoardWithDefaultFields(BOARD_NAME);
 
+        assertNotNull(pins.getPage());
+        assertNotNull(pins.getPins());
+
         for (final Pin pin : pins) {
             assertNotNull(pin.toString(), pin.getId());
             assertNotNull(pin.toString(), pin.getNote());
@@ -61,6 +64,9 @@ public class STestPinterest {
     @Test
     public void testBoardPinsWithAllFields() throws IOException {
         final Pins pins = pinterest.retrievePinsFromBoardWithFields("francisabila/all-about-me", new PinFields().setAll());
+
+        assertNotNull(pins.getPage());
+        assertNotNull(pins.getPins());
 
         for (final Pin pin : pins) {
             assertNotNull(pin.toString(), pin.getId());

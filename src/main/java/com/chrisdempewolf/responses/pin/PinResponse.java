@@ -1,6 +1,9 @@
 package com.chrisdempewolf.responses.pin;
 
+import com.google.gson.annotations.SerializedName;
+
 public class PinResponse {
+    @SerializedName("data")
     private final Pin pin;
 
     public PinResponse(Pin pin) {
