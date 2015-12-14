@@ -3,6 +3,7 @@ package com.chrisdempewolf.pinterest;
 import com.chrisdempewolf.fields.board.BoardFields;
 import com.chrisdempewolf.fields.pin.PinFields;
 import com.chrisdempewolf.responses.board.Board;
+import com.chrisdempewolf.responses.board.BoardResponse;
 import com.chrisdempewolf.responses.board.Boards;
 import com.chrisdempewolf.responses.pin.Pin;
 import com.chrisdempewolf.responses.pin.PinResponse;
@@ -14,6 +15,7 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
@@ -83,48 +85,64 @@ public class STestPinterest {
         }
     }
 
-    /**
-     * Only testing parsing here - changes too frequently.
-     * TODO:  test presence of expected keys
-     * @throws IOException
-     */
     @Test
     public void testBoardWithDefaultFields() throws IOException {
-        final Board board = pinterest.retrieveBoardWithDefaultFields("francisabila", "all-about-me");
-        System.out.println(board);
+        final BoardResponse boardResponse = pinterest.retrieveBoardWithDefaultFields("francisabila", "all-about-me");
+        final Board board = boardResponse.getBoard();
+
+        assertNull(board.getCounts());
+        assertNull(board.getCreatedAt());
+        assertNull(board.getDescription());
+        assertNotNull(board.getId());
+        assertNull(board.getImage());
+        assertNotNull(board.getName());
+        assertNotNull(board.getUrl());
     }
 
-    /**
-     * Only testing parsing here - changes too frequently.
-     * TODO:  test presence of expected keys
-     * @throws IOException
-     */
     @Test
     public void testBoardWithAllFields() throws IOException {
-        final Board board = pinterest.retrieveBoardWithFields("francisabila", "all-about-me", new BoardFields().setAll());
-        System.out.println(board);
+        final BoardResponse boardResponse = pinterest.retrieveBoardWithFields("francisabila", "all-about-me", new BoardFields().setAll());
+        final Board board = boardResponse.getBoard();
+
+        assertNotNull(board.getCounts());
+        assertNotNull(board.getCreatedAt());
+        assertNotNull(board.getDescription());
+        assertNotNull(board.getId());
+        assertNotNull(board.getImage());
+        assertNotNull(board.getName());
+        assertNotNull(board.getUrl());
     }
 
-    /**
-     * Only testing parsing here - changes too frequently.
-     * TODO:  test presence of expected keys
-     * @throws IOException
-     */
     @Test
     public void testMyBoardWithDefaultFields() throws IOException {
-        final Boards board = pinterest.retrieveMyBoardWithDefaultFields();
-        System.out.println(board);
+        final Boards boards = pinterest.retrieveMyBoardWithDefaultFields();
+        final List<Board> boardList = boards.getBoards();
+
+        for (final Board board : boardList) {
+            assertNull(board.getCounts());
+            assertNull(board.getCreatedAt());
+            assertNull(board.getDescription());
+            assertNotNull(board.getId());
+            assertNull(board.getImage());
+            assertNotNull(board.getName());
+            assertNotNull(board.getUrl());
+        }
     }
 
-    /**
-     * Only testing parsing here - changes too frequently.
-     * TODO:  test presence of expected keys
-     * @throws IOException
-     */
     @Test
     public void testMyBoardWithAllFields() throws IOException {
-        final Boards board = pinterest.retrieveMyBoardWithFields(new BoardFields().setAll());
-        System.out.println(board);
+        final Boards boards = pinterest.retrieveMyBoardWithFields(new BoardFields().setAll());
+        final List<Board> boardList = boards.getBoards();
+
+        for (final Board board : boardList) {
+            assertNotNull(board.getCounts());
+            assertNotNull(board.getCreatedAt());
+            assertNotNull(board.getDescription());
+            assertNotNull(board.getId());
+            assertNotNull(board.getImage());
+            assertNotNull(board.getName());
+            assertNotNull(board.getUrl());
+        }
     }
 
 

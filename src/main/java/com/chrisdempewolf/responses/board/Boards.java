@@ -1,16 +1,20 @@
 package com.chrisdempewolf.responses.board;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Arrays;
+import java.util.List;
 
 public class Boards {
-    private final Data[] data;
+    @SerializedName("data")
+    private final List<Board> boards;
 
-    public Boards(Data[] data) {
-        this.data = data;
+    public Boards(Board[] boards) {
+        this.boards = Arrays.asList(boards);
     }
 
-    public Data[] getData() {
-        return data;
+    public List<Board> getBoards() {
+        return boards;
     }
 
     @Override
@@ -18,22 +22,21 @@ public class Boards {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Boards boards = (Boards) o;
+        Boards boards1 = (Boards) o;
 
-        // Probably incorrect - comparing Object[] arrays with Arrays.equals
-        return Arrays.equals(data, boards.data);
+        return boards != null ? boards.equals(boards1.boards) : boards1.boards == null;
 
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(data);
+        return boards != null ? boards.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "Boards{" +
-                "data=" + Arrays.toString(data) +
+                "boards=" + boards +
                 '}';
     }
 }

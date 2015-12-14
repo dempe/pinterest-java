@@ -46,7 +46,7 @@ public class Board {
 
     @Override
     public String toString() {
-        return "Board{" +
+        return "BoardResponse{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +

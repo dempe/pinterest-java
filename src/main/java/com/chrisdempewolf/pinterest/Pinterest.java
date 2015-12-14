@@ -6,7 +6,7 @@ import com.chrisdempewolf.exceptions.PinterestException;
 import com.chrisdempewolf.fields.board.BoardFields;
 import com.chrisdempewolf.fields.pin.PinFields;
 import org.apache.commons.io.IOUtils;
-import com.chrisdempewolf.responses.board.Board;
+import com.chrisdempewolf.responses.board.BoardResponse;
 import com.chrisdempewolf.responses.board.Boards;
 import com.chrisdempewolf.responses.pin.Pins;
 
@@ -75,17 +75,17 @@ public class Pinterest {
         }
     }
 
-    public Board retrieveBoardWithDefaultFields(final String userName, final String boardName) {
+    public BoardResponse retrieveBoardWithDefaultFields(final String userName, final String boardName) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, userName, boardName, null)), Board.class);
+            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, userName, boardName, null)), BoardResponse.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
     }
 
-    public Board retrieveBoardWithFields(final String boardName, final String userName, final BoardFields boardFields) {
+    public BoardResponse retrieveBoardWithFields(final String boardName, final String userName, final BoardFields boardFields) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, boardName, userName, boardFields.build())), Board.class);
+            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, boardName, userName, boardFields.build())), BoardResponse.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
