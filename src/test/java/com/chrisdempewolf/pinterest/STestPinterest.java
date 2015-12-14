@@ -2,11 +2,11 @@ package com.chrisdempewolf.pinterest;
 
 import com.chrisdempewolf.pinterest.fields.board.BoardFields;
 import com.chrisdempewolf.pinterest.fields.pin.PinFields;
-import com.chrisdempewolf.pinterest.responses.Page;
 import com.chrisdempewolf.pinterest.responses.board.Board;
 import com.chrisdempewolf.pinterest.responses.board.BoardResponse;
 import com.chrisdempewolf.pinterest.responses.board.Boards;
 import com.chrisdempewolf.pinterest.responses.pin.Pin;
+import com.chrisdempewolf.pinterest.responses.pin.PinPage;
 import com.chrisdempewolf.pinterest.responses.pin.PinResponse;
 import com.chrisdempewolf.pinterest.responses.pin.Pins;
 import com.google.gson.Gson;
@@ -88,7 +88,7 @@ public class STestPinterest {
 
     @Test
     public void testGetNextPageOfPins() {
-        final Page page = pinterest.getPinsFromBoard(BOARD_NAME).getPage();
+        final PinPage page = pinterest.getPinsFromBoard(BOARD_NAME).getPage();
         final Pins pins = pinterest.getNextPageOfPins(page);
         assertNotNull(pins);
     }

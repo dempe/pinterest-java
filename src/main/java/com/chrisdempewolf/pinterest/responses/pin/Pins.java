@@ -1,6 +1,5 @@
 package com.chrisdempewolf.pinterest.responses.pin;
 
-import com.chrisdempewolf.pinterest.responses.Page;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -10,9 +9,10 @@ import java.util.List;
 public class Pins implements Iterable<Pin> {
     @SerializedName("data")
     private final List<Pin> pins;
-    private final Page page;
+    @SerializedName("page")
+    private final PinPage page;
 
-    public Pins(Pin[] pins, Page page) {
+    public Pins(Pin[] pins, PinPage page) {
         this.pins = Arrays.asList(pins);
         this.page = page;
     }
@@ -26,7 +26,7 @@ public class Pins implements Iterable<Pin> {
         return pins;
     }
 
-    public Page getPage() {
+    public PinPage getPage() {
         return page;
     }
 

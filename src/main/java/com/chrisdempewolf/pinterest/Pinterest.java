@@ -3,9 +3,10 @@ package com.chrisdempewolf.pinterest;
 import com.chrisdempewolf.pinterest.exceptions.PinterestException;
 import com.chrisdempewolf.pinterest.fields.board.BoardFields;
 import com.chrisdempewolf.pinterest.fields.pin.PinFields;
-import com.chrisdempewolf.pinterest.responses.Page;
+import com.chrisdempewolf.pinterest.responses.board.BoardPage;
 import com.chrisdempewolf.pinterest.responses.board.BoardResponse;
 import com.chrisdempewolf.pinterest.responses.board.Boards;
+import com.chrisdempewolf.pinterest.responses.pin.PinPage;
 import com.chrisdempewolf.pinterest.responses.pin.PinResponse;
 import com.chrisdempewolf.pinterest.responses.pin.Pins;
 import com.google.gson.Gson;
@@ -108,7 +109,7 @@ public class Pinterest {
         }
     }
 
-    public Pins getNextPageOfPins(final Page page) {
+    public Pins getNextPageOfPins(final PinPage page) {
         try {
             return new Gson().fromJson(IOUtils.toString(new URI(page.getNext())), Pins.class);
         } catch (URISyntaxException | IOException e) {
@@ -116,9 +117,9 @@ public class Pinterest {
         }
     }
 
-    public Boards getNextPageOfBoards(final Page page) {
+    public Boards getNextPageOfBoards(final BoardPage boardPage) {
         try {
-            return new Gson().fromJson(IOUtils.toString(new URI(page.getNext())), Boards.class);
+            return new Gson().fromJson(IOUtils.toString(new URI(boardPage.getNext())), Boards.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }

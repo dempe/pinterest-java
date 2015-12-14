@@ -1,6 +1,5 @@
 package com.chrisdempewolf.pinterest.responses.board;
 
-import com.chrisdempewolf.pinterest.responses.Page;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -9,9 +8,10 @@ import java.util.List;
 public class Boards {
     @SerializedName("data")
     private final List<Board> boards;
-    private final Page page;
+    @SerializedName("page")
+    private final BoardPage page;
 
-    public Boards(Board[] boards, Page page) {
+    public Boards(Board[] boards, BoardPage page) {
         this.boards = Arrays.asList(boards);
         this.page = page;
     }
@@ -20,7 +20,7 @@ public class Boards {
         return boards;
     }
 
-    public Page getPage() {
+    public BoardPage getPage() {
         return page;
     }
 

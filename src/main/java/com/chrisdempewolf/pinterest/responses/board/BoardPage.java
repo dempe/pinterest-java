@@ -1,10 +1,10 @@
-package com.chrisdempewolf.pinterest.responses;
+package com.chrisdempewolf.pinterest.responses.board;
 
-public class Page {
+public class BoardPage {
     private final String cursor;
     private final String next;
 
-    public Page(String cursor, String next) {
+    public BoardPage(String cursor, String next) {
         this.cursor = cursor;
         this.next = next;
     }
@@ -22,7 +22,7 @@ public class Page {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Page page = (Page) o;
+        BoardPage page = (BoardPage) o;
 
         if (cursor != null ? !cursor.equals(page.cursor) : page.cursor != null) return false;
         return !(next != null ? !next.equals(page.next) : page.next != null);
