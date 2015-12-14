@@ -1,16 +1,18 @@
 package com.chrisdempewolf.pinterest;
 
-import com.chrisdempewolf.pinterest.responses.pin.PinResponse;
-import com.google.gson.Gson;
 import com.chrisdempewolf.pinterest.exceptions.PinterestException;
 import com.chrisdempewolf.pinterest.fields.board.BoardFields;
 import com.chrisdempewolf.pinterest.fields.pin.PinFields;
-import org.apache.commons.io.IOUtils;
+import com.chrisdempewolf.pinterest.responses.Page;
 import com.chrisdempewolf.pinterest.responses.board.BoardResponse;
 import com.chrisdempewolf.pinterest.responses.board.Boards;
+import com.chrisdempewolf.pinterest.responses.pin.PinResponse;
 import com.chrisdempewolf.pinterest.responses.pin.Pins;
+import com.google.gson.Gson;
+import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 
 import static com.chrisdempewolf.pinterest.EndPointURIBuilder.buildBoardPinUri;
@@ -101,6 +103,22 @@ public class Pinterest {
     public Boards getMyBoards(final BoardFields boardFields) {
         try {
             return new Gson().fromJson(IOUtils.toString(buildMyBoardUri(accessToken, boardFields.build())), Boards.class);
+        } catch (URISyntaxException | IOException e) {
+            throw new PinterestException(e.getMessage(), e);
+        }
+    }
+
+    public Pins getNextPageOfPins(final Page page) {
+        try {
+            return new Gson().fromJson(IOUtils.toString(new URI(page.getNext())), Pins.class);
+        } catch (URISyntaxException | IOException e) {
+            throw new PinterestException(e.getMessage(), e);
+        }
+    }
+
+    public Boards getNextPageOfBoards(final Page page) {
+        try {
+            return new Gson().fromJson(IOUtils.toString(new URI(page.getNext())), Boards.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }

@@ -2,6 +2,7 @@ package com.chrisdempewolf.pinterest;
 
 import com.chrisdempewolf.pinterest.fields.board.BoardFields;
 import com.chrisdempewolf.pinterest.fields.pin.PinFields;
+import com.chrisdempewolf.pinterest.responses.Page;
 import com.chrisdempewolf.pinterest.responses.board.Board;
 import com.chrisdempewolf.pinterest.responses.board.BoardResponse;
 import com.chrisdempewolf.pinterest.responses.board.Boards;
@@ -83,6 +84,13 @@ public class STestPinterest {
             //assertNotNull(pin.toString(), pin.getAttribution()); attribution is seemingly always null
             assertNotNull(pin.toString(), pin.getMetaData());
         }
+    }
+
+    @Test
+    public void testGetNextPageOfPins() {
+        final Page page = pinterest.getPinsFromBoard(BOARD_NAME).getPage();
+        final Pins pins = pinterest.getNextPageOfPins(page);
+        assertNotNull(pins);
     }
 
     @Test
