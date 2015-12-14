@@ -5,7 +5,7 @@
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
     <name>${project.artifactId}</name>
-    <description>An SDK for Pinterest's version 3.0 API.</description>
+    <description>An SDK for Pinterest's version 1.0 API.</description>
     <url>https://github.com/dempe/pinterest</url>
     <version>1.6-SNAPSHOT</version>
 
