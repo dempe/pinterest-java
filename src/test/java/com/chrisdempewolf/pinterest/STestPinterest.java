@@ -1,13 +1,13 @@
 package com.chrisdempewolf.pinterest;
 
-import com.chrisdempewolf.fields.board.BoardFields;
-import com.chrisdempewolf.fields.pin.PinFields;
-import com.chrisdempewolf.responses.board.Board;
-import com.chrisdempewolf.responses.board.BoardResponse;
-import com.chrisdempewolf.responses.board.Boards;
-import com.chrisdempewolf.responses.pin.Pin;
-import com.chrisdempewolf.responses.pin.PinResponse;
-import com.chrisdempewolf.responses.pin.Pins;
+import com.chrisdempewolf.pinterest.fields.board.BoardFields;
+import com.chrisdempewolf.pinterest.fields.pin.PinFields;
+import com.chrisdempewolf.pinterest.responses.board.Board;
+import com.chrisdempewolf.pinterest.responses.board.BoardResponse;
+import com.chrisdempewolf.pinterest.responses.board.Boards;
+import com.chrisdempewolf.pinterest.responses.pin.Pin;
+import com.chrisdempewolf.pinterest.responses.pin.PinResponse;
+import com.chrisdempewolf.pinterest.responses.pin.Pins;
 import com.google.gson.Gson;
 import org.apache.commons.io.Charsets;
 import org.apache.commons.io.FileUtils;

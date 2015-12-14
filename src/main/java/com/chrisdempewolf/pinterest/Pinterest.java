@@ -1,14 +1,14 @@
 package com.chrisdempewolf.pinterest;
 
-import com.chrisdempewolf.responses.pin.PinResponse;
+import com.chrisdempewolf.pinterest.responses.pin.PinResponse;
 import com.google.gson.Gson;
-import com.chrisdempewolf.exceptions.PinterestException;
-import com.chrisdempewolf.fields.board.BoardFields;
-import com.chrisdempewolf.fields.pin.PinFields;
+import com.chrisdempewolf.pinterest.exceptions.PinterestException;
+import com.chrisdempewolf.pinterest.fields.board.BoardFields;
+import com.chrisdempewolf.pinterest.fields.pin.PinFields;
 import org.apache.commons.io.IOUtils;
-import com.chrisdempewolf.responses.board.BoardResponse;
-import com.chrisdempewolf.responses.board.Boards;
-import com.chrisdempewolf.responses.pin.Pins;
+import com.chrisdempewolf.pinterest.responses.board.BoardResponse;
+import com.chrisdempewolf.pinterest.responses.board.Boards;
+import com.chrisdempewolf.pinterest.responses.pin.Pins;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
