@@ -13,7 +13,7 @@ public class TestPinResponse {
 
     @Test
     public void testBoardResponse() throws IOException {
-        final String response = loadFile("com/chrisdempewolf/responses/CompleteBoardResponse.json");
+        final String response = loadFile("com/chrisdempewolf/CompleteBoardResponse.json");
         final Pins pins = new Gson().fromJson(response, Pins.class);
 
         System.out.println(pins);
@@ -21,7 +21,7 @@ public class TestPinResponse {
 
     @Test
     public void testPinResponse() throws IOException {
-        final String response = loadFile("com/chrisdempewolf/responses/CompletePinResponse.json");
+        final String response = loadFile("com/chrisdempewolf/CompletePinResponse.json");
         final PinResponse pinResponse = new Gson().fromJson(response, PinResponse.class);
 
         System.out.println(pinResponse);

@@ -30,14 +30,14 @@ public class STestPinterest {
     @Test
     public void testPinWithAllFields() throws IOException {
         final PinResponse actualPinResponse = pinterest.retrievePinWithFields(PIN_ID, new PinFields().setAll());
-        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/responses/CompletePinResponse.json"), PinResponse.class);
+        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/CompletePinResponse.json"), PinResponse.class);
         assertEquals(expectedPinResponse, actualPinResponse);
     }
 
     @Test
     public void testPinWithDefaultFields() throws IOException {
         final PinResponse actualPinResponse = pinterest.retrievePinWithDefaultFields(PIN_ID);
-        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/responses/DefaultPinResponse.json"), PinResponse.class);
+        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/DefaultPinResponse.json"), PinResponse.class);
         assertEquals(expectedPinResponse, actualPinResponse);
     }
 
