@@ -29,21 +29,21 @@ public class STestPinterest {
 
     @Test
     public void testPinWithAllFields() throws IOException {
-        final PinResponse actualPinResponse = pinterest.retrievePinWithFields(PIN_ID, new PinFields().setAll());
+        final PinResponse actualPinResponse = pinterest.getPin(PIN_ID, new PinFields().setAll());
         final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/CompletePinResponse.json"), PinResponse.class);
         assertEquals(expectedPinResponse, actualPinResponse);
     }
 
     @Test
     public void testPinWithDefaultFields() throws IOException {
-        final PinResponse actualPinResponse = pinterest.retrievePinWithDefaultFields(PIN_ID);
+        final PinResponse actualPinResponse = pinterest.getPin(PIN_ID);
         final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/DefaultPinResponse.json"), PinResponse.class);
         assertEquals(expectedPinResponse, actualPinResponse);
     }
 
     @Test
     public void testBoardPinsWithDefaultFields() throws IOException {
-        final Pins pins = pinterest.retrievePinsFromBoardWithDefaultFields(BOARD_NAME);
+        final Pins pins = pinterest.getPinsFromBoard(BOARD_NAME);
 
         assertNotNull(pins.getPage());
         assertNotNull(pins.getPins());
@@ -65,7 +65,7 @@ public class STestPinterest {
 
     @Test
     public void testBoardPinsWithAllFields() throws IOException {
-        final Pins pins = pinterest.retrievePinsFromBoardWithFields("francisabila/all-about-me", new PinFields().setAll());
+        final Pins pins = pinterest.getPinsFromBoard("francisabila/all-about-me", new PinFields().setAll());
 
         assertNotNull(pins.getPage());
         assertNotNull(pins.getPins());
@@ -87,7 +87,7 @@ public class STestPinterest {
 
     @Test
     public void testBoardWithDefaultFields() throws IOException {
-        final BoardResponse boardResponse = pinterest.retrieveBoardWithDefaultFields("francisabila", "all-about-me");
+        final BoardResponse boardResponse = pinterest.getBoard("francisabila", "all-about-me");
         final Board board = boardResponse.getBoard();
 
         assertNull(board.getCounts());
@@ -101,7 +101,7 @@ public class STestPinterest {
 
     @Test
     public void testBoardWithAllFields() throws IOException {
-        final BoardResponse boardResponse = pinterest.retrieveBoardWithFields("francisabila", "all-about-me", new BoardFields().setAll());
+        final BoardResponse boardResponse = pinterest.getBoard("francisabila", "all-about-me", new BoardFields().setAll());
         final Board board = boardResponse.getBoard();
 
         assertNotNull(board.getCounts());
@@ -115,7 +115,7 @@ public class STestPinterest {
 
     @Test
     public void testMyBoardWithDefaultFields() throws IOException {
-        final Boards boards = pinterest.retrieveMyBoardWithDefaultFields();
+        final Boards boards = pinterest.getMyBoard();
         final List<Board> boardList = boards.getBoards();
 
         for (final Board board : boardList) {
@@ -131,7 +131,7 @@ public class STestPinterest {
 
     @Test
     public void testMyBoardWithAllFields() throws IOException {
-        final Boards boards = pinterest.retrieveMyBoardWithFields(new BoardFields().setAll());
+        final Boards boards = pinterest.getMyBoard(new BoardFields().setAll());
         final List<Board> boardList = boards.getBoards();
 
         for (final Board board : boardList) {
