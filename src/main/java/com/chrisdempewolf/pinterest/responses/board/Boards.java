@@ -20,7 +20,7 @@ public class Boards {
         return boards;
     }
 
-    public BoardPage getPage() {
+    public BoardPage getNextPage() {
         return page;
     }
 

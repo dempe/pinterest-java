@@ -110,6 +110,8 @@ public class Pinterest {
     }
 
     public Pins getNextPageOfPins(final PinPage page) {
+        if (page == null || page.getNext() == null) { return null; }
+
         try {
             return new Gson().fromJson(IOUtils.toString(new URI(page.getNext())), Pins.class);
         } catch (URISyntaxException | IOException e) {
@@ -117,9 +119,11 @@ public class Pinterest {
         }
     }
 
-    public Boards getNextPageOfBoards(final BoardPage boardPage) {
+    public Boards getNextPageOfBoards(final BoardPage page) {
+        if (page == null || page.getNext() == null) { return null; }
+
         try {
-            return new Gson().fromJson(IOUtils.toString(new URI(boardPage.getNext())), Boards.class);
+            return new Gson().fromJson(IOUtils.toString(new URI(page.getNext())), Boards.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }

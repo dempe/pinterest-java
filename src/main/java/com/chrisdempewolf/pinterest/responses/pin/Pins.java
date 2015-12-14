@@ -26,7 +26,7 @@ public class Pins implements Iterable<Pin> {
         return pins;
     }
 
-    public PinPage getPage() {
+    public PinPage getNextPage() {
         return page;
     }
 
