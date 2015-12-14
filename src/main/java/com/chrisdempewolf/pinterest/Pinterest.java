@@ -90,7 +90,7 @@ public class Pinterest {
         }
     }
 
-    public Boards getMyBoard() {
+    public Boards getMyBoards() {
         try {
             return new Gson().fromJson(IOUtils.toString(buildMyBoardUri(accessToken, null)), Boards.class);
         } catch (URISyntaxException | IOException e) {
@@ -98,7 +98,7 @@ public class Pinterest {
         }
     }
 
-    public Boards getMyBoard(final BoardFields boardFields) {
+    public Boards getMyBoards(final BoardFields boardFields) {
         try {
             return new Gson().fromJson(IOUtils.toString(buildMyBoardUri(accessToken, boardFields.build())), Boards.class);
         } catch (URISyntaxException | IOException e) {

@@ -115,7 +115,7 @@ public class STestPinterest {
 
     @Test
     public void testMyBoardWithDefaultFields() throws IOException {
-        final Boards boards = pinterest.getMyBoard();
+        final Boards boards = pinterest.getMyBoards();
         final List<Board> boardList = boards.getBoards();
 
         for (final Board board : boardList) {
@@ -131,7 +131,7 @@ public class STestPinterest {
 
     @Test
     public void testMyBoardWithAllFields() throws IOException {
-        final Boards boards = pinterest.getMyBoard(new BoardFields().setAll());
+        final Boards boards = pinterest.getMyBoards(new BoardFields().setAll());
         final List<Board> boardList = boards.getBoards();
 
         for (final Board board : boardList) {
