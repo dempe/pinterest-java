@@ -7,7 +7,7 @@
     <name>${project.artifactId}</name>
     <description>An SDK for Pinterest's version 3.0 API.</description>
     <url>https://github.com/dempe/pinterest</url>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.5</version>
 
     <build>
         <plugins>
@@ -160,7 +160,7 @@
         <connection>scm:git:git@github.com:dempe/pinterest.git</connection>
         <developerConnection>scm:git:git@github.com:dempe/pinterest.git</developerConnection>
         <url>https://github.com/dempe/pinterest</url>
-      <tag>HEAD</tag>
+      <tag>pinterest-sdk-1.5</tag>
   </scm>
 
     <distributionManagement>
