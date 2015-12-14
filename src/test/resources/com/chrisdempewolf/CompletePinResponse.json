@@ -2,12 +2,14 @@
   "data":{
     "creator":{
       "url":"https://www.pinterest.com/francisabila/",
-      "first_name":"Francis ",
-      "last_name":"Abila",
+      "first_name":"Francis",
+      "last_name":"Abila ",
       "id":"422705252433686868"
     },
     "url":"https://www.pinterest.com/pin/422705115002975322/",
+    "created_at":"2015-06-29T15:46:23",
     "note":"I got Dulce de leche! What Ice Cream Flavor Are You?",
+    "color":"#0a0502",
     "link":"https://www.pinterest.com/r/pin/422705115002975322/4779055074072594921/cd7cbc93cadede3167f390bbbd95ddb91bb3ea50c14178a761a6bebec604e411",
     "board":{
       "url":"https://www.pinterest.com/francisabila/all-about-me/",
