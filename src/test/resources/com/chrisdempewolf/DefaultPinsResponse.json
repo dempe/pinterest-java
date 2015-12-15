@@ -153,6 +153,6 @@
   ],
   "page":{
     "cursor":"LT40MjI3MDUxMTUwMDI5NTI3OTI6MjV8ZDEyZDM4NTRmMTJjMGQ2NzIzYThmOTRhZjJjM2JlY2YwYTVjNmIwMDk3ZTUzNTJiNTRhYTVkNjAyMmRiNjM4Yg==",
-    "next":"https://api.pinterest.com/v1/boards/francisabila/all-about-me/pins/?access_token=ARp8HNzfw2scBtJqtYA57a8xFeAqFBzML4SnnEZCe9w6DeAJGAAAAAA&cursor=LT40MjI3MDUxMTUwMDI5NTI3OTI6MjV8ZDEyZDM4NTRmMTJjMGQ2NzIzYThmOTRhZjJjM2JlY2YwYTVjNmIwMDk3ZTUzNTJiNTRhYTVkNjAyMmRiNjM4Yg%3D%3D"
+      "next":"https://api.pinterest.com/v1/boards/francisabila/all-about-me/pins/?access_token=ACCESS_TOKEN&cursor=LT40MjI3MDUxMTUwMDI5NTI3OTI6MjV8ZDEyZDM4NTRmMTJjMGQ2NzIzYThmOTRhZjJjM2JlY2YwYTVjNmIwMDk3ZTUzNTJiNTRhYTVkNjAyMmRiNjM4Yg%3D%3D"
   }
 }

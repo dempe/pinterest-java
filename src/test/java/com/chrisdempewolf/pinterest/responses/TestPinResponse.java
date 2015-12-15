@@ -7,6 +7,7 @@ import com.chrisdempewolf.pinterest.responses.pin.Creator;
 import com.chrisdempewolf.pinterest.responses.pin.Link;
 import com.chrisdempewolf.pinterest.responses.pin.MetaData;
 import com.chrisdempewolf.pinterest.responses.pin.Pin;
+import com.chrisdempewolf.pinterest.responses.pin.PinPage;
 import com.chrisdempewolf.pinterest.responses.pin.PinResponse;
 import com.chrisdempewolf.pinterest.responses.pin.Pins;
 import com.google.gson.Gson;
@@ -23,8 +24,11 @@ public class TestPinResponse {
     public void testPinsResponse() throws IOException {
         final String response = loadFile("com/chrisdempewolf/CompletePinsResponse.json");
         final Pins pins = new Gson().fromJson(response, Pins.class);
+        final PinPage pinPage = pins.getNextPage();
 
-        System.out.println(pins);
+        assertEquals(25, pins.getPins().size());
+        assertEquals("LT40MjI3MDUxMTUwMDI5NTI3OTI6MjV8ZDEyZDM4NTRmMTJjMGQ2NzIzYThmOTRhZjJjM2JlY2YwYTVjNmIwMDk3ZTUzNTJiNTRhYTVkNjAyMmRiNjM4Yg==", pinPage.getCursor());
+        assertEquals("https://api.pinterest.com/v1/boards/francisabila/all-about-me/pins/?access_token=ACCESS_TOKEN&fields=id%2Clink%2Ccounts%2Cnote%2Curl%2Ccreator%28id%2Cfirst_name%2Clast_name%2Curl%29%2Cboard%28id%2Cname%2Curl%29%2Cmetadata&cursor=LT40MjI3MDUxMTUwMDI5NTI3OTI6MjV8ZDEyZDM4NTRmMTJjMGQ2NzIzYThmOTRhZjJjM2JlY2YwYTVjNmIwMDk3ZTUzNTJiNTRhYTVkNjAyMmRiNjM4Yg%3D%3D", pinPage.getNext());
     }
 
     @Test
