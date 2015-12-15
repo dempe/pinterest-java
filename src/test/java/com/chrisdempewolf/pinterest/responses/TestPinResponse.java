@@ -21,7 +21,7 @@ public class TestPinResponse {
 
     @Test
     public void testPinsResponse() throws IOException {
-        final String response = loadFile("com/chrisdempewolf/CompleteBoardResponse.json");
+        final String response = loadFile("com/chrisdempewolf/CompletePinsResponse.json");
         final Pins pins = new Gson().fromJson(response, Pins.class);
 
         System.out.println(pins);
