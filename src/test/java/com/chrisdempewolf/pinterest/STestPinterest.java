@@ -153,7 +153,6 @@ public class STestPinterest {
         }
     }
 
-
     private static String loadFile(final String resource) throws IOException {
         return IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream(resource));
     }
