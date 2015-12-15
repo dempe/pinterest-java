@@ -22,37 +22,37 @@ public class TestEndPointURIBuilder {
 
     @Test
     public void testBuildPinUri() throws URISyntaxException {
-        final URI actual = buildPinUri(ACCESS_TOKEN, PIN_ID, FIELDS);
-        final URI expected = new URI("https://api.pinterest.com/v1/pins/" + PIN_ID + "/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
-        assertEquals(expected, actual);
+        final URI actualURI = buildPinUri(ACCESS_TOKEN, PIN_ID, FIELDS);
+        final URI expectedURI = new URI("https://api.pinterest.com/v1/pins/" + PIN_ID + "/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
+        assertEquals(expectedURI, actualURI);
     }
 
     @Test
     public void testBuildMyPinUri() throws URISyntaxException {
-        final URI actual = buildMyPinUri(ACCESS_TOKEN, FIELDS);
-        final URI expected = new  URI("https://api.pinterest.com/v1/me/pins/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
-        assertEquals(expected, actual);
+        final URI actualURI = buildMyPinUri(ACCESS_TOKEN, FIELDS);
+        final URI expectedURI = new  URI("https://api.pinterest.com/v1/me/pins/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
+        assertEquals(expectedURI, actualURI);
     }
 
     @Test
     public void testBuildBoardPinUri() throws URISyntaxException {
-        final URI actual = buildBoardPinUri(ACCESS_TOKEN, USER_NAME, FIELDS);
-        final URI expected = new  URI("https://api.pinterest.com/v1/boards/" + USER_NAME + "/pins/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
-        assertEquals(expected, actual);
+        final URI actualURI = buildBoardPinUri(ACCESS_TOKEN, USER_NAME, FIELDS);
+        final URI expectedURI = new  URI("https://api.pinterest.com/v1/boards/" + USER_NAME + "/pins/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
+        assertEquals(expectedURI, actualURI);
     }
 
     @Test
     public void testBuildBoardUri() throws URISyntaxException {
-        final URI actual = buildBoardUri(ACCESS_TOKEN, USER_NAME, BOARD_NAME, FIELDS);
-        final URI expected = new  URI("https://api.pinterest.com/v1/boards/" + USER_NAME + "/" + BOARD_NAME + "/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
-        assertEquals(expected, actual);
+        final URI actualURI = buildBoardUri(ACCESS_TOKEN, USER_NAME, BOARD_NAME, FIELDS);
+        final URI expectedURI = new  URI("https://api.pinterest.com/v1/boards/" + USER_NAME + "/" + BOARD_NAME + "/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
+        assertEquals(expectedURI, actualURI);
     }
 
     @Test
     public void testBuildMyBoardUri() throws URISyntaxException {
-        final URI actual = buildMyBoardUri(ACCESS_TOKEN, FIELDS);
-        final URI expected = new  URI("https://api.pinterest.com/v1/me/boards/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
-        assertEquals(expected, actual);
+        final URI actualURI = buildMyBoardUri(ACCESS_TOKEN, FIELDS);
+        final URI expectedURI = new  URI("https://api.pinterest.com/v1/me/boards/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
+        assertEquals(expectedURI, actualURI);
     }
 
 }
