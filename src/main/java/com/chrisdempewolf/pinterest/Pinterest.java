@@ -1,131 +1,70 @@
 package com.chrisdempewolf.pinterest;
 
-import com.chrisdempewolf.pinterest.exceptions.PinterestException;
 import com.chrisdempewolf.pinterest.fields.board.BoardFields;
 import com.chrisdempewolf.pinterest.fields.pin.PinFields;
+import com.chrisdempewolf.pinterest.methods.board.BoardMethodDelegate;
+import com.chrisdempewolf.pinterest.methods.pin.PinMethodDelegate;
 import com.chrisdempewolf.pinterest.responses.board.BoardPage;
 import com.chrisdempewolf.pinterest.responses.board.BoardResponse;
 import com.chrisdempewolf.pinterest.responses.board.Boards;
 import com.chrisdempewolf.pinterest.responses.pin.PinPage;
 import com.chrisdempewolf.pinterest.responses.pin.PinResponse;
 import com.chrisdempewolf.pinterest.responses.pin.Pins;
-import com.google.gson.Gson;
-import org.apache.commons.io.IOUtils;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import static com.chrisdempewolf.pinterest.EndPointURIBuilder.buildBoardPinUri;
-import static com.chrisdempewolf.pinterest.EndPointURIBuilder.buildBoardUri;
-import static com.chrisdempewolf.pinterest.EndPointURIBuilder.buildMyBoardUri;
-import static com.chrisdempewolf.pinterest.EndPointURIBuilder.buildMyPinUri;
-import static com.chrisdempewolf.pinterest.EndPointURIBuilder.buildPinUri;
 
 public class Pinterest {
-    private final String accessToken;
+    private final PinMethodDelegate pinMethodDelegate;
+    private final BoardMethodDelegate boardMethodDelegate;
 
     public Pinterest(String accessToken) {
-        this.accessToken = accessToken;
+        this.pinMethodDelegate = new PinMethodDelegate(accessToken);
+        this.boardMethodDelegate = new BoardMethodDelegate(accessToken);
     }
 
     public PinResponse getPin(final String id) {
-        try {
-            return new Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, null)), PinResponse.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return pinMethodDelegate.getPin(id);
     }
 
     public PinResponse getPin(final String id, final PinFields pinFields) {
-        try {
-            return new Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, pinFields.build())), PinResponse.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return pinMethodDelegate.getPin(id, pinFields);
     }
 
     public Pins getMyPins() {
-        try {
-            return new Gson().fromJson(IOUtils.toString(buildMyPinUri(accessToken, null)), Pins.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return pinMethodDelegate.getMyPins();
     }
 
     public Pins getMyPins(final PinFields pinFields) {
-        try {
-            return new Gson().fromJson(IOUtils.toString(buildMyPinUri(accessToken, pinFields.build())), Pins.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return pinMethodDelegate.getMyPins(pinFields);
     }
 
     public Pins getPinsFromBoard(final String boardName) {
-        try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardPinUri(accessToken, boardName, null)), Pins.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return pinMethodDelegate.getPinsFromBoard(boardName);
     }
 
     public Pins getPinsFromBoard(final String boardName, final PinFields pinFields) {
-        try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardPinUri(accessToken, boardName, pinFields.build())), Pins.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return pinMethodDelegate.getPinsFromBoard(boardName, pinFields);
     }
 
     public BoardResponse getBoard(final String userName, final String boardName) {
-        try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, userName, boardName, null)), BoardResponse.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return boardMethodDelegate.getBoard(userName, boardName);
     }
 
     public BoardResponse getBoard(final String boardName, final String userName, final BoardFields boardFields) {
-        try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, boardName, userName, boardFields.build())), BoardResponse.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return boardMethodDelegate.getBoard(boardName, userName, boardFields);
     }
 
     public Boards getMyBoards() {
-        try {
-            return new Gson().fromJson(IOUtils.toString(buildMyBoardUri(accessToken, null)), Boards.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return boardMethodDelegate.getMyBoards();
     }
 
     public Boards getMyBoards(final BoardFields boardFields) {
-        try {
-            return new Gson().fromJson(IOUtils.toString(buildMyBoardUri(accessToken, boardFields.build())), Boards.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return boardMethodDelegate.getMyBoards(boardFields);
     }
 
     public Pins getNextPageOfPins(final PinPage page) {
-        if (page == null || page.getNext() == null) { return null; }
-
-        try {
-            return new Gson().fromJson(IOUtils.toString(new URI(page.getNext())), Pins.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return pinMethodDelegate.getNextPageOfPins(page);
     }
 
     public Boards getNextPageOfBoards(final BoardPage page) {
-        if (page == null || page.getNext() == null) { return null; }
-
-        try {
-            return new Gson().fromJson(IOUtils.toString(new URI(page.getNext())), Boards.class);
-        } catch (URISyntaxException | IOException e) {
-            throw new PinterestException(e.getMessage(), e);
-        }
+        return boardMethodDelegate.getNextPageOfBoards(page);
     }
 }
