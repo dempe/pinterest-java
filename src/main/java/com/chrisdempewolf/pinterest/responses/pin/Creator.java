@@ -1,8 +1,12 @@
 package com.chrisdempewolf.pinterest.responses.pin;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Creator {
     private final String url;
+    @SerializedName("first_name")
     private final String firstName;
+    @SerializedName("last_name")
     private final String lastName;
     private final String id;
 
