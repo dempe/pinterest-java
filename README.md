@@ -61,6 +61,15 @@ Public Java SDK for Pinterest's new API.
      final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>", new PinFields().setAll());
   ```
   
+- **Paging** through Pin responses
+  - 
+  ```java
+        Pins pins = pinterest.getPinsFromBoard(BOARD_NAME);
+        while (pins.getNextPage() != null) {
+            pins = pinterest.getNextPageOfPins(pins.getNextPage());
+        }
+    ```
+  
 ### Board Retrieval Examples
 
 -  To get info about a particular Board with **default** fields:
