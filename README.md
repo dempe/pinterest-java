@@ -1,5 +1,3 @@
-# pinterest
-
 ## Description
 
 Public Java SDK for Pinterest's new API.
