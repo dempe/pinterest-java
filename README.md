@@ -14,6 +14,8 @@ Public Java SDK for [Pinterest's new API](https://developers.pinterest.com/docs/
 
 # Examples
 
+### Initialization
+
 - Construct a new Pinterest SDK
 ```java 
  final Pinterest pinterest = new Pinterest("<INSESRT_YOUR_PINTEREST_ACCESS_TOKEN>");
