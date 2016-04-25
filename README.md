@@ -1,6 +1,6 @@
 # Description
 
-Public Java SDK for (Pinterest's new API) [https://developers.pinterest.com/docs/getting-started/introduction/].
+Public Java SDK for [Pinterest's new API](https://developers.pinterest.com/docs/getting-started/introduction/).
 
 # Maven
 
