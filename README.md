@@ -17,7 +17,7 @@ Public Java SDK for Pinterest's new API.
    ```java 
       final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>", new PinFields().setAll());
    ```
-  - Example Pin ID:  `525091637782793357`
+  - Example Pin ID:  `525091637782793357` from URL: `https://www.pinterest.com/pin/525091637782793357/`
    
 - To get a Pin with only **default fields** (URL, note, link, ID) set
   - 
