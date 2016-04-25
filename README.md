@@ -41,13 +41,11 @@ Public Java SDK for Pinterest's new API.
      final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>", new PinFields().setLink().setCreatedAt().setColor());
   ```
   
-- To **your own** Pins (with **all fields**):
+- To get **your own** Pins (with **all fields**):
   - 
    ```java 
         final Pins pins = pinterest.getMyPins(new PinFields().setAll());
-        for (final Pin pin : pins) {
-            System.out.println(pin);
-        }
+        pins.forEach(pin -> {System.out.println(pin);});
    ```
     
 - To get all the Pins **from a board** with default fields
