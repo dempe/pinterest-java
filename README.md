@@ -16,37 +16,37 @@ Public Java SDK for Pinterest's new API.
 
 - Construct a new Pinterest SDK
   - 
-    ```java 
-    final Pinterest pinterest = new Pinterest("<INSESRT_YOUR_PINTEREST_ACCESS_TOKEN>");
-    ```
+```java 
+ final Pinterest pinterest = new Pinterest("<INSESRT_YOUR_PINTEREST_ACCESS_TOKEN>");
+```
     
 ### Pin Retrieval Examples
     
 - To get a Pin (with **all fields**) via a Pin ID:
   - 
-   ```java 
-   final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>", new PinFields().setAll());
-   ```
+```java 
+final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>", new PinFields().setAll());
+```
   - Example Pin ID:  `525091637782793357` from URL: `https://www.pinterest.com/pin/525091637782793357/`
    
 - To get a Pin with only **default fields** (URL, note, link, ID) set
   - 
-  ```java
-  final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>");
-  ```
+```java
+final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>");
+```
   
 - To get a Pin with only **link, created_at, and color** set
   - 
-  ```java
-  final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>", new PinFields().setLink().setCreatedAt().setColor());
-  ```
+```java
+final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>", new PinFields().setLink().setCreatedAt().setColor());
+```
   
 - To get **your own** Pins (with **all fields**):
   - 
-    ```java 
-    final Pins pins = pinterest.getMyPins(new PinFields().setAll());
-    pins.forEach(pin -> {System.out.println(pin);});
-    ```
+```java 
+final Pins pins = pinterest.getMyPins(new PinFields().setAll());
+pins.forEach(pin -> {System.out.println(pin);});
+```
     
 - To get all the Pins **from a board** with default fields
   - 
