@@ -45,6 +45,22 @@ Public Java SDK for Pinterest's new API.
   ```
   
 ### Board Retrieval Examples
+
+-  To get info about a particular Board with **default** fields:
+  - 
+  ```java
+        final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_USERNAME_NAME>", "<INSESRT_BOARD_NAME>");
+        final Board board = boardResponse.getBoard();
+    ```
+  - Example username: `cdatarank`; example Board name: `欲しいもの`
+    from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
+
+-  To get info about a particular Board with **all** fields:
+  - 
+  ```java
+        final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_USERNAME_NAME>", "<INSESRT_BOARD_NAME>", new BoardFields().setAll());
+        final Board board = boardResponse.getBoard();
+    ```
   
 ... more to come soon. (non-GET endpoints are currently in construction)
 
