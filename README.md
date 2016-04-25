@@ -1,8 +1,10 @@
 # pinterest
 
+## Description
+
 Public Java SDK for Pinterest's new API.
 
-Some example uses are
+## Examples
 
 - Construct a new Pinterest SDK
   - 
@@ -36,4 +38,6 @@ Some example uses are
   
 ... more to come soon. (non-GET endpoints are currently in construction)
 
-Feel free to make an issue if you find any bugs or have a suggestion!  
+## Contributing
+
+Found a bug? Have a suggestion? Feel free to send me PR or make an issue on the repo!
