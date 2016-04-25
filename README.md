@@ -16,11 +16,20 @@ Some example uses are
       final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>", new PinFields().setAll());
    ```
 - To get a Pin with only default fields (URL, note, link, ID) set
-  - `final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>");`
+  - 
+    ```java
+       final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>");
+    ```
 - To get all the Pins from a board with default fields
-  - `final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>");`
+  - 
+    ```java 
+      final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>");
+    ```
 - To get all the Pins from a board with all fields
-  - `final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>", new PinFields().setAll());`
+  - 
+    ```java 
+       final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>", new PinFields().setAll());
+    ```
   
 ... more to come soon. (non-GET endpoints are currently in construction)
 
