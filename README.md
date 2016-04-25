@@ -16,7 +16,7 @@ Public Java SDK for Pinterest's new API.
 
 - Construct a new Pinterest SDK
   - 
-   ```java 
+    ```java 
     final Pinterest pinterest = new Pinterest("<INSESRT_YOUR_PINTEREST_ACCESS_TOKEN>");
     ```
     
@@ -43,49 +43,49 @@ Public Java SDK for Pinterest's new API.
   
 - To get **your own** Pins (with **all fields**):
   - 
-```java 
-final Pins pins = pinterest.getMyPins(new PinFields().setAll());
-pins.forEach(pin -> {System.out.println(pin);});
-```
+    ```java 
+    final Pins pins = pinterest.getMyPins(new PinFields().setAll());
+    pins.forEach(pin -> {System.out.println(pin);});
+    ```
     
 - To get all the Pins **from a board** with default fields
   - 
-  ```java 
+    ```java 
     final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>");
-  ```
+    ```
   - Example board name:  `cdatarank/欲しいもの/` from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
     
 - To get all the Pins **from a board** with **all fields**
   - 
-  ```java 
-     final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>", new PinFields().setAll());
-  ```
+    ```java 
+    final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>", new PinFields().setAll());
+    ```
   
 - **Paging** through Pin responses
   - 
-  ```java
-        Pins pins = pinterest.getPinsFromBoard(BOARD_NAME);
-        while (pins.getNextPage() != null) {
-            pins = pinterest.getNextPageOfPins(pins.getNextPage());
-        }
+    ```java
+    Pins pins = pinterest.getPinsFromBoard(BOARD_NAME);
+    while (pins.getNextPage() != null) {
+        pins = pinterest.getNextPageOfPins(pins.getNextPage());
+    }
     ```
   
 ### Board Retrieval Examples
 
 -  To get info about a particular Board with **default** fields:
   - 
-  ```java
-        final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_USERNAME_NAME>", "<INSESRT_BOARD_NAME>");
-        final Board board = boardResponse.getBoard();
+    ```java
+    final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_USERNAME_NAME>", "<INSESRT_BOARD_NAME>");
+    final Board board = boardResponse.getBoard();
     ```
   - Example username: `cdatarank`; example Board name: `欲しいもの`
     from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
 
 -  To get info about a particular Board with **all** fields:
   - 
-  ```java
-        final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_USERNAME_NAME>", "<INSESRT_BOARD_NAME>", new BoardFields().setAll());
-        final Board board = boardResponse.getBoard();
+    ```java
+    final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_USERNAME_NAME>", "<INSESRT_BOARD_NAME>", new BoardFields().setAll());
+    final Board board = boardResponse.getBoard();
     ```
   
 ... more to come soon. (non-GET endpoints are currently in construction)
