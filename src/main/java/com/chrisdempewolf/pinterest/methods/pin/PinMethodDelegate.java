@@ -19,7 +19,7 @@ import static com.chrisdempewolf.pinterest.methods.pin.PinEndPointURIBuilder.bui
 public class PinMethodDelegate {
     private final String accessToken;
 
-    public PinMethodDelegate(String accessToken) {
+    public PinMethodDelegate(final String accessToken) {
         this.accessToken = accessToken;
     }
 

@@ -57,7 +57,7 @@ public class TestPinResponse {
 
         assertEquals("https://www.pinterest.com/francisabila/all-about-me/", board.getUrl());
         assertEquals("422705183714461377", board.getId());
-        assertEquals("All about me!", board.getName());
+        assertEquals("ALL ABOUT ME", board.getName());
 
         assertEquals(0, counts.getLikes().intValue());
         assertEquals(0, counts.getComments().intValue());
