@@ -10,6 +10,8 @@ Public Java SDK for Pinterest's new API.
        final Pinterest pinterest = new Pinterest("<INSESRT_YOUR_PINTEREST_ACCESS_TOKEN>");
     ```
     
+### Pin Retrieval Examples
+    
 - To get a Pin (with all possible fields) via a Pin ID:
   - 
    ```java 
@@ -33,6 +35,8 @@ Public Java SDK for Pinterest's new API.
   ```java 
      final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>", new PinFields().setAll());
   ```
+  
+### Board Retrieval Examples
   
 ... more to come soon. (non-GET endpoints are currently in construction)
 
