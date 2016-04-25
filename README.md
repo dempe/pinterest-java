@@ -5,11 +5,11 @@ Public Java SDK for Pinterest's new API.
 # Maven
 
 ```xml
-        <dependency>
-            <groupId>com.chrisdempewolf</groupId>
-            <artifactId>pinterest-sdk</artifactId>
-            <version>1.6</version>
-        </dependency>
+<dependency>
+    <groupId>com.chrisdempewolf</groupId>
+    <artifactId>pinterest-sdk</artifactId>
+    <version>1.6</version>
+</dependency>
 ```
 
 # Examples
