@@ -35,6 +35,7 @@ Public Java SDK for Pinterest's new API.
   ```java 
     final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>");
   ```
+  - Example board name:  `cdatarank/欲しいもの/`
     
 - To get all the Pins **from a board** with **all fields**
   - 
