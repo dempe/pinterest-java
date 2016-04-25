@@ -5,9 +5,16 @@ Public Java SDK for Pinterest's new API.
 Some example uses are
 
 - Construct a new Pinterest SDK
-  - `final Pinterest pinterest = new Pinterest("<INSESRT_YOUR_PINTEREST_ACCESS_TOKEN>");`
+  - 
+   ```java 
+       final Pinterest pinterest = new Pinterest("<INSESRT_YOUR_PINTEREST_ACCESS_TOKEN>");
+    ```
+    
 - To get a Pin (with all possible fields) via a Pin ID:
-  - `final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>", new PinFields().setAll());`
+  - 
+   ```java 
+      final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>", new PinFields().setAll());
+   ```
 - To get a Pin with only default fields (URL, note, link, ID) set
   - `final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>");`
 - To get all the Pins from a board with default fields
