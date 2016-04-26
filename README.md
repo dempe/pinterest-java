@@ -8,7 +8,7 @@ Public Java SDK for [Pinterest's new API](https://developers.pinterest.com/docs/
 <dependency>
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
-    <version>1.7</version>
+    <version>1.8</version>
 </dependency>
 ```
 
@@ -21,7 +21,9 @@ Public Java SDK for [Pinterest's new API](https://developers.pinterest.com/docs/
  final Pinterest pinterest = new Pinterest("<INSESRT_YOUR_PINTEREST_ACCESS_TOKEN>");
 ```
     
-### Pin Retrieval Examples
+### Pin Methods
+
+##### Fetching
     
 - To get a Pin (with **all fields**) via a Pin ID:
   - Example Pin ID:  `525091637782793357` from URL: `https://www.pinterest.com/pin/525091637782793357/`
@@ -62,6 +64,15 @@ Pins pins = pinterest.getPinsFromBoard(BOARD_NAME);
 while (pins.getNextPage() != null) {
     pins = pinterest.getNextPageOfPins(pins.getNextPage());
 }
+```
+
+##### Deleting
+
+All you need is the Pin ID and an access token with write access to the Pin question.
+This method returns `true` if the Pin was successfully deleted; `false` otherwise.
+
+```java
+final boolean deleted = pinterest.deletePin("<INSESRT_PIN_ID>");
 ```
   
 ### Board Retrieval Examples
