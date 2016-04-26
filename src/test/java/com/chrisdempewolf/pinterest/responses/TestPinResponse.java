@@ -71,7 +71,7 @@ public class TestPinResponse {
         assertEquals("What Ice Cream Flavor Are You?", link.getTitle());
         assertEquals("BuzzFeed", link.getSiteName());
         assertEquals("It's time to separate the rocky roads from the mint chocolate chips...", link.getDescription());
-        assertEquals("https://s-media-cache-ak0.pinimg.com/favicons/5a2f3ddebb24221ec8a631ee05b7e6418bbb2e7de0f019eab2dd7b32.png?6f90f349a263fafae3843e9decf2812a", link.getFavicon());
+        assertEquals("https://s-media-cache-ak0.pinimg.com/favicons/d0d9914d9e3671554b47fb6b5ade2575a96eeee451f4d5e8c63feb86.png?6f90f349a263fafae3843e9decf2812a", link.getFavicon());
     }
 
     private static String loadFile(final String resource) throws IOException {
