@@ -23,7 +23,7 @@ Public Java SDK for [Pinterest's new API](https://developers.pinterest.com/docs/
     
 ### Pin Methods
 
-##### *Fetching*
+#### *Fetching*
     
 - To get a Pin (with **all fields**) via a Pin ID:
   - Example Pin ID:  `525091637782793357` from URL: `https://www.pinterest.com/pin/525091637782793357/`
@@ -66,7 +66,7 @@ while (pins.getNextPage() != null) {
 }
 ```
 
-##### *Deleting*
+#### *Deleting*
 
 All you need is the Pin ID and an access token with write access to the Pin question.
 This method returns `true` if the Pin was successfully deleted; `false` otherwise.
@@ -77,7 +77,7 @@ final boolean deleted = pinterest.deletePin("<INSESRT_PIN_ID>");
   
 ### Board Methods
 
-##### *Fetching*
+#### *Fetching*
 
 -  To get info about a particular Board with **default** fields:
   - Example Board name: `cdatarank/欲しいもの`
