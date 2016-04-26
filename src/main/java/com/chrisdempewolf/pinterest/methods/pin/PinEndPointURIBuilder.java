@@ -11,7 +11,8 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 public class PinEndPointURIBuilder {
     private static final String BASE_URL = "https://api.pinterest.com";
     private static final String BOARD_PIN_PATH = "/v1/boards/{BOARD_NAME}/pins/";
-    private static final String PIN_PATH = "/v1/pins/{PIN_ID}/";
+    private static final String BASE_PIN_PATH = "/v1/pins";
+    private static final String PIN_PATH = BASE_PIN_PATH + "/{PIN_ID}";
     private static final String MY_PIN_PATH = "/v1/me/pins/";
 
     private static final Pattern PIN_PATTERN = Pattern.compile("\\{PIN_ID\\}");
@@ -19,6 +20,13 @@ public class PinEndPointURIBuilder {
 
     private PinEndPointURIBuilder() {
         throw new IllegalStateException("Instantiation not allowed");
+    }
+
+    public static URI buildBasePinUri(final String accessToken) throws URISyntaxException {
+        return new URIBuilder(BASE_URL)
+                .setPath(BASE_PIN_PATH)
+                .setParameter("access_token", accessToken)
+                .build();
     }
 
     public static URI buildPinUri(final String accessToken, final String id, final String fields) throws URISyntaxException {
