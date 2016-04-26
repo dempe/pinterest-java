@@ -2,11 +2,15 @@ package com.chrisdempewolf.pinterest.methods.pin;
 
 import com.chrisdempewolf.pinterest.exceptions.PinterestException;
 import com.chrisdempewolf.pinterest.fields.pin.PinFields;
+import com.chrisdempewolf.pinterest.methods.network.NetworkHelper;
+import com.chrisdempewolf.pinterest.methods.network.ResponseMessageAndStatusCode;
 import com.chrisdempewolf.pinterest.responses.pin.PinPage;
 import com.chrisdempewolf.pinterest.responses.pin.PinResponse;
 import com.chrisdempewolf.pinterest.responses.pin.Pins;
 import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.HttpDelete;
 
 import java.io.IOException;
 import java.net.URI;
@@ -34,6 +38,21 @@ public class PinMethodDelegate {
     public PinResponse getPin(final String id, final PinFields pinFields) {
         try {
             return new Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, pinFields.build())), PinResponse.class);
+        } catch (URISyntaxException | IOException e) {
+            throw new PinterestException(e.getMessage(), e);
+        }
+    }
+
+    /**
+     * I adopted the true/false pattern for deletion from RestFB
+     * @param id:  Pin ID
+     * @return true iff deletion was successful; false otherwise
+     */
+    public boolean deletePin(final String id) {
+        try {
+            final ResponseMessageAndStatusCode response = NetworkHelper.submitDeleteRequest(new HttpDelete(buildPinUri(accessToken, id, null)));
+
+            return response.getStatusCode() == HttpStatus.SC_OK;
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }

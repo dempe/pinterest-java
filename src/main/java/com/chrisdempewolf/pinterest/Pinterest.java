@@ -24,6 +24,10 @@ public class Pinterest {
         return pinMethodDelegate.getPin(id);
     }
 
+    public boolean deletePin(final String id) {
+        return pinMethodDelegate.deletePin(id);
+    }
+
     public PinResponse getPin(final String id, final PinFields pinFields) {
         return pinMethodDelegate.getPin(id, pinFields);
     }
