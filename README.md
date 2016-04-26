@@ -8,7 +8,7 @@ Public Java SDK for [Pinterest's new API](https://developers.pinterest.com/docs/
 <dependency>
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
-    <version>1.6</version>
+    <version>1.7</version>
 </dependency>
 ```
 
@@ -67,16 +67,16 @@ while (pins.getNextPage() != null) {
 ### Board Retrieval Examples
 
 -  To get info about a particular Board with **default** fields:
-  - Example username: `cdatarank`; example Board name: `欲しいもの`
+  - Example Board name: `cdatarank/欲しいもの`
     from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
 ```java
-final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_USERNAME_NAME>", "<INSESRT_BOARD_NAME>");
+final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_BOARD_NAME>");
 final Board board = boardResponse.getBoard();
 ```
 
 -  To get info about a particular Board with **all** fields:
 ```java
-final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_USERNAME_NAME>", "<INSESRT_BOARD_NAME>", new BoardFields().setAll());
+final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_BOARD_NAME>", new BoardFields().setAll());
 final Board board = boardResponse.getBoard();
 ```
   
