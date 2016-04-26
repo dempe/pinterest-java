@@ -75,7 +75,7 @@ This method returns `true` if the Pin was successfully deleted; `false` otherwis
 final boolean deleted = pinterest.deletePin("<INSESRT_PIN_ID>");
 ```
   
-### Board Examples
+### Board Methods
 
 ##### *Fetching*
 
