@@ -44,12 +44,12 @@ public class Pinterest {
         return pinMethodDelegate.getPinsFromBoard(boardName, pinFields);
     }
 
-    public BoardResponse getBoard(final String userName, final String boardName) {
-        return boardMethodDelegate.getBoard(userName, boardName);
+    public BoardResponse getBoard(final String boardName) {
+        return boardMethodDelegate.getBoard(boardName);
     }
 
-    public BoardResponse getBoard(final String boardName, final String userName, final BoardFields boardFields) {
-        return boardMethodDelegate.getBoard(boardName, userName, boardFields);
+    public BoardResponse getBoard(final String boardName, final BoardFields boardFields) {
+        return boardMethodDelegate.getBoard(boardName, boardFields);
     }
 
     public Boards getMyBoards() {

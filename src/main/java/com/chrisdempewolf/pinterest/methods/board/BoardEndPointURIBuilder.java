@@ -10,26 +10,21 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class BoardEndPointURIBuilder {
     private static final String BASE_URL = "https://api.pinterest.com";
-    private static final String BOARD_PATH = "/v1/boards/{USER_NAME}/{BOARD_NAME}/";
+    private static final String BOARD_PATH = "/v1/boards/{BOARD_NAME}/";
     private static final String MY_BOARD_PATH = "/v1/me/boards/";
 
-    private static final Pattern USER_NAME_PATTERN = Pattern.compile("\\{USER_NAME\\}");
     private static final Pattern BOARD_NAME_PATTERN = Pattern.compile("\\{BOARD_NAME\\}");
 
     private BoardEndPointURIBuilder() {
         throw new IllegalStateException("Instantiation not allowed");
     }
 
-    // TODO:  username/boardname can probably be combined as it is in the Pin class
     public static URI buildBoardUri(
             final String accessToken,
-            final String userName,
             final String boardName,
             final String fields) throws URISyntaxException {
-        final String path = BOARD_NAME_PATTERN.matcher(
-                USER_NAME_PATTERN.matcher(BOARD_PATH).replaceFirst(userName)).replaceFirst(boardName);
         final URIBuilder uriBuilder = new URIBuilder(BASE_URL)
-                .setPath(path)
+                .setPath(BOARD_NAME_PATTERN.matcher(BOARD_PATH).replaceFirst(boardName))
                 .setParameter("access_token", accessToken);
 
         if (isNotBlank(fields)) {

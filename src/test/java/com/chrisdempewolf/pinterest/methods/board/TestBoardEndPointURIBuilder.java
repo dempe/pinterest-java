@@ -12,13 +12,12 @@ import static org.junit.Assert.assertEquals;
 public class TestBoardEndPointURIBuilder {
     private static final String ACCESS_TOKEN = "testaccesstoken123";
     private static final String FIELDS = "myFields";
-    private static final String USER_NAME = "jsmith";
-    private static final String BOARD_NAME = "myBoard";
+    private static final String BOARD_NAME = "jsmith/myBoard";
 
     @Test
     public void testBuildBoardUri() throws URISyntaxException {
-        final URI actualURI = buildBoardUri(ACCESS_TOKEN, USER_NAME, BOARD_NAME, FIELDS);
-        final URI expectedURI = new  URI("https://api.pinterest.com/v1/boards/" + USER_NAME + "/" + BOARD_NAME + "/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
+        final URI actualURI = buildBoardUri(ACCESS_TOKEN, BOARD_NAME, FIELDS);
+        final URI expectedURI = new  URI("https://api.pinterest.com/v1/boards/" + BOARD_NAME + "/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
         assertEquals(expectedURI, actualURI);
     }
 

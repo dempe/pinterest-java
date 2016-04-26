@@ -22,17 +22,17 @@ public class BoardMethodDelegate {
         this.accessToken = accessToken;
     }
 
-    public BoardResponse getBoard(final String userName, final String boardName) {
+    public BoardResponse getBoard(final String boardName) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, userName, boardName, null)), BoardResponse.class);
+            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, boardName, null)), BoardResponse.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
     }
 
-    public BoardResponse getBoard(final String boardName, final String userName, final BoardFields boardFields) {
+    public BoardResponse getBoard(final String boardName, final BoardFields boardFields) {
         try {
-            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, boardName, userName, boardFields.build())), BoardResponse.class);
+            return new Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, boardName, boardFields.build())), BoardResponse.class);
         } catch (URISyntaxException | IOException e) {
             throw new PinterestException(e.getMessage(), e);
         }
