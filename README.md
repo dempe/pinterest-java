@@ -8,7 +8,7 @@ Public Java SDK for [Pinterest's new API](https://developers.pinterest.com/docs/
 <dependency>
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
-    <version>1.8</version>
+    <version>1.9</version>
 </dependency>
 ```
 
