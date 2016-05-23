@@ -24,9 +24,17 @@ import static org.junit.Assert.assertNotNull;
 
 public class STestPinterest {
     private static final String PIN_ID = "422705115002975322";
+    private static final String PIN_WITH_ATTRIBUTION = "12877548912849493";
     private static final String BOARD_NAME = "francisabila/all-about-me";
 
     private final Pinterest pinterest = new Pinterest(loadAccessToken());
+
+    @Test
+    public void testWithAttribution() throws IOException {
+        final PinResponse actualPinResponse = pinterest.getPin(PIN_WITH_ATTRIBUTION, new PinFields().setAll());
+        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/PinWithAttribution.json"), PinResponse.class);
+        assertEquals(expectedPinResponse, actualPinResponse);
+    }
 
     @Test
     public void testPinWithAllFields() throws IOException {
@@ -81,7 +89,7 @@ public class STestPinterest {
             assertNotNull(pin.toString(), pin.getColor());
             assertNotNull(pin.toString(), pin.getCreatedAt());
             assertNotNull(pin.toString(), pin.getCreator());
-            //assertNotNull(pin.toString(), pin.getAttribution()); attribution is seemingly always null
+            assertNull(pin.toString(),    pin.getAttribution()); //attribution is null for this Pin
             assertNotNull(pin.toString(), pin.getMetaData());
         }
     }

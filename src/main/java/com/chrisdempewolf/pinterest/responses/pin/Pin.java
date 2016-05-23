@@ -13,11 +13,11 @@ public class Pin {
     @SerializedName("created_at")
     private final String createdAt;
     private final String color;
-    private final String attribution;
+    private final Attribution attribution;
     @SerializedName("metadata")
     private final MetaData metaData;
 
-    public Pin(String id, Counts counts, String url, String note, String link, Board board, Creator creator, String createdAt, String color, String attribution, MetaData metaData) {
+    public Pin(String id, Counts counts, String url, String note, String link, Board board, Creator creator, String createdAt, String color, Attribution attribution, MetaData metaData) {
         this.id = id;
         this.counts = counts;
         this.url = url;
@@ -67,7 +67,7 @@ public class Pin {
         return color;
     }
 
-    public String getAttribution() {
+    public Attribution getAttribution() {
         return attribution;
     }
 
@@ -92,7 +92,8 @@ public class Pin {
         if (createdAt != null ? !createdAt.equals(pin.createdAt) : pin.createdAt != null) return false;
         if (color != null ? !color.equals(pin.color) : pin.color != null) return false;
         if (attribution != null ? !attribution.equals(pin.attribution) : pin.attribution != null) return false;
-        return !(metaData != null ? !metaData.equals(pin.metaData) : pin.metaData != null);
+        return metaData != null ? metaData.equals(pin.metaData) : pin.metaData == null;
+
     }
 
     @Override
@@ -123,7 +124,7 @@ public class Pin {
                 ", creator=" + creator +
                 ", createdAt='" + createdAt + '\'' +
                 ", color='" + color + '\'' +
-                ", attribution='" + attribution + '\'' +
+                ", attribution=" + attribution +
                 ", metaData=" + metaData +
                 '}';
     }
