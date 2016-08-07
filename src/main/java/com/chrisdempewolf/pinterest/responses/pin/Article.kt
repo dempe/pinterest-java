@@ -8,4 +8,4 @@ data class Article(
         @SerializedName("published_at") val publishedAt: String?,
         val description: String?,
         val name: String?,
-        val authors: Array<Author>)
+        val authors: List<Author>?)

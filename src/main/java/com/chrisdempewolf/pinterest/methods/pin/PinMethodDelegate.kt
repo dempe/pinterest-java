@@ -22,25 +22,15 @@ import java.net.URISyntaxException
 class PinMethodDelegate(private val accessToken: String) {
 
     fun getPin(id: String): PinResponse {
-        try {
-            return Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, null)), PinResponse::class.java)
-        } catch (e: URISyntaxException) {
-            throw PinterestException(e.message, e)
-        } catch (e: IOException) {
-            throw PinterestException(e.message, e)
-        }
-
+        try { return Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, null)), PinResponse::class.java) }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
     fun getPin(id: String, pinFields: PinFields): PinResponse {
-        try {
-            return Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, pinFields.build())), PinResponse::class.java)
-        } catch (e: URISyntaxException) {
-            throw PinterestException(e.message, e)
-        } catch (e: IOException) {
-            throw PinterestException(e.message, e)
-        }
-
+        try { return Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, pinFields.build())), PinResponse::class.java) }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
     /**
@@ -52,73 +42,42 @@ class PinMethodDelegate(private val accessToken: String) {
     fun deletePin(id: String): Boolean {
         try {
             val response = NetworkHelper.submitDeleteRequest(HttpDelete(buildPinUri(accessToken, id, null)))
-
             return response.statusCode == HttpStatus.SC_OK
-        } catch (e: URISyntaxException) {
-            throw PinterestException(e.message, e)
-        } catch (e: IOException) {
-            throw PinterestException(e.message, e)
         }
-
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
     val myPins: Pins
         get() {
-            try {
-                return Gson().fromJson(IOUtils.toString(buildMyPinUri(accessToken, null)), Pins::class.java)
-            } catch (e: URISyntaxException) {
-                throw PinterestException(e.message, e)
-            } catch (e: IOException) {
-                throw PinterestException(e.message, e)
-            }
-
+            try { return Gson().fromJson(IOUtils.toString(buildMyPinUri(accessToken, null)), Pins::class.java) }
+            catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+            catch (e: IOException) { throw PinterestException(e.message, e) }
         }
 
     fun getMyPins(pinFields: PinFields): Pins {
-        try {
-            return Gson().fromJson(IOUtils.toString(buildMyPinUri(accessToken, pinFields.build())), Pins::class.java)
-        } catch (e: URISyntaxException) {
-            throw PinterestException(e.message, e)
-        } catch (e: IOException) {
-            throw PinterestException(e.message, e)
-        }
-
+        try { return Gson().fromJson(IOUtils.toString(buildMyPinUri(accessToken, pinFields.build())), Pins::class.java) }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
     fun getPinsFromBoard(boardName: String): Pins {
-        try {
-            return Gson().fromJson(IOUtils.toString(buildBoardPinUri(accessToken, boardName, null)), Pins::class.java)
-        } catch (e: URISyntaxException) {
-            throw PinterestException(e.message, e)
-        } catch (e: IOException) {
-            throw PinterestException(e.message, e)
-        }
-
+        try { return Gson().fromJson(IOUtils.toString(buildBoardPinUri(accessToken, boardName, null)), Pins::class.java) }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
     fun getPinsFromBoard(boardName: String, pinFields: PinFields): Pins {
-        try {
-            return Gson().fromJson(IOUtils.toString(buildBoardPinUri(accessToken, boardName, pinFields.build())), Pins::class.java)
-        } catch (e: URISyntaxException) {
-            throw PinterestException(e.message, e)
-        } catch (e: IOException) {
-            throw PinterestException(e.message, e)
-        }
-
+        try { return Gson().fromJson(IOUtils.toString(buildBoardPinUri(accessToken, boardName, pinFields.build())), Pins::class.java) }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
     fun getNextPageOfPins(page: PinPage?): Pins? {
-        if (page == null || page.next == null) {
-            return null
-        }
+        if (page == null || page.next == null) { return null }
 
-        try {
-            return Gson().fromJson(IOUtils.toString(URI(page.next)), Pins::class.java)
-        } catch (e: URISyntaxException) {
-            throw PinterestException(e.message, e)
-        } catch (e: IOException) {
-            throw PinterestException(e.message, e)
-        }
-
+        try { return Gson().fromJson(IOUtils.toString(URI(page.next)), Pins::class.java) }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 }

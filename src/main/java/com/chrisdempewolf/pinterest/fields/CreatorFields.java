@@ -9,22 +9,22 @@ public class CreatorFields extends BaseFields {
 
     public CreatorFields setId() {
         fields.add("id");
-		return this;
+        return this;
     }
 
     public CreatorFields setFirstName() {
         fields.add("first_name");
-		return this;
+        return this;
     }
 
     public CreatorFields setLastName() {
         fields.add("last_name");
-		return this;
+        return this;
     }
 
     public CreatorFields setUrl() {
         fields.add("url");
-		return this;
+        return this;
     }
 
     @Override
