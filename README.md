@@ -18,7 +18,7 @@ Public Java SDK for [Pinterest's new API](https://developers.pinterest.com/docs/
 
 - Construct a new Pinterest SDK
 ```java 
- final Pinterest pinterest = new Pinterest("<INSESRT_YOUR_PINTEREST_ACCESS_TOKEN>");
+ final Pinterest pinterest = new Pinterest("<INSERT_YOUR_PINTEREST_ACCESS_TOKEN>");
 ```
     
 ### Pin Methods
@@ -28,17 +28,17 @@ Public Java SDK for [Pinterest's new API](https://developers.pinterest.com/docs/
 - To get a Pin (with **all fields**) via a Pin ID:
   - Example Pin ID:  `525091637782793357` from URL: `https://www.pinterest.com/pin/525091637782793357/`
 ```java 
-final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>", new PinFields().setAll());
+final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>", new PinFields().setAll());
 ```
    
 - To get a Pin with only **default fields** (URL, note, link, ID) set
 ```java
-final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>");
+final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>");
 ```
   
 - To get a Pin with only **link, created_at, and color** set
 ```java
-final PinResponse pin = pinterest.getPin("<INSESRT_PIN_ID>", new PinFields().setLink().setCreatedAt().setColor());
+final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>", new PinFields().setLink().setCreatedAt().setColor());
 ```
   
 - To get **your own** Pins (with **all fields**):
@@ -50,12 +50,12 @@ pins.forEach(pin -> {System.out.println(pin);});
 - To get all the Pins **from a board** with default fields
   - Example board name:  `cdatarank/欲しいもの/` from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
 ```java 
-final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>");
+final Pins pins = pinterest.getPinsFromBoard("<INSERT_BOARD_NAME>");
 ```
     
 - To get all the Pins **from a board** with **all fields**
 ```java 
-final Pins pins = pinterest.getPinsFromBoard("<INSESRT_BOARD_NAME>", new PinFields().setAll());
+final Pins pins = pinterest.getPinsFromBoard("<INSERT_BOARD_NAME>", new PinFields().setAll());
 ```
   
 - **Paging** through Pin responses
@@ -72,7 +72,7 @@ All you need is the Pin ID and an access token with write access to the Pin ques
 This method returns `true` if the Pin was successfully deleted; `false` otherwise.
 
 ```java
-final boolean deleted = pinterest.deletePin("<INSESRT_PIN_ID>");
+final boolean deleted = pinterest.deletePin("<INSERT_PIN_ID>");
 ```
   
 ### Board Methods
@@ -83,13 +83,13 @@ final boolean deleted = pinterest.deletePin("<INSESRT_PIN_ID>");
   - Example Board name: `cdatarank/欲しいもの`
     from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
 ```java
-final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_BOARD_NAME>");
+final BoardResponse boardResponse = pinterest.getBoard("<INSERT_BOARD_NAME>");
 final Board board = boardResponse.getBoard();
 ```
 
 -  To get info about a particular Board with **all** fields:
 ```java
-final BoardResponse boardResponse = pinterest.getBoard("<INSESRT_BOARD_NAME>", new BoardFields().setAll());
+final BoardResponse boardResponse = pinterest.getBoard("<INSERT_BOARD_NAME>", new BoardFields().setAll());
 final Board board = boardResponse.getBoard();
 ```
   
