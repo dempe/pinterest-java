@@ -20,14 +20,8 @@ import java.net.URISyntaxException
 
 class BoardMethodDelegate(private val accessToken: String) {
 
-    fun getBoard(boardName: String): BoardResponse {
-        try { return Gson().fromJson(IOUtils.toString(BoardEndPointURIBuilder.buildBoardUri(accessToken, boardName, null)), BoardResponse::class.java) }
-        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
-        catch (e: IOException) { throw PinterestException(e.message, e) }
-    }
-
-    fun getBoard(boardName: String, boardFields: BoardFields): BoardResponse {
-        try { return Gson().fromJson(IOUtils.toString(BoardEndPointURIBuilder.buildBoardUri(accessToken, boardName, boardFields.build())), BoardResponse::class.java) }
+    fun getBoard(boardName: String, boardFields: BoardFields? = null): BoardResponse {
+        try { return Gson().fromJson(IOUtils.toString(BoardEndPointURIBuilder.buildBoardUri(accessToken, boardName, boardFields?.build())), BoardResponse::class.java) }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
@@ -75,14 +69,8 @@ class BoardMethodDelegate(private val accessToken: String) {
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
-    fun getMyBoards(): Boards {
-        try { return Gson().fromJson(IOUtils.toString(BoardEndPointURIBuilder.buildMyBoardUri(accessToken, null)), Boards::class.java) }
-        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
-        catch (e: IOException) { throw PinterestException(e.message, e) }
-    }
-
-    fun getMyBoards(boardFields: BoardFields): Boards {
-        try { return Gson().fromJson(IOUtils.toString(BoardEndPointURIBuilder.buildMyBoardUri(accessToken, boardFields.build())), Boards::class.java) }
+    fun getMyBoards(boardFields: BoardFields? = null): Boards {
+        try { return Gson().fromJson(IOUtils.toString(BoardEndPointURIBuilder.buildMyBoardUri(accessToken, boardFields?.build())), Boards::class.java) }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
