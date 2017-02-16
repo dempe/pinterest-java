@@ -24,10 +24,6 @@ class Pinterest(accessToken: String) {
         return pinMethodDelegate.getPin(id)
     }
 
-    fun deletePin(id: String): Boolean {
-        return pinMethodDelegate.deletePin(id)
-    }
-
     fun getPin(id: String, pinFields: PinFields): PinResponse {
         return pinMethodDelegate.getPin(id, pinFields)
     }
@@ -46,6 +42,18 @@ class Pinterest(accessToken: String) {
 
     fun getPinsFromBoard(boardName: String, pinFields: PinFields): Pins {
         return pinMethodDelegate.getPinsFromBoard(boardName, pinFields)
+    }
+
+    fun postPin(
+            boardName: String,
+            note: String,
+            image: String,
+            link: String? = null): Boolean {
+        return false
+    }
+
+    fun deletePin(id: String): Boolean {
+        return pinMethodDelegate.deletePin(id)
     }
 
     fun getBoard(boardName: String): BoardResponse {
