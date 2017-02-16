@@ -97,32 +97,29 @@ final Board board = boardResponse.getBoard();
 
 # Coverage
 
-### Completed End Points
-- GET `/v1/pins/<pin_id>`
-- GET `/v1/me/pins/<pin_id>`
-- GET `/v1/boards/<board_name>/pins/`
-- GET `/v1/me/boards/`
-- DELETE `/v1/pins/<pin_id>`
-
-### End Points in Progress
-- POST `/v1/pins/<pin_id>`
-- POST `/v1/boards/<board_name>`
-- PATCH `/v1/pins/<pin_id>`
-- PATCH `/v1/boards/<board_name>`
-- DELETE `/v1/boards/<board_name>`
-- GET `/v1/me/`
-- GET `/v1/me/boards/suggested/`
-- GET `/v1/me/likes/`
-- GET `/v1/me/search/boards/`
-- GET `/v1/me/search/pins/`
-- POST `/v1/me/following/boards/`
-- POST `/v1/me/following/users/`
-- GET `/v1/me/followers/`
-- GET `/v1/me/following/boards/`
-- GET `/v1/me/following/interests/`
-- GET `/v1/me/following/users/`
-- DELETE `/v1/me/following/boards/<board>/`
-- DELETE `/v1/me/following/users/<user>/`
+- [x] GET `/v1/pins/<pin_id>`
+- [x] GET `/v1/me/pins/<pin_id>`
+- [x] GET `/v1/boards/<board_name>/pins/`
+- [x] GET `/v1/me/boards/`
+- [x] DELETE `/v1/pins/<pin_id>`
+- [ ] POST `/v1/pins/<pin_id>`
+- [ ] POST `/v1/boards/<board_name>`
+- [ ] PATCH `/v1/pins/<pin_id>`
+- [ ] PATCH `/v1/boards/<board_name>`
+- [ ] DELETE `/v1/boards/<board_name>`
+- [ ] GET `/v1/me/`
+- [ ] GET `/v1/me/boards/suggested/`
+- [ ] GET `/v1/me/likes/`
+- [ ] GET `/v1/me/search/boards/`
+- [ ] GET `/v1/me/search/pins/`
+- [ ] POST `/v1/me/following/boards/`
+- [ ] POST `/v1/me/following/users/`
+- [ ] GET `/v1/me/followers/`
+- [ ] GET `/v1/me/following/boards/`
+- [ ] GET `/v1/me/following/interests/`
+- [ ] GET `/v1/me/following/users/`
+- [ ] DELETE `/v1/me/following/boards/<board>/`
+- [ ] DELETE `/v1/me/following/users/<user>/`
 
 # Contributing
 
