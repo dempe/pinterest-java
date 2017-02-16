@@ -3,6 +3,7 @@ package com.chrisdempewolf.pinterest
 import com.chrisdempewolf.pinterest.fields.board.BoardFields
 import com.chrisdempewolf.pinterest.fields.pin.PinFields
 import com.chrisdempewolf.pinterest.methods.board.BoardMethodDelegate
+import com.chrisdempewolf.pinterest.methods.network.ResponseMessageAndStatusCode
 import com.chrisdempewolf.pinterest.methods.pin.PinMethodDelegate
 import com.chrisdempewolf.pinterest.responses.board.BoardPage
 import com.chrisdempewolf.pinterest.responses.board.BoardResponse
@@ -48,8 +49,8 @@ class Pinterest(accessToken: String) {
             boardName: String,
             note: String,
             image: String,
-            link: String? = null): Boolean {
-        return false
+            link: String? = null): ResponseMessageAndStatusCode {
+        return pinMethodDelegate.postPin(boardName, note, image, link)
     }
 
     fun deletePin(id: String): Boolean {
