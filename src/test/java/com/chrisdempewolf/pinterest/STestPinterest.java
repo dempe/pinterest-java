@@ -2,6 +2,7 @@ package com.chrisdempewolf.pinterest;
 
 import com.chrisdempewolf.pinterest.fields.board.BoardFields;
 import com.chrisdempewolf.pinterest.fields.pin.PinFields;
+import com.chrisdempewolf.pinterest.methods.network.ResponseMessageAndStatusCode;
 import com.chrisdempewolf.pinterest.responses.board.Board;
 import com.chrisdempewolf.pinterest.responses.board.BoardResponse;
 import com.chrisdempewolf.pinterest.responses.board.Boards;
@@ -13,6 +14,7 @@ import com.google.gson.Gson;
 import org.apache.commons.io.Charsets;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.http.HttpStatus;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -28,6 +30,16 @@ public class STestPinterest {
     private static final String BOARD_NAME = "francisabila/all-about-me";
 
     private final Pinterest pinterest = new Pinterest(loadAccessToken());
+
+    @Test
+    public void testPostAndDelete() throws IOException {
+        final String boardName = "test";
+        final ResponseMessageAndStatusCode response = pinterest.postBoard(boardName, "test description");
+        assertEquals(HttpStatus.SC_CREATED, response.getStatusCode());
+
+        final Boolean deleted = pinterest.deleteBoard("cdatarank/" + boardName);
+        assertEquals(true, deleted);
+    }
 
     @Test
     public void testWithAttribution() throws IOException {

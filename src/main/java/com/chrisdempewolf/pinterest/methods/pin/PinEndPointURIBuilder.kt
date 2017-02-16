@@ -17,8 +17,6 @@ object PinEndPointURIBuilder {
     private val PIN_PATTERN = Pattern.compile("\\{PIN_ID\\}")
     private val BOARD_NAME_PATTERN = Pattern.compile("\\{BOARD_NAME\\}")
 
-    init { throw IllegalStateException("Instantiation not allowed") }
-
     @JvmStatic
     @Throws(URISyntaxException::class)
     fun buildBasePinUri(accessToken: String): URI {

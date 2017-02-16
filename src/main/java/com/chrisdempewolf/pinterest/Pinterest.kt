@@ -61,6 +61,10 @@ class Pinterest(accessToken: String) {
         return boardMethodDelegate.deleteBoard(boardName)
     }
 
+    fun postBoard(boardName: String, description: String): ResponseMessageAndStatusCode {
+        return boardMethodDelegate.postBoard(boardName, description)
+    }
+
     fun getBoard(boardName: String): BoardResponse {
         return boardMethodDelegate.getBoard(boardName)
     }
