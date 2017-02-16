@@ -92,7 +92,31 @@ final Board board = boardResponse.getBoard();
 final BoardResponse boardResponse = pinterest.getBoard("<INSERT_BOARD_NAME>", new BoardFields().setAll());
 final Board board = boardResponse.getBoard();
 ```
-  
+- **Paging** through Board responses:
+```java
+Boards boards = pinterest.getMyBoards(new BoardFields().setAll());
+while (boards.getNextPage() != null) {
+    boards = pinterest.getNextPageOfBoards(boards.getNextPage());
+}
+```
+
+#### *Posting*
+```java
+final ResponseMessageAndStatusCode response = pinterest.postBoard("<BOARD_NAME>", "<BOARD_DESCRIPTION>");
+```
+
+#### *Updating*
+```java
+final name = "newname"; // the _actual_ name of the board
+final boardName = "<YOUR_USERNAME>/<CURRENT_NAME_OF_BOARD>";
+final ResponseMessageAndStatusCode response = pinterest.patchBoard(boardName, name, description);
+```
+
+#### *Deleting*
+```java
+final Boolean deleted = pinterest.deleteBoard("<YOUR_USERNAME>/<CURRENT_NAME_OF_BOARD>");
+assertEquals(true, deleted);
+```
 ... more to come soon.
 
 # Coverage
@@ -102,10 +126,10 @@ final Board board = boardResponse.getBoard();
 - [x] GET `/v1/boards/<board_name>/pins/`
 - [x] GET `/v1/me/boards/`
 - [x] DELETE `/v1/pins/<pin_id>`
-- [ ] POST `/v1/pins/<pin_id>`
-- [ ] POST `/v1/boards/<board_name>` -- completed; yet to be released
+- [ ] POST `/v1/pins/`
+- [ ] POST `/v1/boards/` -- completed; yet to be released
 - [ ] PATCH `/v1/pins/<pin_id>`
-- [ ] PATCH `/v1/boards/<board_name>`
+- [ ] PATCH `/v1/boards/<board_name>` -- completed; yet to be released
 - [ ] DELETE `/v1/boards/<board_name>` -- completed; yet to be released
 - [ ] GET `/v1/me/`
 - [ ] GET `/v1/me/boards/suggested/`
