@@ -31,12 +31,12 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>", new PinFields().setAll());
 ```
    
-- To get a Pin with only **default fields** (URL, note, link, ID) set
+- To get a Pin with **only default fields** (`url`, `note`, `link`, `id`) set
 ```java
 final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>");
 ```
   
-- To get a Pin with only **link, created_at, and color** set
+- To get a Pin with **only** `link`, `created_at`, and `color` set
 ```java
 final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>", new PinFields().setLink().setCreatedAt().setColor());
 ```
