@@ -16,7 +16,7 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 
 ### Initialization
 
-- Construct a new Pinterest SDK
+- Construct a new Pinterest SDK:
 ```java 
  final Pinterest pinterest = new Pinterest("<INSERT_YOUR_PINTEREST_ACCESS_TOKEN>");
 ```
@@ -26,17 +26,17 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 #### *Fetching*
     
 - To get a Pin (with **all fields**) via a Pin ID:
-  - Example Pin ID:  `525091637782793357` from URL: `https://www.pinterest.com/pin/525091637782793357/`
+  - Example Pin ID:  `525091637782793357`; from URL: `https://www.pinterest.com/pin/525091637782793357/`
 ```java 
 final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>", new PinFields().setAll());
 ```
    
-- To get a Pin with **only default fields** (`url`, `note`, `link`, `id`) set
+- To get a Pin with **only default fields** (`url`, `note`, `link`, `id`) set:
 ```java
 final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>");
 ```
   
-- To get a Pin with **only** `link`, `created_at`, and `color` set
+- To get a Pin with **only** `link`, `created_at`, and `color` set:
 ```java
 final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>", new PinFields().setLink().setCreatedAt().setColor());
 ```
@@ -47,18 +47,18 @@ final Pins pins = pinterest.getMyPins(new PinFields().setAll());
 pins.forEach(pin -> {System.out.println(pin);});
 ```
     
-- To get all the Pins **from a board** with default fields
-  - Example board name:  `cdatarank/欲しいもの/` from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
+- To get all the Pins **from a board** with default fields:
+  - Example board name:  `cdatarank/欲しいもの/`; from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
 ```java 
 final Pins pins = pinterest.getPinsFromBoard("<INSERT_BOARD_NAME>");
 ```
     
-- To get all the Pins **from a board** with **all fields**
+- To get all the Pins **from a board** with **all fields**:
 ```java 
 final Pins pins = pinterest.getPinsFromBoard("<INSERT_BOARD_NAME>", new PinFields().setAll());
 ```
   
-- **Paging** through Pin responses
+- **Paging** through Pin responses:
 ```java
 Pins pins = pinterest.getPinsFromBoard(BOARD_NAME);
 while (pins.getNextPage() != null) {
