@@ -4,11 +4,14 @@ import com.chrisdempewolf.pinterest.exceptions.PinterestException
 import com.chrisdempewolf.pinterest.fields.board.BoardFields
 import com.chrisdempewolf.pinterest.methods.board.BoardEndPointURIBuilder.Companion.buildBoardUri
 import com.chrisdempewolf.pinterest.methods.board.BoardEndPointURIBuilder.Companion.buildMyBoardUri
+import com.chrisdempewolf.pinterest.methods.network.NetworkHelper
+import com.chrisdempewolf.pinterest.methods.pin.PinEndPointURIBuilder
 import com.chrisdempewolf.pinterest.responses.board.BoardPage
 import com.chrisdempewolf.pinterest.responses.board.BoardResponse
 import com.chrisdempewolf.pinterest.responses.board.Boards
 import com.google.gson.Gson
 import org.apache.commons.io.IOUtils
+import org.apache.http.HttpStatus
 
 import java.io.IOException
 import java.net.URI
@@ -24,6 +27,20 @@ class BoardMethodDelegate(private val accessToken: String) {
 
     fun getBoard(boardName: String, boardFields: BoardFields): BoardResponse {
         try { return Gson().fromJson(IOUtils.toString(buildBoardUri(accessToken, boardName, boardFields.build())), BoardResponse::class.java) }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
+
+    /**
+     * I adopted the true/false pattern for deletion from RestFB
+     * @param id:  Pin ID
+     * @return true iff deletion was successful
+     */
+    fun deleteBoard(boardName: String): Boolean {
+        try {
+            val response = NetworkHelper.submitDeleteRequest(BoardEndPointURIBuilder.buildBoardUri(accessToken, boardName, null))
+            return response.statusCode == HttpStatus.SC_OK
+        }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }

@@ -57,6 +57,10 @@ class Pinterest(accessToken: String) {
         return pinMethodDelegate.deletePin(id)
     }
 
+    fun deleteBoard(boardName: String): Boolean {
+        return boardMethodDelegate.deleteBoard(boardName)
+    }
+
     fun getBoard(boardName: String): BoardResponse {
         return boardMethodDelegate.getBoard(boardName)
     }
