@@ -2,6 +2,7 @@ package com.chrisdempewolf.pinterest.methods.network
 
 import org.apache.http.HttpResponse
 import org.apache.http.NameValuePair
+import org.apache.http.client.fluent.Form
 import org.apache.http.client.fluent.Request
 import org.apache.http.client.methods.CloseableHttpResponse
 import org.apache.http.client.methods.HttpDelete
@@ -25,9 +26,14 @@ object NetworkHelper {
         return convertResponse(response)
     }
 
-    @Throws(IOException::class)
-    fun submitPostRequest(httpPost: HttpPost): ResponseMessageAndStatusCode {
-        return submitRequest(httpPost)
+    @JvmStatic
+    fun submitPostRequest(url: URI, formData: Map<String, String>): ResponseMessageAndStatusCode {
+        val response = Request.Post(url)
+                .bodyForm(convertMapToForm(formData))
+                .execute()
+                .returnResponse()
+
+        return convertResponse(response)
     }
 
     @JvmStatic
@@ -35,7 +41,10 @@ object NetworkHelper {
         return ResponseMessageAndStatusCode(response.statusLine.statusCode, EntityUtils.toString(response.entity))
     }
 
-            return ResponseMessageAndStatusCode(statusCode, responseBody)
-        }
+    @JvmStatic
+    private fun convertMapToForm(formData: Map<String, String>): List<NameValuePair> {
+        val form = Form.form()
+        formData.forEach { form.add(it.key, it.value) }
+        return form.build()
     }
 }
