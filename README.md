@@ -103,10 +103,10 @@ final Board board = boardResponse.getBoard();
 - [x] GET `/v1/me/boards/`
 - [x] DELETE `/v1/pins/<pin_id>`
 - [ ] POST `/v1/pins/<pin_id>`
-- [ ] POST `/v1/boards/<board_name>`
+- [ ] POST `/v1/boards/<board_name>` -- completed; yet to be released
 - [ ] PATCH `/v1/pins/<pin_id>`
 - [ ] PATCH `/v1/boards/<board_name>`
-- [ ] DELETE `/v1/boards/<board_name>`
+- [ ] DELETE `/v1/boards/<board_name>` -- completed; yet to be released
 - [ ] GET `/v1/me/`
 - [ ] GET `/v1/me/boards/suggested/`
 - [ ] GET `/v1/me/likes/`
