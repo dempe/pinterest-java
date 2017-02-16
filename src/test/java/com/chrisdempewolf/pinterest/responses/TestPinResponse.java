@@ -22,7 +22,7 @@ public class TestPinResponse {
 
     @Test
     public void testPinsResponse() throws IOException {
-        final String response = loadFile("com/chrisdempewolf/CompletePinsResponse.json");
+        final String response = loadFile("com/chrisdempewolf/complete_pins_response.json");
         final Pins pins = new Gson().fromJson(response, Pins.class);
         final PinPage pinPage = pins.getNextPage();
 
@@ -33,7 +33,7 @@ public class TestPinResponse {
 
     @Test
     public void testPinResponse() throws IOException {
-        final String response = loadFile("com/chrisdempewolf/CompletePinResponse.json");
+        final String response = loadFile("com/chrisdempewolf/complete_pin_response.json");
         final PinResponse pinResponse = new Gson().fromJson(response, PinResponse.class);
         final Pin pin = pinResponse.getPin();
         final Creator creator = pin.getCreator();

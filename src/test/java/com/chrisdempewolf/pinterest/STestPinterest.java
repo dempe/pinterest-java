@@ -44,21 +44,21 @@ public class STestPinterest {
     @Test
     public void testWithAttribution() throws IOException {
         final PinResponse actualPinResponse = pinterest.getPin(PIN_WITH_ATTRIBUTION, new PinFields().setAll());
-        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/PinWithAttribution.json"), PinResponse.class);
+        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/pin_with_attribution.json"), PinResponse.class);
         assertEquals(expectedPinResponse, actualPinResponse);
     }
 
     @Test
     public void testPinWithAllFields() throws IOException {
         final PinResponse actualPinResponse = pinterest.getPin(PIN_ID, new PinFields().setAll());
-        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/CompletePinResponse.json"), PinResponse.class);
+        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/complete_pin_response.json"), PinResponse.class);
         assertEquals(expectedPinResponse, actualPinResponse);
     }
 
     @Test
     public void testPinWithDefaultFields() throws IOException {
         final PinResponse actualPinResponse = pinterest.getPin(PIN_ID);
-        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/DefaultPinResponse.json"), PinResponse.class);
+        final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/default_pin_response.json"), PinResponse.class);
         assertEquals(expectedPinResponse, actualPinResponse);
     }
 
