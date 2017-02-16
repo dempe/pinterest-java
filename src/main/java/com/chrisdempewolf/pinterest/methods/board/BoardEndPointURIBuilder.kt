@@ -18,8 +18,14 @@ object BoardEndPointURIBuilder {
 
     @JvmStatic
     @Throws(URISyntaxException::class)
-    fun buildBaseBoardUri(accessToken: String): URI {
-        return URIBuilder(BASE_URL).setPath(BASE_BOARD_PATH).setParameter("access_token", accessToken).build()
+    fun buildBaseBoardUri(accessToken: String, fields: String?): URI {
+        val uriBuilder = URIBuilder(BASE_URL).setPath(BASE_BOARD_PATH).setParameter("access_token", accessToken)
+
+        if (isNotBlank(fields)) {
+            uriBuilder.setParameter("fields", fields)
+        }
+
+        return uriBuilder.build()
     }
 
     @JvmStatic

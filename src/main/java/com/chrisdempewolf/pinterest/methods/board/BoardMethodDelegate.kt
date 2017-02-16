@@ -49,8 +49,27 @@ class BoardMethodDelegate(private val accessToken: String) {
     fun postBoard(boardName: String, description: String): ResponseMessageAndStatusCode {
         try {
             return NetworkHelper.submitPostRequest(
-                    BoardEndPointURIBuilder.buildBaseBoardUri(accessToken),
+                    BoardEndPointURIBuilder.buildBaseBoardUri(accessToken, "description,id,name,url"),
                     mapOf("name" to boardName, "description" to description))
+        }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
+
+    /**
+     * In the patch request, both params are optional.  The default is simply a noop.
+     * @param boardName:  the <username>/<actual-boardname> combo (e.g., "cdatarank/foo")
+     * @param name:  the new name for the board (e.g., "foobar")
+     * @param description: simply a string
+     * @return ResponseMessageAndStatusCode
+     */
+    fun patchBoard(boardName: String,
+                   name: String? = null,
+                   description: String? = null): ResponseMessageAndStatusCode {
+        try {
+            return NetworkHelper.submitPatchRequest(
+                    BoardEndPointURIBuilder.buildBoardUri(accessToken, boardName, "description,id,name,url"),
+                    mapOf("name" to name, "description" to description))
         }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }

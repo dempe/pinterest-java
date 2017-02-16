@@ -15,10 +15,12 @@ import org.apache.commons.io.Charsets;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpStatus;
+import org.json.JSONObject;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
@@ -33,12 +35,25 @@ public class STestPinterest {
 
     @Test
     public void testPostAndDelete() throws IOException {
-        final String boardName = "test";
+        final String boardName = "foo";
         final ResponseMessageAndStatusCode response = pinterest.postBoard(boardName, "test description");
         assertEquals(HttpStatus.SC_CREATED, response.getStatusCode());
 
         final Boolean deleted = pinterest.deleteBoard("cdatarank/" + boardName);
         assertEquals(true, deleted);
+    }
+
+    @Test
+    public void testPatch() throws IOException {
+        final String name = "test";
+        final String boardName = "cdatarank/" + name;
+        final String description = Long.toString(new Random().nextLong());
+        final ResponseMessageAndStatusCode response = pinterest.patchBoard(boardName, name, description);
+        final JSONObject dataObject = new JSONObject(response.getMessage()).getJSONObject("data");
+
+        assertEquals(HttpStatus.SC_OK, response.getStatusCode());
+        assertEquals(description, dataObject.getString("description"));
+        assertEquals(name, dataObject.getString("name"));
     }
 
     @Test

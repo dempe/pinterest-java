@@ -65,6 +65,10 @@ class Pinterest(accessToken: String) {
         return boardMethodDelegate.postBoard(boardName, description)
     }
 
+    fun patchBoard(boardName: String, name: String? = null, description: String? = null): ResponseMessageAndStatusCode {
+        return boardMethodDelegate.patchBoard(boardName, name, description)
+    }
+
     fun getBoard(boardName: String): BoardResponse {
         return boardMethodDelegate.getBoard(boardName)
     }
