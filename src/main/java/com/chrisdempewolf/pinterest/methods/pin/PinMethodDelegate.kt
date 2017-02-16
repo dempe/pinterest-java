@@ -37,7 +37,7 @@ class PinMethodDelegate(private val accessToken: String) {
      * I adopted the true/false pattern for deletion from RestFB
      * @param id:  Pin ID
      * *
-     * @return true iff deletion was successful; false otherwise
+     * @return true iff deletion was successful
      */
     fun deletePin(id: String): Boolean {
         try {
@@ -48,12 +48,11 @@ class PinMethodDelegate(private val accessToken: String) {
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
-    val myPins: Pins
-        get() {
-            try { return Gson().fromJson(IOUtils.toString(buildMyPinUri(accessToken, null)), Pins::class.java) }
-            catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
-            catch (e: IOException) { throw PinterestException(e.message, e) }
-        }
+    fun getMyPins(): Pins {
+        try { return Gson().fromJson(IOUtils.toString(buildMyPinUri(accessToken, null)), Pins::class.java) }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
 
     fun getMyPins(pinFields: PinFields): Pins {
         try { return Gson().fromJson(IOUtils.toString(buildMyPinUri(accessToken, pinFields.build())), Pins::class.java) }

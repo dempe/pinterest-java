@@ -32,8 +32,9 @@ class Pinterest(accessToken: String) {
         return pinMethodDelegate.getPin(id, pinFields)
     }
 
-    val myPins: Pins
-        get() = pinMethodDelegate.myPins
+    fun getMyPins(): Pins {
+        return pinMethodDelegate.getMyPins()
+    }
 
     fun getMyPins(pinFields: PinFields): Pins {
         return pinMethodDelegate.getMyPins(pinFields)
@@ -55,8 +56,9 @@ class Pinterest(accessToken: String) {
         return boardMethodDelegate.getBoard(boardName, boardFields)
     }
 
-    val myBoards: Boards
-        get() = boardMethodDelegate.myBoards
+    fun getMyBoards(): Boards {
+        return boardMethodDelegate.getMyBoards()
+    }
 
     fun getMyBoards(boardFields: BoardFields): Boards {
         return boardMethodDelegate.getMyBoards(boardFields)

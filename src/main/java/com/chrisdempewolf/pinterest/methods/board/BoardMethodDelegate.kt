@@ -28,12 +28,11 @@ class BoardMethodDelegate(private val accessToken: String) {
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
-    val myBoards: Boards
-        get() {
-            try { return Gson().fromJson(IOUtils.toString(buildMyBoardUri(accessToken, null)), Boards::class.java) }
-            catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
-            catch (e: IOException) { throw PinterestException(e.message, e) }
-        }
+    fun getMyBoards(): Boards {
+        try { return Gson().fromJson(IOUtils.toString(buildMyBoardUri(accessToken, null)), Boards::class.java) }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
 
     fun getMyBoards(boardFields: BoardFields): Boards {
         try { return Gson().fromJson(IOUtils.toString(buildMyBoardUri(accessToken, boardFields.build())), Boards::class.java) }

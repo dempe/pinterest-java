@@ -30,7 +30,9 @@ class PinEndPointURIBuilder private constructor() {
 
         @Throws(URISyntaxException::class)
         fun buildPinUri(accessToken: String, id: String, fields: String?): URI {
-            val uriBuilder = URIBuilder(BASE_URL).setPath(PIN_PATTERN.matcher(PIN_PATH).replaceFirst(id)).setParameter("access_token", accessToken)
+            val uriBuilder = URIBuilder(BASE_URL)
+                    .setPath(PIN_PATTERN.matcher(PIN_PATH).replaceFirst(id))
+                    .setParameter("access_token", accessToken)
 
             if (isNotBlank(fields)) {
                 uriBuilder.setParameter("fields", fields)
@@ -52,7 +54,9 @@ class PinEndPointURIBuilder private constructor() {
 
         @Throws(URISyntaxException::class)
         fun buildBoardPinUri(accessToken: String, name: String, fields: String?): URI {
-            val uriBuilder = URIBuilder(BASE_URL).setPath(BOARD_NAME_PATTERN.matcher(BOARD_PIN_PATH).replaceFirst(name)).setParameter("access_token", accessToken)
+            val uriBuilder = URIBuilder(BASE_URL)
+                    .setPath(BOARD_NAME_PATTERN.matcher(BOARD_PIN_PATH).replaceFirst(name))
+                    .setParameter("access_token", accessToken)
 
             if (isNotBlank(fields)) {
                 uriBuilder.setParameter("fields", fields)
