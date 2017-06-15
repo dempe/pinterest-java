@@ -147,4 +147,4 @@ assertEquals(true, deleted);
 
 # Contributing
 
-See https://github.com/dempe/pinterest-java/blob/master/CONTRIBUTING.md
+See [CONTRIBUTING.md](https://github.com/dempe/pinterest-java/blob/master/CONTRIBUTING.md).
