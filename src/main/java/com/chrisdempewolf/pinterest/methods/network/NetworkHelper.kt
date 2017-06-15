@@ -36,9 +36,8 @@ object NetworkHelper {
     }
 
     @JvmStatic
-    private fun convertResponse(response: HttpResponse): ResponseMessageAndStatusCode {
-        return ResponseMessageAndStatusCode(response.statusLine.statusCode, EntityUtils.toString(response.entity))
-    }
+    private fun convertResponse(response: HttpResponse): ResponseMessageAndStatusCode
+        = ResponseMessageAndStatusCode(response.statusLine.statusCode, EntityUtils.toString(response.entity))
 
     @JvmStatic
     fun submitPatchRequest(url: URI, formData: Map<String, String?>): ResponseMessageAndStatusCode {

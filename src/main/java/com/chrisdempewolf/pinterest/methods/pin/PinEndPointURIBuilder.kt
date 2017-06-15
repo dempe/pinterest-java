@@ -19,9 +19,8 @@ object PinEndPointURIBuilder {
 
     @JvmStatic
     @Throws(URISyntaxException::class)
-    fun buildBasePinUri(accessToken: String): URI {
-        return URIBuilder(BASE_URL).setPath(BASE_PIN_PATH).setParameter("access_token", accessToken).build()
-    }
+    fun buildBasePinUri(accessToken: String): URI
+        = URIBuilder(BASE_URL).setPath(BASE_PIN_PATH).setParameter("access_token", accessToken).build()
 
     @JvmStatic
     @Throws(URISyntaxException::class)
