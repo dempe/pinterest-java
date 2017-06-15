@@ -32,7 +32,7 @@ class PinMethodDelegate(private val accessToken: String) {
     }
 
     /**
-     * I adopted the true/false pattern for deletion from RestFB
+     * This true/false pattern for deletion was adopted from RestFB: http://restfb.com/
      * @param id:  Pin ID
      * @return true iff deletion was successful
      */
