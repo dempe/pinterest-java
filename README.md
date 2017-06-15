@@ -8,7 +8,7 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 <dependency>
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
-    <version>1.9</version>
+    <version>1.15</version>
 </dependency>
 ```
 
@@ -127,10 +127,10 @@ assertEquals(true, deleted);
 - [x] GET `/v1/me/boards/`
 - [x] DELETE `/v1/pins/<pin_id>`
 - [ ] POST `/v1/pins/`
-- [ ] POST `/v1/boards/` -- completed; yet to be released
+- [x] POST `/v1/boards/`
 - [ ] PATCH `/v1/pins/<pin_id>`
-- [ ] PATCH `/v1/boards/<board_name>` -- completed; yet to be released
-- [ ] DELETE `/v1/boards/<board_name>` -- completed; yet to be released
+- [x] PATCH `/v1/boards/<board_name>`
+- [x] DELETE `/v1/boards/<board_name>`
 - [ ] GET `/v1/me/`
 - [ ] GET `/v1/me/boards/suggested/`
 - [ ] GET `/v1/me/likes/`
