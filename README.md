@@ -66,13 +66,23 @@ while (pins.getNextPage() != null) {
 }
 ```
 
-- **Patching**:
+#### *Updating*
 ```java
 final ResponseMessageAndStatusCode response = pinterest.patchPin(
                                                                 "<PIN_ID>", 
                                                                 "(optional)<BOARD_NAME>", 
                                                                 "(optional)<NOTE>", 
                                                                 "(optional)<LINK>");
+```
+
+To update a Pin's note:
+```java
+```java
+final ResponseMessageAndStatusCode response = pinterest.patchPin(
+                                                                "<PIN_ID>", 
+                                                                null, 
+                                                                "<NOTE>", 
+                                                                null);
 ```
 
 
@@ -138,7 +148,7 @@ assertEquals(true, deleted);
 - [x] DELETE `/v1/pins/<pin_id>`
 - [ ] POST `/v1/pins/`
 - [x] POST `/v1/boards/`
-- [ ] PATCH `/v1/pins/<pin_id>`
+- [x] PATCH `/v1/pins/<pin_id>`
 - [x] PATCH `/v1/boards/<board_name>`
 - [x] DELETE `/v1/boards/<board_name>`
 - [ ] GET `/v1/me/`
