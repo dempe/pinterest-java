@@ -74,6 +74,17 @@ while (pins.getNextPage() != null) {
 ```
 
 ### *Updating*
+List of parameters:
+
+| Field         | Required      | Description   |
+| ------------- | ------------- | ------------- |
+| Pin ID        | Yes           | ID of Pin to update |
+| Board         | No            | Board to post to  |
+| Note          | No            | Pin's "note" or "description"  |
+| Link          | No            | The URL to the the Pin |
+
+(See the [Pinterest API documentation](https://developers.pinterest.com/docs/api/pins/?) for more info).
+
 ```java
 final ResponseMessageAndStatusCode response = pinterest.patchPin(
                                                                 "<PIN_ID>", 
