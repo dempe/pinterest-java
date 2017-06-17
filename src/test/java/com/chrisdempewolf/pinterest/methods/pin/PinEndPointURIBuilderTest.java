@@ -16,7 +16,7 @@ public class PinEndPointURIBuilderTest {
     @Test
     public void testBuildPinUri() throws URISyntaxException {
         final URI actualURI = PinEndPointURIBuilder.buildPinUri(ACCESS_TOKEN, PIN_ID, FIELDS);
-        final URI expectedURI = new URI("https://api.pinterest.com/v1/pins/" + PIN_ID + "?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
+        final URI expectedURI = new URI("https://api.pinterest.com/v1/pins/" + PIN_ID + "/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
         assertEquals(expectedURI, actualURI);
     }
 

@@ -43,35 +43,25 @@ public class PinResponseTest {
         final Article article = metaData.getArticle();
         final Link link = metaData.getLink();
 
-        assertEquals("https://www.pinterest.com/pin/422705115002975322/", pin.getUrl());
-        assertEquals("2015-06-29T15:46:23", pin.getCreatedAt());
-        assertEquals("I got Dulce de leche! What Ice Cream Flavor Are You?", pin.getNote());
-        assertEquals("#0a0502", pin.getColor());
-        assertEquals("https://www.pinterest.com/r/pin/422705115002975322/4779055074072594921/cd7cbc93cadede3167f390bbbd95ddb91bb3ea50c14178a761a6bebec604e411", pin.getLink());
-        assertEquals("422705115002975322", pin.getId());
+        assertEquals("https://www.pinterest.com/pin/525091637795429035/", pin.getUrl());
+        assertEquals("2017-06-17T14:22:33", pin.getCreatedAt());
+        assertEquals(" ", pin.getNote());
+        assertEquals("#152431", pin.getColor());
+        assertEquals("", pin.getLink());
+        assertEquals("525091637795429035", pin.getId());
 
-        assertEquals("https://www.pinterest.com/francisabila/", creator.getUrl());
-        assertEquals("Francis", creator.getFirstName());
-        assertEquals("Abila ", creator.getLastName());
-        assertEquals("422705252433686868", creator.getId());
+        assertEquals("https://www.pinterest.com/cdatarank/", creator.getUrl());
+        assertEquals("chris ", creator.getFirstName());
+        assertEquals("datarank", creator.getLastName());
+        assertEquals("525091775212175196", creator.getId());
 
-        assertEquals("https://www.pinterest.com/francisabila/all-about-me/", board.getUrl());
-        assertEquals("422705183714461377", board.getId());
-        assertEquals("ALL ABOUT ME", board.getName());
+        assertEquals("https://www.pinterest.com/cdatarank/this-is-a-new-board/", board.getUrl());
+        assertEquals("525091706493087676", board.getId());
+        assertEquals("this is a new board", board.getName());
 
         assertEquals(0, counts.getLikes().intValue());
         assertEquals(0, counts.getComments().intValue());
         assertEquals(0, counts.getRepins().intValue());
-
-        assertEquals(null, article.getPublishedAt());
-        assertEquals("It's time to separate the rocky roads from the mint chocolate chips.", article.getDescription());
-        assertEquals("What Ice Cream Flavor Are You?", article.getName());
-
-        assertEquals("en", link.getLocale());
-        assertEquals("What Ice Cream Flavor Are You?", link.getTitle());
-        assertEquals("BuzzFeed", link.getSiteName());
-        assertEquals("It's time to separate the rocky roads from the mint chocolate chips...", link.getDescription());
-        assertEquals("https://s-media-cache-ak0.pinimg.com/favicons/d0d9914d9e3671554b47fb6b5ade2575a96eeee451f4d5e8c63feb86.png?6f90f349a263fafae3843e9decf2812a", link.getFavicon());
     }
 
     private static String loadFile(final String resource) throws IOException {
