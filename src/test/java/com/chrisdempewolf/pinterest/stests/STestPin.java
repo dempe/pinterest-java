@@ -20,6 +20,18 @@ import static org.junit.Assert.assertEquals;
 
 public class STestPin extends BaseSTest {
     @Test
+    public void testPostPin() {
+        final String note = String.valueOf(new Random().nextDouble());
+        final ResponseMessageAndStatusCode response = pinterest.postPin(
+                "cdatarank/this-is-a-new-board",
+                note,
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/UPBSP_Flow.jpg/1280px-UPBSP_Flow.jpg",
+                null);
+
+        assertEquals(HttpStatus.SC_CREATED, response.getStatusCode());
+    }
+
+    @Test
     public void testPatchPin() {
         final ResponseMessageAndStatusCode response = pinterest.patchPin("525091637795429035", "cdatarank/this-is-a-new-board", String.valueOf(new Random().nextDouble()), null);
         assertEquals(HttpStatus.SC_OK, response.getStatusCode());

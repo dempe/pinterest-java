@@ -69,7 +69,7 @@ class PinMethodDelegate(private val accessToken: String) {
             val postBodyMap: Map<String, String?> = mapOf(
                     "board" to boardName,
                     "note" to note,
-                    "image" to image,
+                    "image_url" to image,
                     "link" to link)
 
             return NetworkHelper.submitPostRequest(
@@ -104,5 +104,6 @@ class PinMethodDelegate(private val accessToken: String) {
      * Takes a Map<String, String?> and filters any null or blank values to use for POST and PATCH bodies.
      */
     private fun buildNonNullMap(map: Map<String, String?>): Map<String, String>
-        = map.filter { e -> e.value.isNullOrBlank() } as Map<String, String>
+        = map.filter { e -> !e.value.isNullOrBlank() } as Map<String, String>
+
 }
