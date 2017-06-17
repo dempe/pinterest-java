@@ -33,6 +33,9 @@ class Pinterest(accessToken: String) {
 
     fun getPinsFromBoard(boardName: String, pinFields: PinFields): Pins = pinMethodDelegate.getPinsFromBoard(boardName, pinFields)
 
+    fun patchPin(pinID: String, board: String? = null, note: String? = null, link: String? = null): ResponseMessageAndStatusCode
+            = pinMethodDelegate.patchPin(pinID, board, note, link)
+
     fun postPin(
             boardName: String,
             note: String,

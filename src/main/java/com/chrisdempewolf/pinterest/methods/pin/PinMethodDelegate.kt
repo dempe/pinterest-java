@@ -45,15 +45,37 @@ class PinMethodDelegate(private val accessToken: String) {
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
+    fun patchPin(pinID: String, board: String?, note: String?, link: String?): ResponseMessageAndStatusCode {
+        try {
+            val patchBodyMap: Map<String, String?> = mapOf(
+                    "pin" to pinID,
+                    "board" to board,
+                    "note" to note,
+                    "link" to link)
+
+            return NetworkHelper.submitPatchRequest(
+                    buildBasePinUri(accessToken),
+                    buildNonNullMap(patchBodyMap))
+        }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
+
     fun postPin(
             boardName: String,
             note: String,
             image: String,
             link: String? = null): ResponseMessageAndStatusCode {
         try {
+            val postBodyMap: Map<String, String?> = mapOf(
+                    "board" to boardName,
+                    "note" to note,
+                    "image" to image,
+                    "link" to link)
+
             return NetworkHelper.submitPostRequest(
                     buildBasePinUri(accessToken),
-                    buildPostMap(boardName, note, image, link))
+                    buildNonNullMap(postBodyMap))
         }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
@@ -79,8 +101,9 @@ class PinMethodDelegate(private val accessToken: String) {
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
-    private fun buildPostMap(boardName: String, note: String, image: String, link: String?): Map<String, String> {
-        link?.let { return mapOf("board" to boardName, "note" to note, "image" to image, "link" to link) }
-        return mapOf("board" to boardName, "note" to note, "image" to image)
-    }
+    /**
+     * Takes a Map<String, String?> and filters any null or blank values to use for POST and PATCH bodies.
+     */
+    private fun buildNonNullMap(map: Map<String, String?>): Map<String, String>
+        = map.filter { e -> e.value.isNullOrBlank() } as Map<String, String>
 }

@@ -26,8 +26,16 @@ object NetworkHelper {
     }
 
     @JvmStatic
-    fun submitPostRequest(url: URI, formData: Map<String, String>): ResponseMessageAndStatusCode {
-        val response = Request.Post(url)
+    fun submitPostRequest(url: URI, formData: Map<String, String>): ResponseMessageAndStatusCode
+            = submitRequestWithBody(url, formData, Request::Post)
+
+    @JvmStatic
+    fun submitPatchRequest(url: URI, formData: Map<String, String?>): ResponseMessageAndStatusCode
+            = submitRequestWithBody(url, formData, Request::Patch)
+
+    @JvmStatic
+    private fun submitRequestWithBody(url: URI, formData: Map<String, String?>, request: (uri: URI) -> Request): ResponseMessageAndStatusCode {
+        val response = request(url)
                 .bodyForm(convertMapToForm(formData))
                 .execute()
                 .returnResponse()
@@ -37,17 +45,7 @@ object NetworkHelper {
 
     @JvmStatic
     private fun convertResponse(response: HttpResponse): ResponseMessageAndStatusCode
-        = ResponseMessageAndStatusCode(response.statusLine.statusCode, EntityUtils.toString(response.entity))
-
-    @JvmStatic
-    fun submitPatchRequest(url: URI, formData: Map<String, String?>): ResponseMessageAndStatusCode {
-        val response = Request.Patch(url)
-                .bodyForm(convertMapToForm(formData))
-                .execute()
-                .returnResponse()
-
-        return convertResponse(response)
-    }
+            = ResponseMessageAndStatusCode(response.statusLine.statusCode, EntityUtils.toString(response.entity))
 
     @JvmStatic
     private fun convertMapToForm(formData: Map<String, String?>): List<NameValuePair> {
