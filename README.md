@@ -28,7 +28,7 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 - To get a Pin (with **all fields**) via a Pin ID:
   - Example Pin ID:  `525091637782793357`; from URL: `https://www.pinterest.com/pin/525091637782793357/`
 ```java 
-final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>", new PinFields().setAll());
+final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>", new PinFields().withAll());
 ```
    
 - To get a Pin with **only default fields** (`url`, `note`, `link`, `id`) set:
@@ -43,7 +43,7 @@ final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>", new PinFields().with
   
 - To get **your own** Pins (with **all fields**):
 ```java 
-final Pins pins = pinterest.getMyPins(new PinFields().setAll());
+final Pins pins = pinterest.getMyPins(new PinFields().withAll());
 pins.forEach(pin -> {System.out.println(pin);});
 ```
     
@@ -55,7 +55,7 @@ final Pins pins = pinterest.getPinsFromBoard("<INSERT_BOARD_NAME>");
     
 - To get all the Pins **from a board** with **all fields**:
 ```java 
-final Pins pins = pinterest.getPinsFromBoard("<BOARD_NAME>", new PinFields().setAll());
+final Pins pins = pinterest.getPinsFromBoard("<BOARD_NAME>", new PinFields().withAll());
 ```
   
 - **Paging** through Pin responses:
@@ -103,18 +103,18 @@ final boolean deleted = pinterest.deletePin("<INSERT_PIN_ID>");
   - Example Board name: `cdatarank/欲しいもの`
     from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
 ```java
-final BoardResponse boardResponse = pinterest.getBoard("<INSERT_BOARD_NAME>");
+final BoardResponse boardResponse = pinterest.getBoard("<BOARD_NAME>");
 final Board board = boardResponse.getBoard();
 ```
 
 -  To get info about a particular Board with **all** fields:
 ```java
-final BoardResponse boardResponse = pinterest.getBoard("<INSERT_BOARD_NAME>", new BoardFields().setAll());
+final BoardResponse boardResponse = pinterest.getBoard("<BOARD_NAME>", new BoardFields().withAll());
 final Board board = boardResponse.getBoard();
 ```
 - **Paging** through Board responses:
 ```java
-Boards boards = pinterest.getMyBoards(new BoardFields().setAll());
+Boards boards = pinterest.getMyBoards(new BoardFields().withAll());
 while (boards.getNextPage() != null) {
     boards = pinterest.getNextPageOfBoards(boards.getNextPage());
 }
