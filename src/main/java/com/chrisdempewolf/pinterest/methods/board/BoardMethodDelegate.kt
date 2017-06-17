@@ -2,11 +2,8 @@ package com.chrisdempewolf.pinterest.methods.board
 
 import com.chrisdempewolf.pinterest.exceptions.PinterestException
 import com.chrisdempewolf.pinterest.fields.board.BoardFields
-import com.chrisdempewolf.pinterest.methods.board.BoardEndPointURIBuilder.buildBoardUri
-import com.chrisdempewolf.pinterest.methods.board.BoardEndPointURIBuilder.buildMyBoardUri
 import com.chrisdempewolf.pinterest.methods.network.NetworkHelper
 import com.chrisdempewolf.pinterest.methods.network.ResponseMessageAndStatusCode
-import com.chrisdempewolf.pinterest.methods.pin.PinEndPointURIBuilder
 import com.chrisdempewolf.pinterest.responses.board.BoardPage
 import com.chrisdempewolf.pinterest.responses.board.BoardResponse
 import com.chrisdempewolf.pinterest.responses.board.Boards
@@ -21,7 +18,7 @@ import java.net.URISyntaxException
 class BoardMethodDelegate(private val accessToken: String) {
 
     fun getBoard(boardName: String, boardFields: BoardFields? = null): BoardResponse {
-        try { return Gson().fromJson(IOUtils.toString(BoardEndPointURIBuilder.buildBoardUri(accessToken, boardName, boardFields?.build())), BoardResponse::class.java) }
+        try { return Gson().fromJson(IOUtils.toString(BoardEndPointURIBuilder.buildBoardURI(accessToken, boardName, boardFields?.build())), BoardResponse::class.java) }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
@@ -33,7 +30,7 @@ class BoardMethodDelegate(private val accessToken: String) {
      */
     fun deleteBoard(boardName: String): Boolean {
         try {
-            val response = NetworkHelper.submitDeleteRequest(BoardEndPointURIBuilder.buildBoardUri(accessToken, boardName, null))
+            val response = NetworkHelper.submitDeleteRequest(BoardEndPointURIBuilder.buildBoardURI(accessToken, boardName, null))
             return response.statusCode == HttpStatus.SC_OK
         }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
@@ -43,7 +40,7 @@ class BoardMethodDelegate(private val accessToken: String) {
     fun postBoard(boardName: String, description: String): ResponseMessageAndStatusCode {
         try {
             return NetworkHelper.submitPostRequest(
-                    BoardEndPointURIBuilder.buildBaseBoardUri(accessToken, "description,id,name,url"),
+                    BoardEndPointURIBuilder.buildBaseBoardURI(accessToken, "description,id,name,url"),
                     mapOf("name" to boardName, "description" to description))
         }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
@@ -62,7 +59,7 @@ class BoardMethodDelegate(private val accessToken: String) {
                    description: String? = null): ResponseMessageAndStatusCode {
         try {
             return NetworkHelper.submitPatchRequest(
-                    BoardEndPointURIBuilder.buildBoardUri(accessToken, boardName, "description,id,name,url"),
+                    BoardEndPointURIBuilder.buildBoardURI(accessToken, boardName, "description,id,name,url"),
                     mapOf("name" to name, "description" to description))
         }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
@@ -70,7 +67,7 @@ class BoardMethodDelegate(private val accessToken: String) {
     }
 
     fun getMyBoards(boardFields: BoardFields? = null): Boards {
-        try { return Gson().fromJson(IOUtils.toString(BoardEndPointURIBuilder.buildMyBoardUri(accessToken, boardFields?.build())), Boards::class.java) }
+        try { return Gson().fromJson(IOUtils.toString(BoardEndPointURIBuilder.buildMyBoardURI(accessToken, boardFields?.build())), Boards::class.java) }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }

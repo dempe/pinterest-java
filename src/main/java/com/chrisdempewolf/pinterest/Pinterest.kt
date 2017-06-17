@@ -2,23 +2,28 @@ package com.chrisdempewolf.pinterest
 
 import com.chrisdempewolf.pinterest.fields.board.BoardFields
 import com.chrisdempewolf.pinterest.fields.pin.PinFields
+import com.chrisdempewolf.pinterest.fields.user.UserFields
 import com.chrisdempewolf.pinterest.methods.board.BoardMethodDelegate
 import com.chrisdempewolf.pinterest.methods.network.ResponseMessageAndStatusCode
 import com.chrisdempewolf.pinterest.methods.pin.PinMethodDelegate
+import com.chrisdempewolf.pinterest.methods.user.UserMethodDelegate
 import com.chrisdempewolf.pinterest.responses.board.BoardPage
 import com.chrisdempewolf.pinterest.responses.board.BoardResponse
 import com.chrisdempewolf.pinterest.responses.board.Boards
 import com.chrisdempewolf.pinterest.responses.pin.PinPage
 import com.chrisdempewolf.pinterest.responses.pin.PinResponse
 import com.chrisdempewolf.pinterest.responses.pin.Pins
+import com.chrisdempewolf.pinterest.responses.user.User
 
 class Pinterest(accessToken: String) {
     private val pinMethodDelegate: PinMethodDelegate
     private val boardMethodDelegate: BoardMethodDelegate
+    private val userMethodDelegate: UserMethodDelegate
 
     init {
         this.pinMethodDelegate = PinMethodDelegate(accessToken)
         this.boardMethodDelegate = BoardMethodDelegate(accessToken)
+        this.userMethodDelegate = UserMethodDelegate(accessToken)
     }
 
     fun getPin(id: String): PinResponse = pinMethodDelegate.getPin(id, PinFields())
@@ -58,6 +63,10 @@ class Pinterest(accessToken: String) {
     fun getMyBoards(): Boards = boardMethodDelegate.getMyBoards()
 
     fun getMyBoards(boardFields: BoardFields): Boards = boardMethodDelegate.getMyBoards(boardFields)
+
+    fun getMe(): User = userMethodDelegate.getMe()
+
+    fun getMe(userFields: UserFields): User = userMethodDelegate.getMe(userFields)
 
     fun getNextPageOfPins(page: PinPage): Pins? = pinMethodDelegate.getNextPageOfPins(page)
 

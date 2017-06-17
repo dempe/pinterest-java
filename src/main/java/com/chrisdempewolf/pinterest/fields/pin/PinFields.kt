@@ -32,7 +32,6 @@ class PinFields : BaseFields() {
         return join(serializedFieldsList, ",")
     }
 
-    // TODO:  is there a better way to do this? i.e., formulaically
     override fun withAll(): PinFields {
         this.withCounts().withLink().withMetadata().withNote().withURL().withColor().withAttribution().withCreatedAt()
         creatorFields.withAll()

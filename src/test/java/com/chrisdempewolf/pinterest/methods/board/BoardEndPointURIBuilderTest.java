@@ -14,14 +14,14 @@ public class BoardEndPointURIBuilderTest {
 
     @Test
     public void testBuildBoardUri() throws URISyntaxException {
-        final URI actualURI = BoardEndPointURIBuilder.buildBoardUri(ACCESS_TOKEN, BOARD_NAME, FIELDS);
+        final URI actualURI = BoardEndPointURIBuilder.buildBoardURI(ACCESS_TOKEN, BOARD_NAME, FIELDS);
         final URI expectedURI = new  URI("https://api.pinterest.com/v1/boards/" + BOARD_NAME + "/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
         assertEquals(expectedURI, actualURI);
     }
 
     @Test
     public void testBuildMyBoardUri() throws URISyntaxException {
-        final URI actualURI = BoardEndPointURIBuilder.buildMyBoardUri(ACCESS_TOKEN, FIELDS);
+        final URI actualURI = BoardEndPointURIBuilder.buildMyBoardURI(ACCESS_TOKEN, FIELDS);
         final URI expectedURI = new  URI("https://api.pinterest.com/v1/me/boards/?access_token=" + ACCESS_TOKEN + "&fields=" + FIELDS);
         assertEquals(expectedURI, actualURI);
     }

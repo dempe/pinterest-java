@@ -18,8 +18,10 @@ object BoardEndPointURIBuilder {
 
     @JvmStatic
     @Throws(URISyntaxException::class)
-    fun buildBaseBoardUri(accessToken: String, fields: String?): URI {
-        val uriBuilder = URIBuilder(BASE_URL).setPath(BASE_BOARD_PATH).setParameter("access_token", accessToken)
+    fun buildBaseBoardURI(accessToken: String, fields: String?): URI {
+        val uriBuilder = URIBuilder(BASE_URL)
+                                .setPath(BASE_BOARD_PATH)
+                                .setParameter("access_token", accessToken)
 
         if (isNotBlank(fields)) {
             uriBuilder.setParameter("fields", fields)
@@ -30,8 +32,10 @@ object BoardEndPointURIBuilder {
 
     @JvmStatic
     @Throws(URISyntaxException::class)
-    fun buildBoardUri(accessToken: String, boardName: String, fields: String?): URI {
-        val uriBuilder = URIBuilder(BASE_URL).setPath(BOARD_NAME_PATTERN.matcher(BOARD_PATH).replaceFirst(boardName)).setParameter("access_token", accessToken)
+    fun buildBoardURI(accessToken: String, boardName: String, fields: String?): URI {
+        val uriBuilder = URIBuilder(BASE_URL)
+                            .setPath(BOARD_NAME_PATTERN.matcher(BOARD_PATH).replaceFirst(boardName))
+                            .setParameter("access_token", accessToken)
 
         if (isNotBlank(fields)) {
             uriBuilder.setParameter("fields", fields)
@@ -42,8 +46,10 @@ object BoardEndPointURIBuilder {
 
     @JvmStatic
     @Throws(URISyntaxException::class)
-    fun buildMyBoardUri(accessToken: String, fields: String?): URI {
-        val uriBuilder = URIBuilder(BASE_URL).setPath(MY_BOARD_PATH).setParameter("access_token", accessToken)
+    fun buildMyBoardURI(accessToken: String, fields: String?): URI {
+        val uriBuilder = URIBuilder(BASE_URL)
+                            .setPath(MY_BOARD_PATH)
+                            .setParameter("access_token", accessToken)
 
         if (isNotBlank(fields)) {
             uriBuilder.setParameter("fields", fields)
