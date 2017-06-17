@@ -3,7 +3,7 @@
 Found a bug? Have a suggestion? Feel free to send me PR or make an issue on the repo!
 
 ### Commits
-I base my commit message format of [THIS POST](https://chris.beams.io/posts/git-commit/).
+I base my commit message format off [THIS POST](https://chris.beams.io/posts/git-commit/).
 
 But here is an excerpt taken from that post highlighting the main points...
 
@@ -20,4 +20,6 @@ But here is an excerpt taken from that post highlighting the main points...
 
 ### Tests
 
-To run the integration tests, put your Pinterest access token in the root of this directory in a file called `.access_token`.
+I currently have two types of tests: unit tests and system tests (STests).  The unit tests should _never_ fail.  The system tests are hitting live data, so they break often.  I plan to add some mocked out integration tests soon as a middle ground.
+
+To run the system tests, put your Pinterest access token in the root of this repo in a file called `.access_token`.
