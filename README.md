@@ -8,22 +8,22 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 <dependency>
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
-    <version>1.15</version>
+    <version>1.16</version>
 </dependency>
 ```
 
 # Examples
 
-### Initialization
+## Initialization
 
 - Construct a new Pinterest SDK:
 ```java 
  final Pinterest pinterest = new Pinterest("<INSERT_YOUR_PINTEREST_ACCESS_TOKEN>");
 ```
     
-### Pin Methods
+## Pin Methods
 
-#### *Fetching*
+### *Fetching*
     
 - To get a Pin (with **all fields**) via a Pin ID:
   - Example Pin ID:  `525091637782793357`; from URL: `https://www.pinterest.com/pin/525091637782793357/`
@@ -66,7 +66,7 @@ while (pins.getNextPage() != null) {
 }
 ```
 
-#### *Updating*
+### *Updating*
 ```java
 final ResponseMessageAndStatusCode response = pinterest.patchPin(
                                                                 "<PIN_ID>", 
@@ -77,7 +77,6 @@ final ResponseMessageAndStatusCode response = pinterest.patchPin(
 
 To update a Pin's note:
 ```java
-```java
 final ResponseMessageAndStatusCode response = pinterest.patchPin(
                                                                 "<PIN_ID>", 
                                                                 null, 
@@ -86,7 +85,7 @@ final ResponseMessageAndStatusCode response = pinterest.patchPin(
 ```
 
 
-#### *Deleting*
+### *Deleting*
 
 All you need is the Pin ID and an access token with write access to the Pin question.
 This method returns `true` if the Pin was successfully deleted; `false` otherwise.
@@ -95,9 +94,9 @@ This method returns `true` if the Pin was successfully deleted; `false` otherwis
 final boolean deleted = pinterest.deletePin("<INSERT_PIN_ID>");
 ```
   
-### Board Methods
+## Board Methods
 
-#### *Fetching*
+### *Fetching*
 
 -  To get info about a particular Board with **default** fields:
   - Example Board name: `cdatarank/欲しいもの`
@@ -120,19 +119,19 @@ while (boards.getNextPage() != null) {
 }
 ```
 
-#### *Posting*
+### *Posting*
 ```java
 final ResponseMessageAndStatusCode response = pinterest.postBoard("<BOARD_NAME>", "<BOARD_DESCRIPTION>");
 ```
 
-#### *Updating*
+### *Updating*
 ```java
 final name = "newname"; // the _actual_ name of the board
 final boardName = "<YOUR_USERNAME>/<CURRENT_NAME_OF_BOARD>";
 final ResponseMessageAndStatusCode response = pinterest.patchBoard(boardName, name, description);
 ```
 
-#### *Deleting*
+### *Deleting*
 ```java
 final Boolean deleted = pinterest.deleteBoard("<YOUR_USERNAME>/<CURRENT_NAME_OF_BOARD>");
 assertEquals(true, deleted);
