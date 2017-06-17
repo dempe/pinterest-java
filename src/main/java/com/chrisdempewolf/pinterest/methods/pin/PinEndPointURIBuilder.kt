@@ -12,7 +12,7 @@ object PinEndPointURIBuilder {
     private const val BASE_URL = "https://api.pinterest.com"
     private const val BOARD_PIN_PATH = "/v1/boards/{BOARD_NAME}/pins/"
     private const val BASE_PIN_PATH = "/v1/pins"
-    private const val PIN_PATH = BASE_PIN_PATH + "/{PIN_ID}"
+    private const val PIN_PATH = BASE_PIN_PATH + "/{PIN_ID}/"
     private const val MY_PIN_PATH = "/v1/me/pins/"
     private val PIN_PATTERN = Pattern.compile("\\{PIN_ID\\}")
     private val BOARD_NAME_PATTERN = Pattern.compile("\\{BOARD_NAME\\}")

@@ -21,7 +21,7 @@ class Pinterest(accessToken: String) {
         this.boardMethodDelegate = BoardMethodDelegate(accessToken)
     }
 
-    fun getPin(id: String): PinResponse = pinMethodDelegate.getPin(id)
+    fun getPin(id: String): PinResponse = pinMethodDelegate.getPin(id, PinFields())
 
     fun getPin(id: String, pinFields: PinFields): PinResponse = pinMethodDelegate.getPin(id, pinFields)
 

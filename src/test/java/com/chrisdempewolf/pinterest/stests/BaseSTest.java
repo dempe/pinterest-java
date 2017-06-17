@@ -8,9 +8,9 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 
 class BaseSTest {
-    protected static final String PIN_ID = "422705115002975322";
+    protected static final String PIN_ID = "525091637795429035";
     protected static final String PIN_WITH_ATTRIBUTION = "12877548912849493";
-    protected static final String BOARD_NAME = "francisabila/all-about-me";
+    protected static final String BOARD_NAME = "LalaSaavedra/guayasamin";
 
     protected final Pinterest pinterest = new Pinterest(loadAccessToken());
 
@@ -21,7 +21,8 @@ class BaseSTest {
     private static String loadAccessToken() {
         try {
             return FileUtils.readFileToString(FileUtils.getFile(".access_token"), Charsets.UTF_8).replace("\n", "");
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new RuntimeException(e.getMessage(), e);
         }
     }

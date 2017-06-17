@@ -25,8 +25,8 @@ import java.net.URISyntaxException
 
 class PinMethodDelegate(private val accessToken: String) {
 
-    fun getPin(id: String, pinFields: PinFields? = null): PinResponse {
-        try { return Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, pinFields?.build())), PinResponse::class.java) }
+    fun getPin(id: String, pinFields: PinFields): PinResponse {
+        try { return Gson().fromJson(IOUtils.toString(buildPinUri(accessToken, id, pinFields.build())), PinResponse::class.java) }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
@@ -48,13 +48,12 @@ class PinMethodDelegate(private val accessToken: String) {
     fun patchPin(pinID: String, board: String?, note: String?, link: String?): ResponseMessageAndStatusCode {
         try {
             val patchBodyMap: Map<String, String?> = mapOf(
-                    "pin" to pinID,
                     "board" to board,
                     "note" to note,
                     "link" to link)
 
             return NetworkHelper.submitPatchRequest(
-                    buildBasePinUri(accessToken),
+                    buildPinUri(accessToken, pinID, null),
                     buildNonNullMap(patchBodyMap))
         }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
