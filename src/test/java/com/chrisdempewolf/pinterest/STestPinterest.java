@@ -58,14 +58,14 @@ public class STestPinterest {
 
     @Test
     public void testWithAttribution() throws IOException {
-        final PinResponse actualPinResponse = pinterest.getPin(PIN_WITH_ATTRIBUTION, new PinFields().setAll());
+        final PinResponse actualPinResponse = pinterest.getPin(PIN_WITH_ATTRIBUTION, new PinFields().withAll());
         final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/pin_with_attribution.json"), PinResponse.class);
         assertEquals(expectedPinResponse, actualPinResponse);
     }
 
     @Test
     public void testPinWithAllFields() throws IOException {
-        final PinResponse actualPinResponse = pinterest.getPin(PIN_ID, new PinFields().setAll());
+        final PinResponse actualPinResponse = pinterest.getPin(PIN_ID, new PinFields().withAll());
         final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/complete_pin_response.json"), PinResponse.class);
         assertEquals(expectedPinResponse, actualPinResponse);
     }
@@ -101,7 +101,7 @@ public class STestPinterest {
 
     @Test
     public void testBoardPinsWithAllFields() throws IOException {
-        final Pins pins = pinterest.getPinsFromBoard(BOARD_NAME, new PinFields().setAll());
+        final Pins pins = pinterest.getPinsFromBoard(BOARD_NAME, new PinFields().withAll());
 
         assertNotNull(pins.getNextPage());
         assertNotNull(pins.getPins());
@@ -144,7 +144,7 @@ public class STestPinterest {
 
     @Test
     public void testBoardWithAllFields() throws IOException {
-        final BoardResponse boardResponse = pinterest.getBoard(BOARD_NAME, new BoardFields().setAll());
+        final BoardResponse boardResponse = pinterest.getBoard(BOARD_NAME, new BoardFields().withAll());
         final Board board = boardResponse.getBoard();
 
         assertNotNull(board.getCounts());
@@ -174,7 +174,7 @@ public class STestPinterest {
 
     @Test
     public void testMyBoardWithAllFields() throws IOException {
-        final Boards boards = pinterest.getMyBoards(new BoardFields().setAll());
+        final Boards boards = pinterest.getMyBoards(new BoardFields().withAll());
         final List<Board> boardList = boards.getBoards();
 
         for (final Board board : boardList) {

@@ -38,7 +38,7 @@ final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>");
   
 - To get a Pin with **only** `link`, `created_at`, and `color` set:
 ```java
-final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>", new PinFields().setLink().setCreatedAt().setColor());
+final PinResponse pin = pinterest.getPin("<INSERT_PIN_ID>", new PinFields().withLink().withCreatedAt().withColor());
 ```
   
 - To get **your own** Pins (with **all fields**):

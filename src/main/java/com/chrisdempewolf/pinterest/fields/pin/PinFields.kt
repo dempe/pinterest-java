@@ -33,49 +33,49 @@ class PinFields : BaseFields() {
     }
 
     // TODO:  is there a better way to do this? i.e., formulaically
-    override fun setAll(): PinFields {
-        this.setCounts().setLink().setMetadata().setNote().setUrl().setColor().setAttribution().setCreatedAt()
-        creatorFields.setAll()
-        boardPinFields.setAll()
+    override fun withAll(): PinFields {
+        this.withCounts().withLink().withMetadata().withNote().withURL().withColor().withAttribution().withCreatedAt()
+        creatorFields.withAll()
+        boardPinFields.withAll()
         return this
     }
 
-    fun setLink(): PinFields {
+    fun withLink(): PinFields {
         fields = fields.plus("link")
         return this
     }
 
-    fun setCounts(): PinFields {
+    fun withCounts(): PinFields {
         fields = fields.plus("counts")
         return this
     }
 
-    fun setNote(): PinFields {
+    fun withNote(): PinFields {
         fields = fields.plus("note")
         return this
     }
 
-    fun setUrl(): PinFields {
+    fun withURL(): PinFields {
         fields = fields.plus("url")
         return this
     }
 
-    fun setMetadata(): PinFields {
+    fun withMetadata(): PinFields {
         fields = fields.plus("metadata")
         return this
     }
 
-    fun setColor(): PinFields {
+    fun withColor(): PinFields {
         fields = fields.plus("color")
         return this
     }
 
-    fun setAttribution(): PinFields {
+    fun withAttribution(): PinFields {
         fields = fields.plus("attribution")
         return this
     }
 
-    fun setCreatedAt(): PinFields {
+    fun withCreatedAt(): PinFields {
         fields = fields.plus("created_at")
         return this
     }

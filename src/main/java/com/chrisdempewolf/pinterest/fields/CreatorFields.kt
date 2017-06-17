@@ -2,7 +2,7 @@ package com.chrisdempewolf.pinterest.fields
 
 class CreatorFields : BaseFields() {
 
-    override fun setAll(): Fields {
+    override fun withAll(): Fields {
         return this.setFirstName().setId().setLastName().setUrl()
     }
 

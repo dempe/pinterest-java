@@ -21,7 +21,7 @@ public class TestPinFields {
 
     @Test
     public void testAllFields() {
-        final String fields = new PinFields().setAll().build();
+        final String fields = new PinFields().withAll().build();
         assertSubFields(fields, SERIALIZED_CREATOR_FIELDS, CREATOR_PATTERN);
         assertSubFields(fields, SERIALIZED_BOARD_FIELDS, BOARD_PATTERN);
 
@@ -43,9 +43,9 @@ public class TestPinFields {
 
     @Test
     public void testFieldsIndividually() {
-        assertEquals("url", new PinFields().setUrl().build());
-        assertEquals("note", new PinFields().setNote().build());
-        assertEquals("metadata", new PinFields().setMetadata().build());
+        assertEquals("url", new PinFields().withURL().build());
+        assertEquals("note", new PinFields().withNote().build());
+        assertEquals("metadata", new PinFields().withMetadata().build());
     }
 
     @Test

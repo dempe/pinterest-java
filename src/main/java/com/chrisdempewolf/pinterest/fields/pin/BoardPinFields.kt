@@ -5,21 +5,21 @@ import com.chrisdempewolf.pinterest.fields.Fields
 
 class BoardPinFields : BaseFields() {
 
-    override fun setAll(): Fields {
-        return this.setId().setName().setUrl()
+    override fun withAll(): Fields {
+        return this.withID().withName().withURL()
     }
 
-    fun setId(): BoardPinFields {
+    fun withID(): BoardPinFields {
         fields = fields.plus("id")
         return this
     }
 
-    fun setName(): BoardPinFields {
+    fun withName(): BoardPinFields {
         fields = fields.plus("name")
         return this
     }
 
-    fun setUrl(): BoardPinFields {
+    fun withURL(): BoardPinFields {
         fields = fields.plus("url")
         return this
     }

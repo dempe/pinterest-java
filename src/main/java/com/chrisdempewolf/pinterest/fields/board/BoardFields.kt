@@ -4,41 +4,41 @@ import com.chrisdempewolf.pinterest.fields.BaseFields
 
 class BoardFields : BaseFields() {
 
-    override fun setAll(): BoardFields {
-        return this.setCounts().setCreatedAt().setDescription().setId().setImage().setName().setUrl()
+    override fun withAll(): BoardFields {
+        return this.withCounts().withCreatedAt().withDescription().withID().withImage().withName().withURL()
     }
 
-    fun setId(): BoardFields {
+    fun withID(): BoardFields {
         fields = fields.plus("id")
         return this
     }
 
-    fun setName(): BoardFields {
+    fun withName(): BoardFields {
         fields = fields.plus("name")
         return this
     }
 
-    fun setUrl(): BoardFields {
+    fun withURL(): BoardFields {
         fields = fields.plus("url")
         return this
     }
 
-    fun setDescription(): BoardFields {
+    fun withDescription(): BoardFields {
         fields = fields.plus("description")
         return this
     }
 
-    fun setCreatedAt(): BoardFields {
+    fun withCreatedAt(): BoardFields {
         fields = fields.plus("created_at")
         return this
     }
 
-    fun setCounts(): BoardFields {
+    fun withCounts(): BoardFields {
         fields = fields.plus("counts")
         return this
     }
 
-    fun setImage(): BoardFields {
+    fun withImage(): BoardFields {
         fields = fields.plus("image")
         return this
     }
