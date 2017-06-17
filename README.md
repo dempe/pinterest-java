@@ -55,7 +55,7 @@ final Pins pins = pinterest.getPinsFromBoard("<INSERT_BOARD_NAME>");
     
 - To get all the Pins **from a board** with **all fields**:
 ```java 
-final Pins pins = pinterest.getPinsFromBoard("<INSERT_BOARD_NAME>", new PinFields().setAll());
+final Pins pins = pinterest.getPinsFromBoard("<BOARD_NAME>", new PinFields().setAll());
 ```
   
 - **Paging** through Pin responses:
@@ -65,6 +65,16 @@ while (pins.getNextPage() != null) {
     pins = pinterest.getNextPageOfPins(pins.getNextPage());
 }
 ```
+
+- **Patching**:
+```java
+final ResponseMessageAndStatusCode response = pinterest.patchPin(
+                                                                "<PIN_ID>", 
+                                                                "(optional)<BOARD_NAME>", 
+                                                                "(optional)<NOTE>", 
+                                                                "(optional)<LINK>");
+```
+
 
 #### *Deleting*
 
