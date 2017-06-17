@@ -18,7 +18,7 @@ import static junit.framework.TestCase.assertNull;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
-public class BoardSTest extends BaseSTest {
+public class STestBoard extends BaseSTest {
 
     @Test
     public void testBoardPostAndDelete() throws IOException {

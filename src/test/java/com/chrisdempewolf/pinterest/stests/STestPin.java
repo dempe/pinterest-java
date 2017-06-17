@@ -18,7 +18,7 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
 
-public class PinSTest extends BaseSTest {
+public class STestPin extends BaseSTest {
     @Test
     public void testPatchPin() {
         final ResponseMessageAndStatusCode response = pinterest.patchPin("525091637795429035", "cdatarank/this-is-a-new-board", String.valueOf(new Random().nextDouble()), null);
