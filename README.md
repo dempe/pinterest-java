@@ -17,8 +17,9 @@ Or check [Maven Central](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com
 
 ## Quick Note on Terminology
 
-The word "Board" on Pinterest can be somewhat confusing - does it refer to <username/board_name> or just the latter, "board_name" part?
-Here, when I say "board" I mean the "<username/board_name>" combination.  I will say "board name" when I'm specifically refering to the name of the Board without the prepended username portion.
+The word "Board" on Pinterest can be somewhat confusing - does it refer to `<username/board_name>` or just the latter, `board_name` part?
+
+Here, when I say _"board"_ I mean the `<username/board_name>` combination.  I will say _"board name"_ when I'm specifically refering to the name of the Board without the prepended username portion. I believe this is the approach Pinterest takes as well.
 
 ## Initialization
 
