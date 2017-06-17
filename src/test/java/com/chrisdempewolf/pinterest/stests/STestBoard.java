@@ -32,9 +32,9 @@ public class STestBoard extends BaseSTest {
     @Test
     public void testBoardPatch() throws IOException {
         final String name = "test";
-        final String boardName = "cdatarank/" + name;
+        final String board = "cdatarank/" + name;
         final String description = Long.toString(new Random().nextLong());
-        final ResponseMessageAndStatusCode response = pinterest.patchBoard(boardName, name, description);
+        final ResponseMessageAndStatusCode response = pinterest.patchBoard(board, name, description);
         final JSONObject dataObject = new JSONObject(response.getMessage()).getJSONObject("data");
 
         assertEquals(HttpStatus.SC_OK, response.getStatusCode());
