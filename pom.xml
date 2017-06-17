@@ -61,6 +61,11 @@
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.kennycason</groupId>
+            <artifactId>struktural</artifactId>
+            <version>1.0.2</version>
+        </dependency>
     </dependencies>
 
     <build>

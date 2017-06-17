@@ -7,7 +7,7 @@ import java.net.URISyntaxException;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestPinEndPointURIBuilder {
+public class PinEndPointURIBuilderTest {
     private static final String ACCESS_TOKEN = "testaccesstoken123";
     private static final String PIN_ID = "1234567890";
     private static final String FIELDS = "myFields";

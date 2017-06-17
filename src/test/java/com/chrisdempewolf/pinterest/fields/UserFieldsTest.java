@@ -1,4 +1,4 @@
 package com.chrisdempewolf.pinterest.fields;
 
-public class TestUserFields {
+public class UserFieldsTest {
 }

@@ -18,7 +18,7 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestPinResponse {
+public class PinResponseTest {
 
     @Test
     public void testPinsResponse() throws IOException {

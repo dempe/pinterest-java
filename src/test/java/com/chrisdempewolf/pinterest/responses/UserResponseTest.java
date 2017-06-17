@@ -1,4 +1,4 @@
 package com.chrisdempewolf.pinterest.responses;
 
-public class TestErrorResponse {
+public class UserResponseTest {
 }

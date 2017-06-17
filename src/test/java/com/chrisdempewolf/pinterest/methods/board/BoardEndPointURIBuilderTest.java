@@ -7,7 +7,7 @@ import java.net.URISyntaxException;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestBoardEndPointURIBuilder {
+public class BoardEndPointURIBuilderTest {
     private static final String ACCESS_TOKEN = "testaccesstoken123";
     private static final String FIELDS = "myFields";
     private static final String BOARD_NAME = "jsmith/myBoard";
