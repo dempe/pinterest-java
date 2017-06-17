@@ -8,10 +8,13 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 <dependency>
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
-    <version>1.17</version>
+    <version>1.18.0</version>
 </dependency>
 ```
 Or check [Maven Central](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.chrisdempewolf%22%20AND%20a%3A%22pinterest-sdk%22) for a list of published artifacts.
+
+### Versioning
+This project uses [Semantic Versioning](http://semver.org/); X.Y.Z, such that X, Y, and Z are natural numbers where an update to X indicates a breaking (API) change, to Y indicates new, backwards-compatible features were added, and to Z indicates a bug was patched.  Please see the [Semantic Versioning website](http://semver.org/) for more information.
 
 # Examples
 
