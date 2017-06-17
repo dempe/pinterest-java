@@ -8,7 +8,7 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 <dependency>
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
-    <version>1.18.0</version>
+    <version>1.19.0</version>
 </dependency>
 ```
 Or check [Maven Central](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.chrisdempewolf%22%20AND%20a%3A%22pinterest-sdk%22) for a list of published artifacts.
@@ -34,6 +34,16 @@ Here, when I say _"board"_, I mean the `<username/board_name>` combination.  I w
 ## Pin Methods
 
 ### *Fetching*
+
+#### Available Fields
+* `.withCounts()`
+* `.withLink()`
+* `.withMetadata()`
+* `.withNote()`
+* `.withURL()`
+* `.withColor()`
+* `.withAttribution()`
+* `.withCreatedAt()`
     
 - To get a Pin (with **all fields**) via a Pin ID:
   - Example Pin ID:  `525091637782793357`; from URL: `https://www.pinterest.com/pin/525091637782793357/`
@@ -128,6 +138,15 @@ final boolean deleted = pinterest.deletePin("<PIN_ID>");
 
 ### *Fetching*
 
+#### Available Fields
+* `.withCounts()`
+* `.withCreatedAt()`
+* `.withDescription()`
+* `.withID()`
+* `.withImage()`
+* `.withName()`
+* `.withURL()`
+
 -  To get info about a particular Board with **default** fields:
   - Example Board: `cdatarank/欲しいもの`
     from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
@@ -168,6 +187,38 @@ final ResponseMessageAndStatusCode response = pinterest.patchBoard(board, name, 
 final Boolean deleted = pinterest.deleteBoard("<BOARD>");
 assertEquals(true, deleted);
 ```
+
+## User Methods
+
+Note: user methods only work with the _authenticated_ user (i.e., the owner of the access token you are using).
+
+### *Fetching*
+
+#### Available Fields
+* `.withBio()`
+* `.withCounts()`
+* `.withCretedAt()`
+* `.withFirstName()`
+* `.withImage()`
+* `.withLastName()`
+* `.withURL()`
+* `.withUsername()`
+
+To get a user with the *default* fields:
+```java
+final User user = pinterest.getMe();
+```
+
+To get a user with *all* fields:
+```java
+final User user = pinterest.getMe(new UserFields().withAll());
+```
+
+To get a user with *first name* and *last name*:
+```java
+final User user = pinterest.getMe(new UserFields().withFirstName().withLastName());
+```
+
 ... more to come soon.
 
 # Coverage
@@ -182,7 +233,7 @@ assertEquals(true, deleted);
 - [x] PATCH `/v1/pins/<pin_id>`
 - [x] PATCH `/v1/boards/<board_name>`
 - [x] DELETE `/v1/boards/<board_name>`
-- [ ] GET `/v1/me/`
+- [x] GET `/v1/me/`
 - [ ] GET `/v1/me/boards/suggested/`
 - [ ] GET `/v1/me/likes/`
 - [ ] GET `/v1/me/search/boards/`
