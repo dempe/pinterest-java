@@ -44,6 +44,8 @@ Here, when I say _"board"_, I mean the `<username/board_name>` combination.  I w
 * `.withColor()`
 * `.withAttribution()`
 * `.withCreatedAt()`
+
+#### Usage
     
 - To get a Pin (with **all fields**) via a Pin ID:
   - Example Pin ID:  `525091637782793357`; from URL: `https://www.pinterest.com/pin/525091637782793357/`
@@ -147,6 +149,8 @@ final boolean deleted = pinterest.deletePin("<PIN_ID>");
 * `.withName()`
 * `.withURL()`
 
+#### Usage
+
 -  To get info about a particular Board with **default** fields:
   - Example Board: `cdatarank/欲しいもの`
     from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
@@ -203,6 +207,8 @@ Note: user methods only work with the _authenticated_ user (i.e., the owner of t
 * `.withLastName()`
 * `.withURL()`
 * `.withUsername()`
+
+#### Usage
 
 To get a user with the *default* fields:
 ```java
