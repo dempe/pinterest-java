@@ -55,7 +55,7 @@ pins.forEach(pin -> {System.out.println(pin);});
 ```
     
 - To get all the Pins **from a board** with default fields:
-  - Example board name:  `cdatarank/欲しいもの/`; from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
+  - Example Board:  `cdatarank/欲しいもの`; from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
 ```java 
 final Pins pins = pinterest.getPinsFromBoard("<BOARD>");
 ```
@@ -77,7 +77,7 @@ while (pins.getNextPage() != null) {
 ```java
 final ResponseMessageAndStatusCode response = pinterest.patchPin(
                                                                 "<PIN_ID>", 
-                                                                "(optional)<BOARD_NAME>", 
+                                                                "(optional)<BOARD>", 
                                                                 "(optional)<NOTE>", 
                                                                 "(optional)<LINK>");
 ```
@@ -104,7 +104,7 @@ final ResponseMessageAndStatusCode response = pinterest.postPin(
 ### *Deleting*
 
 All you need is the Pin ID and an access token with write access to the Pin question.
-This method returns `true` if the Pin was successfully deleted; `false` otherwise.
+This method returns `true` if the Pin was successfully deleted; `false` otherwise. This `true`/`false` return pattern was adopted from [RestFB](http://restfb.com/).
 
 ```java
 final boolean deleted = pinterest.deletePin("<PIN_ID>");
@@ -143,8 +143,8 @@ final ResponseMessageAndStatusCode response = pinterest.postBoard("<BOARD>", "<B
 ### *Updating*
 ```java
 final name = "newname"; // the _actual_ name of the board
-final boardName = "<CURRENT_BOARD>";
-final ResponseMessageAndStatusCode response = pinterest.patchBoard(boardName, name, description);
+final board = "<CURRENT_BOARD>";
+final ResponseMessageAndStatusCode response = pinterest.patchBoard(board, name, description);
 ```
 
 ### *Deleting*
