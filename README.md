@@ -136,8 +136,10 @@ while (boards.getNextPage() != null) {
 ```
 
 ### *Posting*
+Note:  this method requires a _Board name_ not a _Board_ (see terminology section for more information).
 ```java
-final ResponseMessageAndStatusCode response = pinterest.postBoard("<BOARD>", "<BOARD_DESCRIPTION>");
+final String boardName = "foo";
+final ResponseMessageAndStatusCode response = pinterest.postBoard(boardName, "<BOARD_DESCRIPTION>");
 ```
 
 ### *Updating*
