@@ -51,7 +51,7 @@ public class PinFieldsTest {
     @Test
     public void testCreatorFields() {
         final PinFields pinFields = new PinFields();
-        pinFields.getCreatorFields().setFirstName().setLastName();
+        pinFields.getCreatorFields().withFirstName().withLastName();
         assertSubFields(pinFields.build(), "creator(first_name,last_name)", CREATOR_PATTERN);
     }
 

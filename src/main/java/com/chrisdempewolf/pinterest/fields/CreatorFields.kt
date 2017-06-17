@@ -3,25 +3,28 @@ package com.chrisdempewolf.pinterest.fields
 class CreatorFields : BaseFields() {
 
     override fun withAll(): Fields {
-        return this.setFirstName().setId().setLastName().setUrl()
+        return withFirstName()
+                .withID()
+                .withLastName()
+                .withURL()
     }
 
-    fun setId(): CreatorFields {
+    fun withID(): CreatorFields {
         fields = fields.plus("id")
         return this
     }
 
-    fun setFirstName(): CreatorFields {
+    fun withFirstName(): CreatorFields {
         fields = fields.plus("first_name")
         return this
     }
 
-    fun setLastName(): CreatorFields {
+    fun withLastName(): CreatorFields {
         fields = fields.plus("last_name")
         return this
     }
 
-    fun setUrl(): CreatorFields {
+    fun withURL(): CreatorFields {
         fields = fields.plus("url")
         return this
     }

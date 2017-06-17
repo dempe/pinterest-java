@@ -5,7 +5,13 @@ import com.chrisdempewolf.pinterest.fields.BaseFields
 class BoardFields : BaseFields() {
 
     override fun withAll(): BoardFields {
-        return this.withCounts().withCreatedAt().withDescription().withID().withImage().withName().withURL()
+        return withCounts()
+                .withCreatedAt()
+                .withDescription()
+                .withID()
+                .withImage()
+                .withName()
+                .withURL()
     }
 
     fun withID(): BoardFields {

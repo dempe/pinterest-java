@@ -33,7 +33,14 @@ class PinFields : BaseFields() {
     }
 
     override fun withAll(): PinFields {
-        this.withCounts().withLink().withMetadata().withNote().withURL().withColor().withAttribution().withCreatedAt()
+        withCounts()
+                .withLink()
+                .withMetadata()
+                .withNote()
+                .withURL()
+                .withColor()
+                .withAttribution()
+                .withCreatedAt()
         creatorFields.withAll()
         boardPinFields.withAll()
         return this
