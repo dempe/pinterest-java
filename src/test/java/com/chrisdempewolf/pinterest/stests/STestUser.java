@@ -7,7 +7,7 @@ public class STestUser extends BaseSTest {
 
     @Test
     public void testGetMe() {
-        System.out.println(pinterest.getMe());
-        System.out.println(pinterest.getMe(new UserFields().withAll()));
+        System.out.println(pinterest.getUser());
+        System.out.println(pinterest.getUser(new UserFields().withAll()));
     }
 }

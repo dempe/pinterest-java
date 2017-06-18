@@ -64,9 +64,9 @@ class Pinterest(accessToken: String) {
 
     fun getMyBoards(boardFields: BoardFields): Boards = boardMethodDelegate.getMyBoards(boardFields)
 
-    fun getMe(): User = userMethodDelegate.getMe()
+    fun getUser(): User = userMethodDelegate.getUser()
 
-    fun getMe(userFields: UserFields): User = userMethodDelegate.getMe(userFields)
+    fun getUser(userFields: UserFields): User = userMethodDelegate.getUser(userFields)
 
     fun getNextPageOfPins(page: PinPage): Pins? = pinMethodDelegate.getNextPageOfPins(page)
 

@@ -12,7 +12,7 @@ import java.net.URISyntaxException
 
 class UserMethodDelegate(private val accessToken: String) {
 
-    fun getMe(userFields: UserFields? = null): User {
+    fun getUser(userFields: UserFields? = null): User {
         try {
             val response = IOUtils.toString(UserEndPointURIBuilder.buildBaseURI(accessToken, userFields?.build()))
             return Gson().fromJson(response, User::class.java)
