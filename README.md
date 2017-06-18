@@ -8,13 +8,13 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 <dependency>
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
-    <version>1.19.0</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 Or check [Maven Central](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.chrisdempewolf%22%20AND%20a%3A%22pinterest-sdk%22) for a list of published artifacts.
 
 ### Versioning
-This project uses [Semantic Versioning](http://semver.org/); X.Y.Z, such that X, Y, and Z are natural numbers where an update to X indicates a breaking (API) change, to Y indicates new, backwards-compatible features were added, and to Z indicates a bug was patched.  Please see the [Semantic Versioning website](http://semver.org/) for more information.
+This project uses [Semantic Versioning](http://semver.org/); MAJOR.MINOR.PATCH: X.Y.Z, such that X, Y, and Z are natural numbers where an update to X indicates a breaking (API) change, to Y indicates new, backwards-compatible features were added, and to Z indicates a bug was patched.  Please see the [Semantic Versioning website](http://semver.org/) for more information.
 
 # Examples
 
@@ -110,21 +110,13 @@ final ResponseMessageAndStatusCode response = pinterest.patchPin(
 
 To update a Pin's note:
 ```java
-final ResponseMessageAndStatusCode response = pinterest.patchPin(
-                                                                "<PIN_ID>", 
-                                                                null, 
-                                                                "<NOTE>", 
-                                                                null);
+final ResponseMessageAndStatusCode response = pinterest.patchPin("<PIN_ID>", null, "<NOTE>", null);
 ```
 
 ### *Posting*
 Currently, only POSTing via an image URL is supported.  Multi-part form and base64 encoded image uploading will be added soon.
 ```java
-final ResponseMessageAndStatusCode response = pinterest.postPin(
-                                                            "<BOARD>",
-                                                            "<NOTE>",
-                                                            "<IMG_URL>",
-                                                            "<LINK>");
+final ResponseMessageAndStatusCode response = pinterest.postPin("<BOARD>", "<NOTE>", "<IMG_URL>", "<LINK>");
 ```
 
 ### *Deleting*
@@ -194,7 +186,7 @@ assertEquals(true, deleted);
 
 ## User Methods
 
-Note: user methods only work with the _authenticated_ user (i.e., the owner of the access token you are using).
+Note: user methods only work with the _authenticated_ user (i.e., the owner of the access token you used to initialize the Pinterest SDK).
 
 ### *Fetching*
 
@@ -212,17 +204,17 @@ Note: user methods only work with the _authenticated_ user (i.e., the owner of t
 
 To get a user with the *default* fields:
 ```java
-final User user = pinterest.getMe();
+final User user = pinterest.getUser();
 ```
 
 To get a user with *all* fields:
 ```java
-final User user = pinterest.getMe(new UserFields().withAll());
+final User user = pinterest.getUser(new UserFields().withAll());
 ```
 
 To get a user with *first name* and *last name*:
 ```java
-final User user = pinterest.getMe(new UserFields().withFirstName().withLastName());
+final User user = pinterest.getUser(new UserFields().withFirstName().withLastName());
 ```
 
 ... more to come soon.
