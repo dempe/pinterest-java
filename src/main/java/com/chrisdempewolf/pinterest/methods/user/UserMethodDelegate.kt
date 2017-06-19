@@ -2,8 +2,10 @@ package com.chrisdempewolf.pinterest.methods.user
 
 import com.chrisdempewolf.pinterest.exceptions.PinterestException
 import com.chrisdempewolf.pinterest.fields.board.BoardFields
+import com.chrisdempewolf.pinterest.fields.pin.PinFields
 import com.chrisdempewolf.pinterest.fields.user.UserFields
 import com.chrisdempewolf.pinterest.responses.board.Boards
+import com.chrisdempewolf.pinterest.responses.pin.Pins
 import com.chrisdempewolf.pinterest.responses.user.User
 import com.google.gson.Gson
 import org.apache.commons.io.IOUtils
@@ -21,11 +23,31 @@ class UserMethodDelegate(private val accessToken: String) {
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
-    fun getSuggestedBoards(boardFields: BoardFields? = null): Boards {
+    fun getUserSuggestedBoards(boardFields: BoardFields? = null): Boards {
         try {
             val uri = UserEndPointURIBuilder.buildURI(accessToken, boardFields?.build(), "boards/suggested/")
             val response = IOUtils.toString(uri)
             return Gson().fromJson(response, Boards::class.java)
+        }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
+
+    fun getUserBoards(boardFields: BoardFields? = null): Boards {
+        try {
+            val uri = UserEndPointURIBuilder.buildURI(accessToken, boardFields?.build(), "boards/")
+            val response = IOUtils.toString(uri)
+            return Gson().fromJson(response, Boards::class.java)
+        }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
+
+    fun getUserPins(pinFields: PinFields? = null): Pins {
+        try {
+            val uri = UserEndPointURIBuilder.buildURI(accessToken, pinFields?.build(), "pins/")
+            val response = IOUtils.toString(uri)
+            return Gson().fromJson(response, Pins::class.java)
         }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }

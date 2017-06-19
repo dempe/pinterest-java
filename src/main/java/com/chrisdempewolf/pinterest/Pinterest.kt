@@ -26,17 +26,23 @@ class Pinterest(accessToken: String) {
         this.userMethodDelegate = UserMethodDelegate(accessToken)
     }
 
-    fun getPin(id: String): PinResponse = pinMethodDelegate.getPin(id, PinFields())
+    fun getPin(id: String): PinResponse
+            = pinMethodDelegate.getPin(id, PinFields())
 
-    fun getPin(id: String, pinFields: PinFields): PinResponse = pinMethodDelegate.getPin(id, pinFields)
+    fun getPin(id: String, pinFields: PinFields): PinResponse
+            = pinMethodDelegate.getPin(id, pinFields)
 
-    fun getMyPins(): Pins = pinMethodDelegate.getMyPins()
+    fun getMyPins(): Pins
+            = pinMethodDelegate.getMyPins()
 
-    fun getMyPins(pinFields: PinFields): Pins = pinMethodDelegate.getMyPins(pinFields)
+    fun getMyPins(pinFields: PinFields): Pins
+            = pinMethodDelegate.getMyPins(pinFields)
 
-    fun getPinsFromBoard(boardName: String): Pins = pinMethodDelegate.getPinsFromBoard(boardName)
+    fun getPinsFromBoard(boardName: String): Pins
+            = pinMethodDelegate.getPinsFromBoard(boardName)
 
-    fun getPinsFromBoard(boardName: String, pinFields: PinFields): Pins = pinMethodDelegate.getPinsFromBoard(boardName, pinFields)
+    fun getPinsFromBoard(boardName: String, pinFields: PinFields): Pins
+            = pinMethodDelegate.getPinsFromBoard(boardName, pinFields)
 
     fun patchPin(pinID: String, board: String? = null, note: String? = null, link: String? = null): ResponseMessageAndStatusCode
             = pinMethodDelegate.patchPin(pinID, board, note, link)
@@ -45,34 +51,60 @@ class Pinterest(accessToken: String) {
             boardName: String,
             note: String,
             image: String,
-            link: String? = null): ResponseMessageAndStatusCode = pinMethodDelegate.postPin(boardName, note, image, link)
+            link: String? = null): ResponseMessageAndStatusCode
+            = pinMethodDelegate.postPin(boardName, note, image, link)
 
-    fun deletePin(id: String): Boolean = pinMethodDelegate.deletePin(id)
+    fun deletePin(id: String): Boolean
+            = pinMethodDelegate.deletePin(id)
 
-    fun deleteBoard(boardName: String): Boolean = boardMethodDelegate.deleteBoard(boardName)
+    fun deleteBoard(boardName: String): Boolean
+            = boardMethodDelegate.deleteBoard(boardName)
 
-    fun postBoard(boardName: String, description: String): ResponseMessageAndStatusCode = boardMethodDelegate.postBoard(boardName, description)
+    fun postBoard(boardName: String, description: String): ResponseMessageAndStatusCode
+            = boardMethodDelegate.postBoard(boardName, description)
 
     fun patchBoard(boardName: String, name: String? = null, description: String? = null): ResponseMessageAndStatusCode
             = boardMethodDelegate.patchBoard(boardName, name, description)
 
-    fun getBoard(boardName: String): BoardResponse = boardMethodDelegate.getBoard(boardName)
+    fun getBoard(boardName: String): BoardResponse
+            = boardMethodDelegate.getBoard(boardName)
 
-    fun getBoard(boardName: String, boardFields: BoardFields): BoardResponse = boardMethodDelegate.getBoard(boardName, boardFields)
+    fun getBoard(boardName: String, boardFields: BoardFields): BoardResponse
+            = boardMethodDelegate.getBoard(boardName, boardFields)
 
-    fun getMyBoards(): Boards = boardMethodDelegate.getMyBoards()
+    fun getMyBoards(): Boards
+            = boardMethodDelegate.getMyBoards()
 
-    fun getMyBoards(boardFields: BoardFields): Boards = boardMethodDelegate.getMyBoards(boardFields)
+    fun getMyBoards(boardFields: BoardFields): Boards
+            = boardMethodDelegate.getMyBoards(boardFields)
 
-    fun getUser(): User = userMethodDelegate.getUser()
+    fun getUser(): User
+            = userMethodDelegate.getUser()
 
-    fun getUser(userFields: UserFields): User = userMethodDelegate.getUser(userFields)
+    fun getUser(userFields: UserFields): User
+            = userMethodDelegate.getUser(userFields)
 
-    fun getSuggestedBoards(): Boards = userMethodDelegate.getSuggestedBoards()
+    fun getUserBoards(): Boards
+            = userMethodDelegate.getUserBoards()
 
-    fun getSuggestedBoards(boardFields: BoardFields): Boards = userMethodDelegate.getSuggestedBoards(boardFields)
+    fun getUserBoards(boardFields: BoardFields): Boards
+            = userMethodDelegate.getUserBoards(boardFields)
 
-    fun getNextPageOfPins(page: PinPage): Pins? = pinMethodDelegate.getNextPageOfPins(page)
+    fun getUserPins(): Pins
+            = userMethodDelegate.getUserPins()
 
-    fun getNextPageOfBoards(page: BoardPage): Boards? = boardMethodDelegate.getNextPageOfBoards(page)
+    fun getUserPins(pinFields: PinFields): Pins
+            = userMethodDelegate.getUserPins(pinFields)
+
+    fun getUserSuggestedBoards(): Boards
+            = userMethodDelegate.getUserSuggestedBoards()
+
+    fun getUserSuggestedBoards(boardFields: BoardFields): Boards
+            = userMethodDelegate.getUserSuggestedBoards(boardFields)
+
+    fun getNextPageOfPins(page: PinPage): Pins?
+            = pinMethodDelegate.getNextPageOfPins(page)
+
+    fun getNextPageOfBoards(page: BoardPage): Boards?
+            = boardMethodDelegate.getNextPageOfBoards(page)
 }
