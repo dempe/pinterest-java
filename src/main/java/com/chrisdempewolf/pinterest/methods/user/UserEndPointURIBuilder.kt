@@ -1,7 +1,7 @@
 package com.chrisdempewolf.pinterest.methods.user
 
-import com.chrisdempewolf.pinterest.methods.board.BoardEndPointURIBuilder
 import org.apache.commons.lang3.StringUtils
+import org.apache.commons.lang3.StringUtils.isNotBlank
 import org.apache.http.client.utils.URIBuilder
 import java.net.URI
 import java.net.URISyntaxException
@@ -11,11 +11,14 @@ object UserEndPointURIBuilder {
 
     @JvmStatic
     @Throws(URISyntaxException::class)
-    fun buildBaseURI(accessToken: String, fields: String?): URI {
+    fun buildURI(accessToken: String, fields: String? = null, path: String? = null): URI {
         val uriBuilder = URIBuilder(BASE_URL).setParameter("access_token", accessToken)
 
-        if (StringUtils.isNotBlank(fields)) {
+        if (isNotBlank(fields)) {
             uriBuilder.setParameter("fields", fields)
+        }
+        if (isNotBlank(path)) {
+            uriBuilder.setPath(uriBuilder.path + path)
         }
 
         return uriBuilder.build()
