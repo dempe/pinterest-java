@@ -8,7 +8,7 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 <dependency>
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
 </dependency>
 ```
 Or check [Maven Central](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.chrisdempewolf%22%20AND%20a%3A%22pinterest-sdk%22) for a list of published artifacts.
@@ -217,6 +217,16 @@ To get a user with *first name* and *last name*:
 final User user = pinterest.getUser(new UserFields().withFirstName().withLastName());
 ```
 
+To get the user's list of suggested Boards (with *default* fields):
+```java
+final Boards boards = pinterest.getSuggestedBoards();
+```
+
+This method takes an optional `BoardFields` parameter (see the Board section above for more info).
+```java
+final Boards boards = pinterest.getSuggestedBoards(new BoardFields().withName());
+```
+
 ... more to come soon.
 
 # Coverage
@@ -232,8 +242,7 @@ final User user = pinterest.getUser(new UserFields().withFirstName().withLastNam
 - [x] PATCH `/v1/boards/<board_name>`
 - [x] DELETE `/v1/boards/<board_name>`
 - [x] GET `/v1/me/`
-- [ ] GET `/v1/me/boards/suggested/`
-- [ ] GET `/v1/me/likes/`
+- [x] GET `/v1/me/boards/suggested/`
 - [ ] GET `/v1/me/search/boards/`
 - [ ] GET `/v1/me/search/pins/`
 - [ ] POST `/v1/me/following/boards/`
