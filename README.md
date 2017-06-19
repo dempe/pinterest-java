@@ -8,7 +8,7 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 <dependency>
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
-    <version>2.1.0</version>
+    <version>3.0.0</version>
 </dependency>
 ```
 Or check [Maven Central](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.chrisdempewolf%22%20AND%20a%3A%22pinterest-sdk%22) for a list of published artifacts.
@@ -219,12 +219,27 @@ final User user = pinterest.getUser(new UserFields().withFirstName().withLastNam
 
 To get the user's list of suggested Boards (with *default* fields):
 ```java
-final Boards boards = pinterest.getSuggestedBoards();
+final Boards boards = pinterest.getUserSuggestedBoards();
 ```
 
 This method takes an optional `BoardFields` parameter (see the Board section above for more info).
 ```java
-final Boards boards = pinterest.getSuggestedBoards(new BoardFields().withName());
+final Boards boards = pinterest.getUserSuggestedBoards(new BoardFields().withName());
+```
+
+Retrieving all of a user's Boards works the same way:
+```java
+final Boards boards = pinterest.getUserBoards(new BoardFields().withName());
+```
+
+Similarly, to retrieve a user's Pins:
+```java
+final Pins pins = pinterest.getUserPins();
+```
+
+Or...
+```java
+final Pins pins = pinterest.getUserPins(new PinFields().withCreatedAt());
 ```
 
 ... more to come soon.
@@ -243,6 +258,8 @@ final Boards boards = pinterest.getSuggestedBoards(new BoardFields().withName())
 - [x] DELETE `/v1/boards/<board_name>`
 - [x] GET `/v1/me/`
 - [x] GET `/v1/me/boards/suggested/`
+- [x] GET `/v1/me/boards/`
+- [x] GET `/v1/me/pins/`
 - [ ] GET `/v1/me/search/boards/`
 - [ ] GET `/v1/me/search/pins/`
 - [ ] POST `/v1/me/following/boards/`
