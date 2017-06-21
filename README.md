@@ -184,7 +184,8 @@ final Boolean deleted = pinterest.deleteBoard("<BOARD>");
 assertEquals(true, deleted);
 ```
 
-## User Methods
+User Methods
+============
 
 Note: user methods only work with the _authenticated_ user (i.e., the owner of the access token you used to initialize the Pinterest SDK).
 
@@ -202,7 +203,7 @@ Note: user methods only work with the _authenticated_ user (i.e., the owner of t
 
 #### Usage
 
-##### User
+##### _User_
 
 To get a user with the *default* fields:
 ```java
@@ -218,7 +219,7 @@ To get a user with *first name* and *last name*:
 ```java
 final User user = pinterest.getUser(new UserFields().withFirstName().withLastName());
 ```
-##### User's Suggested Boards
+##### _User's Suggested Boards_
 
 To get the user's list of suggested Boards (with *default* fields):
 ```java
@@ -230,14 +231,14 @@ This method takes an optional `BoardFields` parameter (see the Board section abo
 final Boards boards = pinterest.getUserSuggestedBoards(new BoardFields().withName());
 ```
 
-##### User's Boards
+##### _User's Boards_
 
 Retrieving all of a user's Boards works the same way:
 ```java
 final Boards boards = pinterest.getUserBoards(new BoardFields().withName());
 ```
 
-##### User's Pins
+##### _User's Pins_
 Similarly, to retrieve a user's Pins:
 ```java
 final Pins pins = pinterest.getUserPins();
