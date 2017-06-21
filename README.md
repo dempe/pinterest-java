@@ -8,7 +8,7 @@ Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.co
 <dependency>
     <groupId>com.chrisdempewolf</groupId>
     <artifactId>pinterest-sdk</artifactId>
-    <version>3.0.0</version>
+    <version>3.1.0</version>
 </dependency>
 ```
 Or check [Maven Central](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.chrisdempewolf%22%20AND%20a%3A%22pinterest-sdk%22) for a list of published artifacts.
@@ -184,8 +184,7 @@ final Boolean deleted = pinterest.deleteBoard("<BOARD>");
 assertEquals(true, deleted);
 ```
 
-User Methods
-============
+## User Methods
 
 Note: user methods only work with the _authenticated_ user (i.e., the owner of the access token you used to initialize the Pinterest SDK).
 
@@ -249,6 +248,42 @@ Or...
 final Pins pins = pinterest.getUserPins(new PinFields().withCreatedAt());
 ```
 
+##### _Search User's Pins_
+```java
+final Pins pins = pinterest.searchUserPins("cucumber");
+```
+
+You can also optionally specify the fields you want returned:
+```java
+final Pins pins = pinterest.searchUserPins("cucumber", new PinFields().withNote());
+```
+
+*Paging* works the same for _all_ `Pins` responses, so:
+```java
+Pins pins = pinterest.searchUserPins("cucumber", new PinFields().withNote());
+while (pins.getNextPage() != null) {
+    pins = pinterest.getNextPageOfPins(pins.getNextPage());
+}
+```
+
+##### _Search User's Boards_
+```java
+final Boards boards = pinterest.searchUserBoards("cucumber");
+```
+
+You can also optionally specify the fields you want returned:
+```java
+final Boards boards = pinterest.searchUserBoards("cucumber", new BoardFields().withName());
+```
+
+*Paging* works the same for _all_ `Boards` responses, so:
+```java
+Boards boards = pinterest.searchUserBoards("cucumber", new BoardFields().withName());
+while (boards.getNextPage() != null) {
+    boards = pinterest.getNextPageOfBoards(boards.getNextPage());
+}
+```
+
 ... more to come soon.
 
 # Coverage
@@ -267,14 +302,14 @@ final Pins pins = pinterest.getUserPins(new PinFields().withCreatedAt());
 - [x] GET `/v1/me/boards/suggested/`
 - [x] GET `/v1/me/boards/`
 - [x] GET `/v1/me/pins/`
-- [ ] GET `/v1/me/search/boards/`
-- [ ] GET `/v1/me/search/pins/`
-- [ ] POST `/v1/me/following/boards/`
-- [ ] POST `/v1/me/following/users/`
+- [x] GET `/v1/me/search/boards/`
+- [x] GET `/v1/me/search/pins/`
 - [ ] GET `/v1/me/followers/`
 - [ ] GET `/v1/me/following/boards/`
 - [ ] GET `/v1/me/following/interests/`
 - [ ] GET `/v1/me/following/users/`
+- [ ] POST `/v1/me/following/boards/`
+- [ ] POST `/v1/me/following/users/`
 - [ ] DELETE `/v1/me/following/boards/<board>/`
 - [ ] DELETE `/v1/me/following/users/<user>/`
 
