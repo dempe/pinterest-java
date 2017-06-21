@@ -202,6 +202,8 @@ Note: user methods only work with the _authenticated_ user (i.e., the owner of t
 
 #### Usage
 
+##### User
+
 To get a user with the *default* fields:
 ```java
 final User user = pinterest.getUser();
@@ -216,6 +218,7 @@ To get a user with *first name* and *last name*:
 ```java
 final User user = pinterest.getUser(new UserFields().withFirstName().withLastName());
 ```
+##### User's Suggested Boards
 
 To get the user's list of suggested Boards (with *default* fields):
 ```java
@@ -227,11 +230,14 @@ This method takes an optional `BoardFields` parameter (see the Board section abo
 final Boards boards = pinterest.getUserSuggestedBoards(new BoardFields().withName());
 ```
 
+##### User's Boards
+
 Retrieving all of a user's Boards works the same way:
 ```java
 final Boards boards = pinterest.getUserBoards(new BoardFields().withName());
 ```
 
+##### User's Pins
 Similarly, to retrieve a user's Pins:
 ```java
 final Pins pins = pinterest.getUserPins();
