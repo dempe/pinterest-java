@@ -52,4 +52,24 @@ class UserMethodDelegate(private val accessToken: String) {
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
+
+    fun searchUserBoards(query: String, boardFields: BoardFields? = null): Boards {
+        try {
+            val uri = UserEndPointURIBuilder.buildURI(accessToken, boardFields?.build(), "search/boards", query)
+            val response = IOUtils.toString(uri)
+            return Gson().fromJson(response, Boards::class.java)
+        }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
+
+    fun searchUserPins(query: String, pinFields: PinFields? = null): Pins {
+        try {
+            val uri = UserEndPointURIBuilder.buildURI(accessToken, pinFields?.build(), "search/pins", query)
+            val response = IOUtils.toString(uri)
+            return Gson().fromJson(response, Pins::class.java)
+        }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
 }

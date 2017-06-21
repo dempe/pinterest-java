@@ -11,7 +11,7 @@ object UserEndPointURIBuilder {
 
     @JvmStatic
     @Throws(URISyntaxException::class)
-    fun buildURI(accessToken: String, fields: String? = null, path: String? = null): URI {
+    fun buildURI(accessToken: String, fields: String? = null, path: String? = null, query: String? = null): URI {
         val uriBuilder = URIBuilder(BASE_URL).setParameter("access_token", accessToken)
 
         if (isNotBlank(fields)) {
@@ -19,6 +19,9 @@ object UserEndPointURIBuilder {
         }
         if (isNotBlank(path)) {
             uriBuilder.setPath(uriBuilder.path + path)
+        }
+        if (isNotBlank(query)) {
+            uriBuilder.setParameter("query", query)
         }
 
         return uriBuilder.build()

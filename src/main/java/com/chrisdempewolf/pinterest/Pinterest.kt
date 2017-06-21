@@ -47,11 +47,10 @@ class Pinterest(accessToken: String) {
     fun patchPin(pinID: String, board: String? = null, note: String? = null, link: String? = null): ResponseMessageAndStatusCode
             = pinMethodDelegate.patchPin(pinID, board, note, link)
 
-    fun postPin(
-            boardName: String,
-            note: String,
-            image: String,
-            link: String? = null): ResponseMessageAndStatusCode
+    fun postPin(boardName: String,
+                note: String,
+                image: String,
+                link: String? = null): ResponseMessageAndStatusCode
             = pinMethodDelegate.postPin(boardName, note, image, link)
 
     fun deletePin(id: String): Boolean
@@ -101,6 +100,18 @@ class Pinterest(accessToken: String) {
 
     fun getUserSuggestedBoards(boardFields: BoardFields): Boards
             = userMethodDelegate.getUserSuggestedBoards(boardFields)
+
+    fun searchUserBoards(query: String): Boards
+        = userMethodDelegate.searchUserBoards(query)
+
+    fun searchUserBoards(query: String, boardFields: BoardFields): Boards
+            = userMethodDelegate.searchUserBoards(query, boardFields)
+
+    fun searchUserPins(query: String): Pins
+            = userMethodDelegate.searchUserPins(query)
+
+    fun searchUserPins(query: String, pinFields: PinFields): Pins
+            = userMethodDelegate.searchUserPins(query, pinFields)
 
     fun getNextPageOfPins(page: PinPage): Pins?
             = pinMethodDelegate.getNextPageOfPins(page)
