@@ -17,9 +17,8 @@
       "name": "this is a new board"
     },
     "counts": {
-      "likes": 0,
       "comments": 0,
-      "repins": 0
+      "saves": 0
     },
     "id": "525091637795429035",
     "metadata": {}

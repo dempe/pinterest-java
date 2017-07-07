@@ -1,3 +1,3 @@
 package com.chrisdempewolf.pinterest.responses.pin
 
-data class Counts(val likes: Int?, val comments: Int?, val repins: Int?)
+data class Counts(val comments: Int?, val saves: Int?)

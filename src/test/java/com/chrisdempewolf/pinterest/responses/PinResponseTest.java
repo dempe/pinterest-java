@@ -59,9 +59,8 @@ public class PinResponseTest {
         assertEquals("525091706493087676", board.getId());
         assertEquals("this is a new board", board.getName());
 
-        assertEquals(0, counts.getLikes().intValue());
         assertEquals(0, counts.getComments().intValue());
-        assertEquals(0, counts.getRepins().intValue());
+        assertEquals(0, counts.getSaves().intValue());
     }
 
     private static String loadFile(final String resource) throws IOException {
