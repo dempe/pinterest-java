@@ -16,15 +16,9 @@ import com.chrisdempewolf.pinterest.responses.pin.Pins
 import com.chrisdempewolf.pinterest.responses.user.User
 
 class Pinterest(accessToken: String) {
-    private val pinMethodDelegate: PinMethodDelegate
-    private val boardMethodDelegate: BoardMethodDelegate
-    private val userMethodDelegate: UserMethodDelegate
-
-    init {
-        this.pinMethodDelegate = PinMethodDelegate(accessToken)
-        this.boardMethodDelegate = BoardMethodDelegate(accessToken)
-        this.userMethodDelegate = UserMethodDelegate(accessToken)
-    }
+    private val pinMethodDelegate = PinMethodDelegate(accessToken)
+    private val boardMethodDelegate = BoardMethodDelegate(accessToken)
+    private val userMethodDelegate = UserMethodDelegate(accessToken)
 
     fun getPin(id: String): PinResponse
             = pinMethodDelegate.getPin(id, PinFields())
@@ -102,7 +96,7 @@ class Pinterest(accessToken: String) {
             = userMethodDelegate.getUserSuggestedBoards(boardFields)
 
     fun searchUserBoards(query: String): Boards
-        = userMethodDelegate.searchUserBoards(query)
+            = userMethodDelegate.searchUserBoards(query)
 
     fun searchUserBoards(query: String, boardFields: BoardFields): Boards
             = userMethodDelegate.searchUserBoards(query, boardFields)
