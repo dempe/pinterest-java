@@ -17,7 +17,7 @@ public class PinFieldsTest {
     private static final Pattern BOARD_PATTERN = Pattern.compile("board\\([a-z,]*\\)");
     private static final String ALL_FIELDS_SERIALIZED = "id,link,counts,note,url,creator(id,first_name,last_name,url),board(id,name,url),metadata,color,attribution,created_at";
     private static final String SERIALIZED_CREATOR_FIELDS = "id,first_name,last_name,url";
-    private static final String SERIALIZED_BOARD_FIELDS = "id,name,url";
+    private static final String SERIALIZED_BOARD_FIELDS = "id,name,url,counts";
 
     @Test
     public void testAllFields() {
