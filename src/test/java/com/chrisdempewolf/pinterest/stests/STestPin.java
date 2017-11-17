@@ -77,6 +77,11 @@ public class STestPin extends BaseSTest {
     }
 
     @Test
+    public void testUnfollowUser() throws IOException {
+        pinterest.unfollowUser("TMS17RAS");
+    }
+
+    @Test
     public void testFollowUser() throws IOException {
         pinterest.followUser("TMS17RAS");
     }

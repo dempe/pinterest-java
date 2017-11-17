@@ -139,6 +139,9 @@ class Pinterest(accessToken: String) {
     fun unfollowBoard(boardName: String): Boolean
             = userMethodDelegate.unfollowBoard(boardName)
 
+    fun unfollowUser(userName: String): Boolean
+            = userMethodDelegate.unfollowUser(userName)
+
     fun getNextPageOfFollowersBoards(page: BoardPage): Boards?
             = getNextPageOfBoards(page)
 

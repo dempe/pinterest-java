@@ -146,4 +146,14 @@ class UserMethodDelegate(private val accessToken: String) {
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
+
+    fun unfollowUser(userName: String): Boolean {
+        try {
+            val uri = UserEndPointURIBuilder.buildURI(accessToken, null,"following/users/${userName}/")
+            val response = NetworkHelper.submitDeleteRequest(uri)
+            return response.statusCode == HttpStatus.SC_OK
+        }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
 }
