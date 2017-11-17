@@ -15,6 +15,7 @@ import com.chrisdempewolf.pinterest.responses.user.UserPage
 import com.chrisdempewolf.pinterest.responses.user.Users
 import com.google.gson.Gson
 import org.apache.commons.io.IOUtils
+import org.apache.http.HttpStatus
 import java.io.IOException
 import java.net.URI
 import java.net.URISyntaxException
@@ -131,6 +132,16 @@ class UserMethodDelegate(private val accessToken: String) {
         try {
             val uri = UserEndPointURIBuilder.buildURI(accessToken, null,"following/users/")
             return NetworkHelper.submitPostRequest(uri, mapOf("user" to userName))
+        }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
+
+    fun unfollowBoard(boardName: String): Boolean {
+        try {
+            val uri = UserEndPointURIBuilder.buildURI(accessToken, null,"following/boards/${boardName}/")
+            val response = NetworkHelper.submitDeleteRequest(uri)
+            return response.statusCode == HttpStatus.SC_OK
         }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
