@@ -39,9 +39,8 @@ class BoardMethodDelegate(private val accessToken: String) {
 
     fun postBoard(boardName: String, description: String): ResponseMessageAndStatusCode {
         try {
-            return NetworkHelper.submitPostRequest(
-                    BoardEndPointURIBuilder.buildBaseBoardURI(accessToken, "description,id,name,url"),
-                    mapOf("name" to boardName, "description" to description))
+            return NetworkHelper.submitPostRequest(BoardEndPointURIBuilder.buildBaseBoardURI(accessToken, "description,id,name,url"),
+                                                   mapOf("name" to boardName, "description" to description))
         }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
@@ -58,9 +57,8 @@ class BoardMethodDelegate(private val accessToken: String) {
                    name: String? = null,
                    description: String? = null): ResponseMessageAndStatusCode {
         try {
-            return NetworkHelper.submitPatchRequest(
-                    BoardEndPointURIBuilder.buildBoardURI(accessToken, boardName, "description,id,name,url"),
-                    mapOf("name" to name, "description" to description))
+            return NetworkHelper.submitPatchRequest(BoardEndPointURIBuilder.buildBoardURI(accessToken, boardName, "description,id,name,url"),
+                                                    mapOf("name" to name, "description" to description))
         }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }

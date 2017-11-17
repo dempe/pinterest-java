@@ -130,6 +130,9 @@ class Pinterest(accessToken: String) {
     fun getFollowersBoards(boardFields: BoardFields): Boards
             = userMethodDelegate.getFollowersBoards(boardFields)
 
+    fun followBoard(boardName: String): ResponseMessageAndStatusCode
+            = userMethodDelegate.followBoard(boardName)
+
     fun getNextPageOfFollowersBoards(page: BoardPage): Boards?
             = getNextPageOfBoards(page)
 

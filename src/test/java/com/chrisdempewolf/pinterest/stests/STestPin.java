@@ -67,6 +67,11 @@ public class STestPin extends BaseSTest {
     }
 
     @Test
+    public void testFollowBoard() throws IOException {
+        pinterest.followBoard("kennethanthony/the-hobbit");
+    }
+
+    @Test
     public void testBoardPinsWithDefaultFields() throws IOException {
         final Pins pins = pinterest.getPinsFromBoard(BOARD_NAME);
 

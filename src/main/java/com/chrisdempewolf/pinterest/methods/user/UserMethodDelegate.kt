@@ -4,6 +4,9 @@ import com.chrisdempewolf.pinterest.exceptions.PinterestException
 import com.chrisdempewolf.pinterest.fields.board.BoardFields
 import com.chrisdempewolf.pinterest.fields.pin.PinFields
 import com.chrisdempewolf.pinterest.fields.user.UserFields
+import com.chrisdempewolf.pinterest.methods.board.BoardEndPointURIBuilder
+import com.chrisdempewolf.pinterest.methods.network.NetworkHelper
+import com.chrisdempewolf.pinterest.methods.network.ResponseMessageAndStatusCode
 import com.chrisdempewolf.pinterest.responses.board.BoardPage
 import com.chrisdempewolf.pinterest.responses.board.Boards
 import com.chrisdempewolf.pinterest.responses.pin.Pins
@@ -111,6 +114,15 @@ class UserMethodDelegate(private val accessToken: String) {
         if (page?.next == null) { return null }
 
         try { return Gson().fromJson(IOUtils.toString(URI(page.next)), Users::class.java) }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
+
+    fun followBoard(boardName: String): ResponseMessageAndStatusCode {
+        try {
+            val uri = UserEndPointURIBuilder.buildURI(accessToken, null,"following/boards/")
+            return NetworkHelper.submitPostRequest(uri, mapOf("board" to boardName))
+        }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
