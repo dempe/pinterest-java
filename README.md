@@ -101,8 +101,7 @@ List of parameters:
 (See the [Pinterest API documentation](https://developers.pinterest.com/docs/api/pins/?) for more info).
 
 ```java
-final ResponseMessageAndStatusCode response = pinterest.patchPin(
-                                                                "<PIN_ID>", 
+final ResponseMessageAndStatusCode response = pinterest.patchPin("<PIN_ID>", 
                                                                 "(optional)<BOARD>", 
                                                                 "(optional)<NOTE>", 
                                                                 "(optional)<LINK>");
