@@ -67,14 +67,6 @@ class UserMethodDelegate(private val accessToken: String) {
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
-    fun getNextPageOfFollowers(page: UserPage?): Users? {
-        if (page?.next == null) { return null }
-
-        try { return Gson().fromJson(IOUtils.toString(URI(page.next)), Users::class.java) }
-        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
-        catch (e: IOException) { throw PinterestException(e.message, e) }
-    }
-
     fun searchBoards(query: String, boardFields: BoardFields? = null): Boards {
         try {
             val uri = UserEndPointURIBuilder.buildURI(accessToken, boardFields?.build(), "search/boards", query)
@@ -105,10 +97,20 @@ class UserMethodDelegate(private val accessToken: String) {
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
 
-    fun getNextPageOfFollowersBoards(page: BoardPage?): Boards? {
+    fun getFollowing(userFields: UserFields? = null): Users {
+        try {
+            val uri = UserEndPointURIBuilder.buildURI(accessToken, userFields?.build(), "following/users")
+            val response = IOUtils.toString(uri)
+            return Gson().fromJson(response, Users::class.java)
+        }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
+
+    fun getNextPageOfUsers(page: UserPage?): Users? {
         if (page?.next == null) { return null }
 
-        try { return Gson().fromJson(IOUtils.toString(URI(page.next)), Boards::class.java) }
+        try { return Gson().fromJson(IOUtils.toString(URI(page.next)), Users::class.java) }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }

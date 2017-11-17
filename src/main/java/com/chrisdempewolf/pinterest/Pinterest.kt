@@ -115,14 +115,23 @@ class Pinterest(accessToken: String) {
     fun getFollowers(userFields: UserFields): Users
             = userMethodDelegate.getFollowers(userFields)
 
+    fun getFollowing(): Users
+            = userMethodDelegate.getFollowing()
+
+    fun getFollowing(userFields: UserFields): Users
+            = userMethodDelegate.getFollowing(userFields)
+
+    fun getNextPageOfFollowing(page: UserPage): Users?
+            = getNextPageOfUsers(page)
+
     fun getFollowersBoards(): Boards
             = userMethodDelegate.getFollowersBoards()
 
     fun getFollowersBoards(boardFields: BoardFields): Boards
-            = userMethodDelegate.getFollowersBoards()
+            = userMethodDelegate.getFollowersBoards(boardFields)
 
     fun getNextPageOfFollowersBoards(page: BoardPage): Boards?
-            = userMethodDelegate.getNextPageOfFollowersBoards(page)
+            = getNextPageOfBoards(page)
 
     fun getNextPageOfPins(page: PinPage): Pins?
             = pinMethodDelegate.getNextPageOfPins(page)
@@ -130,7 +139,7 @@ class Pinterest(accessToken: String) {
     fun getNextPageOfBoards(page: BoardPage): Boards?
             = boardMethodDelegate.getNextPageOfBoards(page)
 
-    fun getNextPageOfFollowers(page: UserPage): Users?
-            = userMethodDelegate.getNextPageOfFollowers(page)
+    fun getNextPageOfUsers(page: UserPage): Users?
+            = userMethodDelegate.getNextPageOfUsers(page)
 
 }
