@@ -307,17 +307,17 @@ while (boards.getNextPage() != null) {
 
 #### _FOLLOWING_
 
-With default fields...
+* With default fields...
 ```java
 final Users users = pinterest.getFollowing();
 ```
 
-With select fields...
+* With select fields...
 ```java
 final Users users = pinterest.getFollowing(new UserFields().withCounts().withBio());
 ```
 
-Paginating...
+* Paginating...
 ```java
 Users users = pinterest.getFollowing(new UserFields().withCounts().withBio());
 while (users.getNextPage() != null) {
@@ -326,16 +326,17 @@ while (users.getNextPage() != null) {
 ```
 
 ##### _SEARCH USER'S BOARDS_
+* With _default_ fields
 ```java
 final Boards boards = pinterest.searchUserBoards("cucumber");
 ```
 
-You can also optionally specify the fields you want returned:
+* With specific fields
 ```java
 final Boards boards = pinterest.searchUserBoards("cucumber", new BoardFields().withName());
 ```
 
-*Paging* works the same for _all_ `Boards` responses, so:
+* *Paging* works the same for _all_ `Boards` responses, so:
 ```java
 Boards boards = pinterest.searchUserBoards("cucumber", new BoardFields().withName());
 while (boards.getNextPage() != null) {
