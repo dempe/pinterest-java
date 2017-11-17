@@ -126,4 +126,13 @@ class UserMethodDelegate(private val accessToken: String) {
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }
+
+    fun followUser(userName: String): ResponseMessageAndStatusCode {
+        try {
+            val uri = UserEndPointURIBuilder.buildURI(accessToken, null,"following/users/")
+            return NetworkHelper.submitPostRequest(uri, mapOf("user" to userName))
+        }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
 }
