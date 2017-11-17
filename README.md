@@ -107,7 +107,7 @@ final ResponseMessageAndStatusCode response = pinterest.patchPin("<PIN_ID>",
                                                                 "(optional)<LINK>");
 ```
 
-To update a Pin's note:
+* To update a Pin's note:
 ```java
 final ResponseMessageAndStatusCode response = pinterest.patchPin("<PIN_ID>", null, "<NOTE>", null);
 ```
@@ -201,63 +201,72 @@ Note: user methods only work with the _authenticated_ user (i.e., the owner of t
 
 #### Usage
 
-##### _USER_
+##### **_USER_**
 
-To get a user with the *default* fields:
+* To get a user with the *default* fields:
 ```java
 final User user = pinterest.getUser();
 ```
 
-To get a user with *all* fields:
+* To get a user with *all* fields:
 ```java
 final User user = pinterest.getUser(new UserFields().withAll());
 ```
 
-To get a user with *first name* and *last name*:
+* To get a user with *first name* and *last name*:
 ```java
 final User user = pinterest.getUser(new UserFields().withFirstName().withLastName());
 ```
-##### _USER'S SUGGESTED BOARDS_
+##### **_USER'S SUGGESTED BOARDS_**
 
-To get the user's list of suggested Boards (with *default* fields):
+* To get the user's list of suggested Boards (with *default* fields):
 ```java
 final Boards boards = pinterest.getUserSuggestedBoards();
 ```
 
-This method takes an optional `BoardFields` parameter (see the Board section above for more info).
+* This method takes an optional `BoardFields` parameter (see the Board section above for more info).
 ```java
 final Boards boards = pinterest.getUserSuggestedBoards(new BoardFields().withName());
 ```
 
-##### _USER'S BOARDS_
+##### **_USER'S BOARDS_**
 
-Retrieving all of a user's Boards works the same way:
+* Retrieving all of a user's Boards works the same way:
 ```java
 final Boards boards = pinterest.getUserBoards(new BoardFields().withName());
 ```
 
-##### _USER'S PINS_
-Similarly, to retrieve a user's Pins:
+* *Paging* works the same for _all_ `Boards` responses, so:
+```java
+Boards boards = pinterest.getUserBoards(new BoardFields().withName());
+while (boards.getNextPage() != null) {
+    boards = pinterest.getNextPageOfBoards(boards.getNextPage());
+}
+```
+
+##### **_USER'S PINS_**
+* Similarly, to retrieve a user's Pins:
 ```java
 final Pins pins = pinterest.getUserPins();
 ```
 
-Or...
+* Or...
 ```java
 final Pins pins = pinterest.getUserPins(new PinFields().withCreatedAt());
 ```
 
-##### _SEARCH USER'S PINS_
+##### **_SEARCH USER'S PINS_**
+* With _default_ fields:
 ```java
 final Pins pins = pinterest.searchUserPins("cucumber");
 ```
 
-You can also optionally specify the fields you want returned:
+* With _select_ fields:
 ```java
 final Pins pins = pinterest.searchUserPins("cucumber", new PinFields().withNote());
 ```
 
-*Paging* works the same for _all_ `Pins` responses, so:
+* *Paging* works the same for _all_ `Pins` responses, so:
 ```java
 Pins pins = pinterest.searchUserPins("cucumber", new PinFields().withNote());
 while (pins.getNextPage() != null) {
@@ -265,19 +274,19 @@ while (pins.getNextPage() != null) {
 }
 ```
 
-#### _USER'S FOLLOWERS_
+#### **_USER'S FOLLOWERS_**
 
-With default fields...
+* With _default_ fields:
 ```java
 final Users users = pinterest.getFollowers();
 ```
 
-With select fields...
+* With _select_ fields:
 ```java
 final Users users = pinterest.getFollowers(new UserFields().withCounts().withBio());
 ```
 
-Paginating...
+* Paginating:
 ```java
 Users users = pinterest.getFollowers(new UserFields().withCounts().withBio());
 while (users.getNextPage() != null) {
@@ -287,17 +296,17 @@ while (users.getNextPage() != null) {
 
 #### **_FOLLOWERS' BOARDS_**
 
-* With default fields...
+* With _default_ fields:
 ```java
 final Boards boards = pinterest.getFollowersBoards();;
 ```
 
-* With select fields...
+* With _select_ fields:
 ```java
 final Boards boards = pinterest.getFollowersBoards(new BoardFields().withName().withURL());
 ```
 
-* Paginating...
+* Paginating:
 ```java
 Boards boards = pinterest.getFollowersBoards(new BoardFields().withName().withURL());
 while (boards.getNextPage() != null) {
@@ -307,17 +316,17 @@ while (boards.getNextPage() != null) {
 
 #### **_FOLLOWING_**
 
-* With default fields...
+* With _default_ fields:
 ```java
 final Users users = pinterest.getFollowing();
 ```
 
-* With select fields...
+* With _select_ fields:
 ```java
 final Users users = pinterest.getFollowing(new UserFields().withCounts().withBio());
 ```
 
-* Paginating...
+* Paginating:
 ```java
 Users users = pinterest.getFollowing(new UserFields().withCounts().withBio());
 while (users.getNextPage() != null) {
@@ -326,12 +335,12 @@ while (users.getNextPage() != null) {
 ```
 
 ##### **_SEARCH USER'S BOARDS_**
-* With _default_ fields
+* With _default_ fields:
 ```java
 final Boards boards = pinterest.searchUserBoards("cucumber");
 ```
 
-* With specific fields
+* With _select_ fields:
 ```java
 final Boards boards = pinterest.searchUserBoards("cucumber", new BoardFields().withName());
 ```
