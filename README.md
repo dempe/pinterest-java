@@ -265,6 +265,66 @@ while (pins.getNextPage() != null) {
 }
 ```
 
+#### _USER'S FOLLOWERS_
+
+With default fields...
+```java
+final Users users = pinterest.getFollowers();
+```
+
+With select fields...
+```java
+final Users users = pinterest.getFollowers(new UserFields().withCounts().withBio());
+```
+
+Paginating...
+```java
+Users users = pinterest.getFollowers(new UserFields().withCounts().withBio());
+while (users.getNextPage() != null) {
+    users = pinterest.getNextPageOfUsers(users.getNextPage());
+}
+```
+
+#### _FOLLOWERS' BOARDS_
+
+With default fields...
+```java
+final Boards boards = pinterest.getFollowersBoards();;
+```
+
+With select fields...
+```java
+final Boards boards = pinterest.getFollowersBoards(new BoardFields().withName().withURL());
+```
+
+Paginating...
+```java
+Boards boards = pinterest.getFollowersBoards(new BoardFields().withName().withURL());
+while (boards.getNextPage() != null) {
+    boards = pinterest.getNextPageOfBoards(boards.getNextPage());
+}
+```
+
+#### _FOLLOWING_
+
+With default fields...
+```java
+final Users users = pinterest.getFollowing();
+```
+
+With select fields...
+```java
+final Users users = pinterest.getFollowing(new UserFields().withCounts().withBio());
+```
+
+Paginating...
+```java
+Users users = pinterest.getFollowing(new UserFields().withCounts().withBio());
+while (users.getNextPage() != null) {
+    users = pinterest.getNextPageOfUsers(users.getNextPage());
+}
+```
+
 ##### _SEARCH USER'S BOARDS_
 ```java
 final Boards boards = pinterest.searchUserBoards("cucumber");
@@ -301,6 +361,19 @@ if (resp.getStatusCode() != 200) {
 }
 ```
 
+### *Deleting*
+
+#### _UNFOLLOW BOARD_
+
+```java
+final boolean unfollowed = pinterest.unfollowBoard("cdatarank/my-board");
+```
+
+#### _UNFOLLOW USER
+
+```java
+final boolean unfollowed = pinterest.unfollowUser("cdatarank");
+```
 
 # Coverage
 
