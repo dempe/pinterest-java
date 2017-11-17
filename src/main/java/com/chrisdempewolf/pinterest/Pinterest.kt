@@ -14,6 +14,8 @@ import com.chrisdempewolf.pinterest.responses.pin.PinPage
 import com.chrisdempewolf.pinterest.responses.pin.PinResponse
 import com.chrisdempewolf.pinterest.responses.pin.Pins
 import com.chrisdempewolf.pinterest.responses.user.User
+import com.chrisdempewolf.pinterest.responses.user.UserPage
+import com.chrisdempewolf.pinterest.responses.user.Users
 
 class Pinterest(accessToken: String) {
     private val pinMethodDelegate = PinMethodDelegate(accessToken)
@@ -72,44 +74,54 @@ class Pinterest(accessToken: String) {
             = boardMethodDelegate.getMyBoards(boardFields)
 
     fun getUser(): User
-            = userMethodDelegate.getUser()
+            = userMethodDelegate.get()
 
     fun getUser(userFields: UserFields): User
-            = userMethodDelegate.getUser(userFields)
+            = userMethodDelegate.get(userFields)
 
     fun getUserBoards(): Boards
-            = userMethodDelegate.getUserBoards()
+            = userMethodDelegate.getBoards()
 
     fun getUserBoards(boardFields: BoardFields): Boards
-            = userMethodDelegate.getUserBoards(boardFields)
+            = userMethodDelegate.getBoards(boardFields)
 
     fun getUserPins(): Pins
-            = userMethodDelegate.getUserPins()
+            = userMethodDelegate.getPins()
 
     fun getUserPins(pinFields: PinFields): Pins
-            = userMethodDelegate.getUserPins(pinFields)
+            = userMethodDelegate.getPins(pinFields)
 
     fun getUserSuggestedBoards(): Boards
-            = userMethodDelegate.getUserSuggestedBoards()
+            = userMethodDelegate.getSuggestedBoards()
 
     fun getUserSuggestedBoards(boardFields: BoardFields): Boards
-            = userMethodDelegate.getUserSuggestedBoards(boardFields)
+            = userMethodDelegate.getSuggestedBoards(boardFields)
 
     fun searchUserBoards(query: String): Boards
-            = userMethodDelegate.searchUserBoards(query)
+            = userMethodDelegate.searchBoards(query)
 
     fun searchUserBoards(query: String, boardFields: BoardFields): Boards
-            = userMethodDelegate.searchUserBoards(query, boardFields)
+            = userMethodDelegate.searchBoards(query, boardFields)
 
     fun searchUserPins(query: String): Pins
-            = userMethodDelegate.searchUserPins(query)
+            = userMethodDelegate.searchPins(query)
 
     fun searchUserPins(query: String, pinFields: PinFields): Pins
-            = userMethodDelegate.searchUserPins(query, pinFields)
+            = userMethodDelegate.searchPins(query, pinFields)
+
+    fun getFollowers(): Users
+            = userMethodDelegate.getFollowers()
+
+    fun getFollowers(userFields: UserFields): Users
+            = userMethodDelegate.getFollowers(userFields)
 
     fun getNextPageOfPins(page: PinPage): Pins?
             = pinMethodDelegate.getNextPageOfPins(page)
 
     fun getNextPageOfBoards(page: BoardPage): Boards?
             = boardMethodDelegate.getNextPageOfBoards(page)
+
+    fun getNextPageOfFollowers(page: UserPage): Users?
+            = userMethodDelegate.getNextPageOfFollowers(page)
+
 }

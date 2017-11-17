@@ -73,7 +73,7 @@ class BoardMethodDelegate(private val accessToken: String) {
     }
 
     fun getNextPageOfBoards(page: BoardPage?): Boards? {
-        if (page == null || page.next == null) { return null }
+        if (page?.next == null) { return null }
 
         try { return Gson().fromJson(IOUtils.toString(URI(page.next)), Boards::class.java) }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }

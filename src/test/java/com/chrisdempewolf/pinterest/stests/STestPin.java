@@ -6,6 +6,7 @@ import com.chrisdempewolf.pinterest.responses.pin.Pin;
 import com.chrisdempewolf.pinterest.responses.pin.PinPage;
 import com.chrisdempewolf.pinterest.responses.pin.PinResponse;
 import com.chrisdempewolf.pinterest.responses.pin.Pins;
+import com.chrisdempewolf.pinterest.responses.user.Users;
 import com.google.gson.Gson;
 import org.apache.http.HttpStatus;
 import org.junit.Ignore;
@@ -19,6 +20,7 @@ import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
 
 public class STestPin extends BaseSTest {
+
     @Test
     public void testPostPin() {
         final String note = String.valueOf(new Random().nextDouble());
@@ -56,6 +58,12 @@ public class STestPin extends BaseSTest {
         final PinResponse actualPinResponse = pinterest.getPin(PIN_ID);
         final PinResponse expectedPinResponse = new Gson().fromJson(loadFile("com/chrisdempewolf/default_pin_response.json"), PinResponse.class);
         assertEquals(expectedPinResponse, actualPinResponse);
+    }
+
+    @Test
+    public void testFollowersWithDefaultFields() throws IOException {
+        final Users users = pinterest.getFollowers();
+        System.out.println(users);
     }
 
     @Test
