@@ -3,7 +3,7 @@
 Found a bug? Have a suggestion? Feel free to send me PR or make an issue on the repo!
 
 ### Commits
-I base my commit messages format off [this post](https://chris.beams.io/posts/git-commit/).
+I base my commit messages format off [this post](https://chris.beams.io/posts/git-commit/). Please do the same if you wish to contribute.
 
 But here is an excerpt taken from that post highlighting the main points...
 
