@@ -283,7 +283,24 @@ while (boards.getNextPage() != null) {
 }
 ```
 
-... more to come soon.
+### *Posting*
+
+#### _FOLLOW BOARD_
+
+```java
+final ResponseMessageAndStatusCode resp = pinterest.followBoard("cdatarank/my-board");
+assertEquals(200L, resp.getStatusCode());
+```
+
+#### _FOLLOW USER_
+
+```java
+final ResponseMessageAndStatusCode resp = pinterest.followUser("cdatarank");
+if (resp.getStatusCode() != 200) {
+    System.err.println(resp.getMessage());
+}
+```
+
 
 # Coverage
 
