@@ -303,14 +303,14 @@ while (boards.getNextPage() != null) {
 - [x] GET `/v1/me/pins/`
 - [x] GET `/v1/me/search/boards/`
 - [x] GET `/v1/me/search/pins/`
-- [ ] GET `/v1/me/followers/`
-- [ ] GET `/v1/me/following/boards/`
+- [x] GET `/v1/me/followers/`
+- [x] GET `/v1/me/following/boards/`
 - [ ] GET `/v1/me/following/interests/`
-- [ ] GET `/v1/me/following/users/`
-- [ ] POST `/v1/me/following/boards/`
-- [ ] POST `/v1/me/following/users/`
-- [ ] DELETE `/v1/me/following/boards/<board>/`
-- [ ] DELETE `/v1/me/following/users/<user>/`
+- [x] GET `/v1/me/following/users/`
+- [x] POST `/v1/me/following/boards/`
+- [x] POST `/v1/me/following/users/`
+- [x] DELETE `/v1/me/following/boards/<board>/`
+- [x] DELETE `/v1/me/following/users/<user>/`
 
 # Contributing
 
