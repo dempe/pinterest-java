@@ -4,6 +4,7 @@ import com.chrisdempewolf.pinterest.exceptions.PinterestException
 import com.chrisdempewolf.pinterest.fields.board.BoardFields
 import com.chrisdempewolf.pinterest.fields.pin.PinFields
 import com.chrisdempewolf.pinterest.fields.user.UserFields
+import com.chrisdempewolf.pinterest.responses.board.BoardPage
 import com.chrisdempewolf.pinterest.responses.board.Boards
 import com.chrisdempewolf.pinterest.responses.pin.Pins
 import com.chrisdempewolf.pinterest.responses.user.User
@@ -90,6 +91,24 @@ class UserMethodDelegate(private val accessToken: String) {
             val response = IOUtils.toString(uri)
             return Gson().fromJson(response, Pins::class.java)
         }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
+
+    fun getFollowersBoards(boardFields: BoardFields? = null): Boards {
+        try {
+            val uri = UserEndPointURIBuilder.buildURI(accessToken, boardFields?.build(), "following/boards")
+            val response = IOUtils.toString(uri)
+            return Gson().fromJson(response, Boards::class.java)
+        }
+        catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
+        catch (e: IOException) { throw PinterestException(e.message, e) }
+    }
+
+    fun getNextPageOfFollowersBoards(page: BoardPage?): Boards? {
+        if (page?.next == null) { return null }
+
+        try { return Gson().fromJson(IOUtils.toString(URI(page.next)), Boards::class.java) }
         catch (e: URISyntaxException) { throw PinterestException(e.message, e) }
         catch (e: IOException) { throw PinterestException(e.message, e) }
     }

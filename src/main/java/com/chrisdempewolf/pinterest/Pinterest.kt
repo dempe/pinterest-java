@@ -115,6 +115,15 @@ class Pinterest(accessToken: String) {
     fun getFollowers(userFields: UserFields): Users
             = userMethodDelegate.getFollowers(userFields)
 
+    fun getFollowersBoards(): Boards
+            = userMethodDelegate.getFollowersBoards()
+
+    fun getFollowersBoards(boardFields: BoardFields): Boards
+            = userMethodDelegate.getFollowersBoards()
+
+    fun getNextPageOfFollowersBoards(page: BoardPage): Boards?
+            = userMethodDelegate.getNextPageOfFollowersBoards(page)
+
     fun getNextPageOfPins(page: PinPage): Pins?
             = pinMethodDelegate.getNextPageOfPins(page)
 
