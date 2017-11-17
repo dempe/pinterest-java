@@ -285,19 +285,19 @@ while (users.getNextPage() != null) {
 }
 ```
 
-#### _FOLLOWERS' BOARDS_
+#### **_FOLLOWERS' BOARDS_**
 
-With default fields...
+* With default fields...
 ```java
 final Boards boards = pinterest.getFollowersBoards();;
 ```
 
-With select fields...
+* With select fields...
 ```java
 final Boards boards = pinterest.getFollowersBoards(new BoardFields().withName().withURL());
 ```
 
-Paginating...
+* Paginating...
 ```java
 Boards boards = pinterest.getFollowersBoards(new BoardFields().withName().withURL());
 while (boards.getNextPage() != null) {
@@ -305,7 +305,7 @@ while (boards.getNextPage() != null) {
 }
 ```
 
-#### _FOLLOWING_
+#### **_FOLLOWING_**
 
 * With default fields...
 ```java
@@ -325,7 +325,7 @@ while (users.getNextPage() != null) {
 }
 ```
 
-##### _SEARCH USER'S BOARDS_
+##### **_SEARCH USER'S BOARDS_**
 * With _default_ fields
 ```java
 final Boards boards = pinterest.searchUserBoards("cucumber");
@@ -346,14 +346,14 @@ while (boards.getNextPage() != null) {
 
 ### *Posting*
 
-#### _FOLLOW BOARD_
+#### **_FOLLOW BOARD_**
 
 ```java
 final ResponseMessageAndStatusCode resp = pinterest.followBoard("cdatarank/my-board");
 assertEquals(200L, resp.getStatusCode());
 ```
 
-#### _FOLLOW USER_
+#### **_FOLLOW USER_**
 
 ```java
 final ResponseMessageAndStatusCode resp = pinterest.followUser("cdatarank");
@@ -364,13 +364,13 @@ if (resp.getStatusCode() != 200) {
 
 ### *Deleting*
 
-#### _UNFOLLOW BOARD_
+#### **_UNFOLLOW BOARD_**
 
 ```java
 final boolean unfollowed = pinterest.unfollowBoard("cdatarank/my-board");
 ```
 
-#### _UNFOLLOW USER
+#### **_UNFOLLOW USER_**
 
 ```java
 final boolean unfollowed = pinterest.unfollowUser("cdatarank");
