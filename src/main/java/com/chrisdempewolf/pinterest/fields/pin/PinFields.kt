@@ -88,7 +88,7 @@ class PinFields : BaseFields() {
     }
 
     fun with(field: String): PinFields {
-        fields.plus(field)
+        fields = fields.plus(field)
         return this
     }
 }

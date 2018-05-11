@@ -63,7 +63,7 @@ class UserFields : BaseFields() {
     }
 
     fun with(field: String): UserFields {
-        fields.plus(field)
+        fields = fields.plus(field)
         return this
     }
 }

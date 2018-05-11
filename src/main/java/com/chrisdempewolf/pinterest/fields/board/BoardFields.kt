@@ -51,7 +51,7 @@ class BoardFields : BaseFields() {
     }
 
     fun with(field: String): BoardFields {
-        fields.plus(field)
+        fields = fields.plus(field)
         return this
     }
 }
