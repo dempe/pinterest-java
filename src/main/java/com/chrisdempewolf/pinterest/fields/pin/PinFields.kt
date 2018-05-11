@@ -6,6 +6,7 @@ import com.chrisdempewolf.pinterest.fields.CreatorFields
 import java.util.ArrayList
 
 import com.chrisdempewolf.pinterest.fields.FieldSerializer.serialize
+import com.chrisdempewolf.pinterest.fields.Fields
 import org.apache.commons.lang3.StringUtils.isNotBlank
 import org.apache.commons.lang3.StringUtils.join
 
@@ -83,6 +84,11 @@ class PinFields : BaseFields() {
 
     fun withCreatedAt(): PinFields {
         fields = fields.plus("created_at")
+        return this
+    }
+
+    fun with(field: String): PinFields {
+        fields.plus(field)
         return this
     }
 }

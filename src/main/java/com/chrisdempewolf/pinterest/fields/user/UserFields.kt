@@ -2,6 +2,7 @@ package com.chrisdempewolf.pinterest.fields.user
 
 import com.chrisdempewolf.pinterest.fields.BaseFields
 import com.chrisdempewolf.pinterest.fields.Fields
+import com.chrisdempewolf.pinterest.fields.pin.PinFields
 
 class UserFields : BaseFields() {
     override fun withAll(): UserFields {
@@ -58,6 +59,11 @@ class UserFields : BaseFields() {
 
     fun withImage(): UserFields {
         this.fields = fields.plus("image")
+        return this
+    }
+
+    fun with(field: String): UserFields {
+        fields.plus(field)
         return this
     }
 }

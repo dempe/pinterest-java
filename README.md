@@ -68,6 +68,12 @@ final PinResponse pin = pinterest.getPin("<PIN_ID>", new PinFields().withLink().
 final Pins pins = pinterest.getMyPins(new PinFields().withAll());
 pins.forEach(pin -> {System.out.println(pin);});
 ```
+
+- To get **your own** Pins (with **any arbitrary field**):
+```java 
+final Pins pins = pinterest.getMyPins(new PinFields().with("some_field"));
+pins.forEach(pin -> {System.out.println(pin);});
+```
     
 - To get all the Pins **from a board** with default fields:
   - Example Board:  `cdatarank/欲しいもの`; from URL:  `https://www.pinterest.com/cdatarank/欲しいもの/`
@@ -150,6 +156,12 @@ final BoardResponse boardResponse = pinterest.getBoard("<BOARD>");
 final Board board = boardResponse.getBoard();
 ```
 
+-  To get info about a particular Board with an **arbitrary** field:
+```java
+final BoardResponse boardResponse = pinterest.getBoard("<BOARD>", new BoardFields().with("foo"));
+final Board board = boardResponse.getBoard();
+```
+
 -  To get info about a particular Board with **all** fields:
 ```java
 final BoardResponse boardResponse = pinterest.getBoard("<BOARD>", new BoardFields().withAll());
@@ -203,23 +215,28 @@ Note: user methods only work with the _authenticated_ user (i.e., the owner of t
 
 ##### **_USER_**
 
-* To get a user with the *default* fields:
+To get a user with the **default** fields:
 ```java
 final User user = pinterest.getUser();
 ```
 
-* To get a user with *all* fields:
+To get a user with **all** fields:
 ```java
 final User user = pinterest.getUser(new UserFields().withAll());
 ```
 
-* To get a user with *first name* and *last name*:
+To get a user with an **arbitrary** field:
+```java
+final User user = pinterest.getUser(new UserFields().with("foo"));
+```
+
+To get a user with **first name** and **last name**:
 ```java
 final User user = pinterest.getUser(new UserFields().withFirstName().withLastName());
 ```
 ##### **_USER'S SUGGESTED BOARDS_**
 
-* To get the user's list of suggested Boards (with *default* fields):
+To get the user's list of suggested Boards (with **default** fields):
 ```java
 final Boards boards = pinterest.getUserSuggestedBoards();
 ```

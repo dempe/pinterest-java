@@ -1,6 +1,7 @@
 package com.chrisdempewolf.pinterest.fields.board
 
 import com.chrisdempewolf.pinterest.fields.BaseFields
+import com.chrisdempewolf.pinterest.fields.pin.PinFields
 
 class BoardFields : BaseFields() {
 
@@ -46,6 +47,11 @@ class BoardFields : BaseFields() {
 
     fun withImage(): BoardFields {
         fields = fields.plus("image")
+        return this
+    }
+
+    fun with(field: String): BoardFields {
+        fields.plus(field)
         return this
     }
 }
