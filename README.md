@@ -1,3 +1,10 @@
+# EDIT 2020-03-29
+
+This project is no longer actively maintained.  I no longer have access to the Pinterest API.  Feel free to take over development. I'm happy to answer any questions.
+
+Happy hacking!
+Dempe
+
 # Description
 
 Public Java/Kotlin SDK for [Pinterest's new API](https://developers.pinterest.com/docs/getting-started/introduction/).
